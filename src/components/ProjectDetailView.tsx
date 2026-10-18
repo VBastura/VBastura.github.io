@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Project, ViewRoute } from '../types';
 import { ProjectImage } from './ProjectImage';
+import { MqpCaseStudy } from './MqpCaseStudy';
 import {
   ArrowLeft,
   ArrowRight,
@@ -257,8 +258,12 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           ========================================================================= */}
       {activeTab === 'case-study' && (
         <div className="space-y-14 animate-in fade-in duration-200">
-          {/* 1. OBJECTIVE */}
-          <section className="space-y-4">
+          {isMqp ? (
+            <MqpCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
+          ) : (
+            <>
+              {/* 1. OBJECTIVE */}
+              <section className="space-y-4">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
               <span>01. OBJECTIVE & CONSTRAINTS</span>
             </div>
@@ -479,6 +484,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </p>
             </div>
           </section>
+            </>
+          )}
 
           {/* Photos Shortcut Banner */}
           <div className="p-6 rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -529,23 +536,13 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                 key={idx}
                 className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs hover:border-slate-400 dark:hover:border-slate-600 transition-all flex flex-col justify-between"
               >
-                {/* Clean HTML Image Placeholder */}
-                <div
-                  className="relative aspect-[16/10] bg-slate-950 overflow-hidden cursor-pointer"
+                {/* Clean HTML Image Placeholder with Upload Fallback */}
+                <ProjectImage
+                  src={photo.src}
+                  alt={photo.alt}
+                  aspectRatioClass="aspect-[16/10]"
                   onClick={() => setLightboxImage(photo.src)}
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <span className="px-3 py-1.5 rounded-lg bg-black/80 text-white text-xs font-mono flex items-center gap-1.5 backdrop-blur-xs">
-                      <Maximize2 className="w-3.5 h-3.5" /> Full Resolution
-                    </span>
-                  </div>
-                </div>
+                />
 
                 <figcaption className="p-4 sm:p-5 space-y-2 border-t border-slate-200 dark:border-slate-800 flex-1 flex flex-col justify-between">
                   <div className="space-y-1">

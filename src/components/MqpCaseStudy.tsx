@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ProjectImage } from './ProjectImage';
 import {
   AlertTriangle,
   CheckCircle2,
@@ -103,20 +104,14 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
           {/* V2 */}
           <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs hover:border-slate-400 dark:hover:border-slate-600 transition-all flex flex-col justify-between group">
             <div
-              className="relative aspect-[16/11] bg-slate-950 overflow-hidden cursor-pointer"
-              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis thumbnail.jpg')}
+              className="cursor-pointer"
+              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis v2.png')}
             >
-              <img
-                src="images/autonomous off-road vehicle chassis thumbnail.jpg"
-                alt="Chassis V2 rollcage elimination"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              <ProjectImage
+                src="images/autonomous off-road vehicle chassis v2.png"
+                alt="Chassis V2 CAD model (rollcage removed)"
+                aspectRatioClass="aspect-[16/11]"
               />
-              <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                <span className="px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs">
-                  <Maximize2 className="w-3 h-3" /> Full Resolution
-                </span>
-              </div>
             </div>
             <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-1.5">
@@ -136,20 +131,14 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
           {/* V5 */}
           <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs hover:border-slate-400 dark:hover:border-slate-600 transition-all flex flex-col justify-between group">
             <div
-              className="relative aspect-[16/11] bg-slate-950 overflow-hidden cursor-pointer"
-              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test.jpg')}
+              className="cursor-pointer"
+              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis v5.png')}
             >
-              <img
-                src="images/autonomous off-road vehicle chassis fea bump test.jpg"
-                alt="Chassis V5 rear A-arm transition"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              <ProjectImage
+                src="images/autonomous off-road vehicle chassis v5.png"
+                alt="Chassis V5 CAD model (rear A-arms)"
+                aspectRatioClass="aspect-[16/11]"
               />
-              <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                <span className="px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs">
-                  <Maximize2 className="w-3 h-3" /> Full Resolution
-                </span>
-              </div>
             </div>
             <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-1.5">
@@ -169,20 +158,14 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
           {/* V6 */}
           <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs hover:border-slate-400 dark:hover:border-slate-600 transition-all flex flex-col justify-between group">
             <div
-              className="relative aspect-[16/11] bg-slate-950 overflow-hidden cursor-pointer"
-              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis rolling frame.jpg')}
+              className="cursor-pointer"
+              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis v6.png')}
             >
-              <img
-                src="images/autonomous off-road vehicle chassis rolling frame.jpg"
-                alt="Chassis V6 lengthened frame and horizontal motors"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              <ProjectImage
+                src="images/autonomous off-road vehicle chassis v6.png"
+                alt="Chassis V6 CAD model (lengthened frame & horizontal motors)"
+                aspectRatioClass="aspect-[16/11]"
               />
-              <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                <span className="px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs">
-                  <Maximize2 className="w-3 h-3" /> Full Resolution
-                </span>
-              </div>
             </div>
             <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-1.5">
@@ -202,20 +185,14 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
           {/* V10 */}
           <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs hover:border-slate-400 dark:hover:border-slate-600 transition-all flex flex-col justify-between group">
             <div
-              className="relative aspect-[16/11] bg-slate-950 overflow-hidden cursor-pointer"
-              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis thumbnail.jpg')}
+              className="cursor-pointer"
+              onClick={() => onInspectImage('images/autonomous off-road vehicle chassis v10.png')}
             >
-              <img
-                src="images/autonomous off-road vehicle chassis thumbnail.jpg"
-                alt="Chassis V10 single full bottom tube"
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              <ProjectImage
+                src="images/autonomous off-road vehicle chassis v10.png"
+                alt="Chassis V10 CAD model (single continuous bottom tube)"
+                aspectRatioClass="aspect-[16/11]"
               />
-              <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                <span className="px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs">
-                  <Maximize2 className="w-3 h-3" /> Full Resolution
-                </span>
-              </div>
             </div>
             <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-1.5">
@@ -363,7 +340,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
               <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                 <div>
-                  I gave input on other team tasks throughout the process during weekly collaborative meetings with the suspension kinematics and mechatronics teams.
+                  I gave input on other team tasks throughout the process.
                 </div>
               </li>
             </ul>
@@ -396,7 +373,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
           </h2>
           <p className="text-xs font-mono text-amber-700 dark:text-amber-400 font-semibold flex items-center gap-1.5">
             <AlertTriangle className="w-3.5 h-3.5" />
-            <span>Framed as Preliminary Engineering Models — Pending Physical Test Stand Verification in B-Term</span>
+            <span>Framed as Preliminary — Earlier Chassis Version (V8) & Material Sensitivity</span>
           </p>
         </div>
 
@@ -444,31 +421,31 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                     <tr>
                       <td className="py-2.5 px-4 font-mono font-bold text-slate-900 dark:text-white">Setup 1</td>
                       <td className="py-2.5 px-4 text-slate-600 dark:text-slate-300">SolidWorks Simulation</td>
-                      <td className="py-2.5 px-4 text-slate-600 dark:text-slate-300">Beam weldments; dummy front A-arms; 8 rear points fixed</td>
+                      <td className="py-2.5 px-4 text-slate-600 dark:text-slate-300">Beam weldments; 8 rear points fixed; dummy front A-arms; opposing loads</td>
                       <td className="py-2.5 px-4 font-mono font-bold text-slate-900 dark:text-white text-right">1914.61 N*m/deg</td>
                     </tr>
                     <tr>
                       <td className="py-2.5 px-4 font-mono font-bold text-slate-900 dark:text-white">Setup 2</td>
                       <td className="py-2.5 px-4 text-slate-600 dark:text-slate-300">Ansys Mechanical</td>
-                      <td className="py-2.5 px-4 text-slate-500 dark:text-slate-400 italic">[ADD: Intermediate model boundary constraint description]</td>
-                      <td className="py-2.5 px-4 font-mono text-slate-500 text-right">[ADD: Value] N*m/deg</td>
+                      <td className="py-2.5 px-4 text-slate-500 dark:text-slate-400 italic">[ADD: Intermediate boundary constraint setup]</td>
+                      <td className="py-2.5 px-4 font-mono text-slate-500 text-right">[ADD: Setup 2 result] N*m/deg</td>
                     </tr>
                     <tr>
                       <td className="py-2.5 px-4 font-mono font-bold text-slate-900 dark:text-white">Setup 3</td>
                       <td className="py-2.5 px-4 text-slate-600 dark:text-slate-300">Ansys Mechanical</td>
-                      <td className="py-2.5 px-4 text-slate-500 dark:text-slate-400 italic">[ADD: Intermediate joint stiffness configuration description]</td>
-                      <td className="py-2.5 px-4 font-mono text-slate-500 text-right">[ADD: Value] N*m/deg</td>
+                      <td className="py-2.5 px-4 text-slate-500 dark:text-slate-400 italic">[ADD: Intermediate joint stiffness configuration]</td>
+                      <td className="py-2.5 px-4 font-mono text-slate-500 text-right">[ADD: Setup 3 result] N*m/deg</td>
                     </tr>
                     <tr>
                       <td className="py-2.5 px-4 font-mono font-bold text-slate-900 dark:text-white">Setup 4</td>
                       <td className="py-2.5 px-4 text-slate-600 dark:text-slate-300">Ansys Mechanical</td>
-                      <td className="py-2.5 px-4 text-slate-500 dark:text-slate-400 italic">[ADD: Fixed bulkhead comparison setup description]</td>
-                      <td className="py-2.5 px-4 font-mono text-slate-500 text-right">[ADD: Value] N*m/deg</td>
+                      <td className="py-2.5 px-4 text-slate-500 dark:text-slate-400 italic">Fixed rear bulkhead comparison setup (yielded higher value; excluded for conservatism)</td>
+                      <td className="py-2.5 px-4 font-mono text-slate-500 text-right">[ADD: Setup 4 result] N*m/deg</td>
                     </tr>
                     <tr className="bg-blue-50/60 dark:bg-blue-950/30">
                       <td className="py-2.5 px-4 font-mono font-bold text-blue-700 dark:text-blue-300">Setup 5 (Final)</td>
                       <td className="py-2.5 px-4 font-medium text-blue-900 dark:text-blue-200">Ansys Mechanical</td>
-                      <td className="py-2.5 px-4 font-medium text-blue-900 dark:text-blue-200">Exact suspension points fixed; rigid struts; isolated chassis</td>
+                      <td className="py-2.5 px-4 font-medium text-blue-900 dark:text-blue-200">Proper joints, exact rear suspension coordinates, rigid strut representation, suspension components set to stiff, fixed suspension points</td>
                       <td className="py-2.5 px-4 font-mono font-extrabold text-blue-700 dark:text-blue-300 text-right">2271.72 N*m/deg</td>
                     </tr>
                   </tbody>
@@ -480,74 +457,184 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                   <strong>Five-Setup Average:</strong> <span className="font-mono font-bold text-slate-900 dark:text-white">2212.49 N*m/deg</span>
                 </div>
                 <div>
-                  <strong>Industry Comparison:</strong> The commonly cited Baja/FSAE benchmark is about <span className="font-mono text-blue-600 dark:text-blue-400 font-semibold">[ADD: Baja/FSAE torsional rigidity benchmark value]</span>.
+                  <strong>Industry Benchmark:</strong> The commonly cited Baja/FSAE benchmark is about <span className="font-mono text-blue-600 dark:text-blue-400 font-semibold">2000 N*m/deg</span>.
                 </div>
+              </div>
+            </div>
+
+            {/* Torsional Rigidity Visual Documentation (Setup & Deformation Results Only) */}
+            <div className="pt-2 space-y-2">
+              <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
+                Torsional Rigidity Visual Documentation (Setup & Deformation Results):
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {/* Torsion 1: Setup */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis fea torsional rigidity setup.png"
+                    alt="Torsional Rigidity Simulation Setup and Boundary Constraints"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea torsional rigidity setup.png')}
+                  />
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      1. Torsional Rigidity Setup & Constraints
+                    </span>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      Ansys boundary setup with proper joints, exact rear suspension coordinates, rigid strut representation, and suspension components set to stiff so the result isolates the chassis.
+                    </span>
+                  </figcaption>
+                </figure>
+
+                {/* Torsion 2: Deformation Results (Also the Project Thumbnail) */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis thumbnail.png"
+                    alt="Torsional Rigidity Deformation Results (Chassis Thumbnail)"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis thumbnail.png')}
+                  />
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      2. Torsional Rigidity Deformation Results (Project Thumbnail)
+                    </span>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      Torsional deformation results under opposing loads (final conservative setup fixing suspension points: 2271.72 N*m/deg; 5-setup average: 2212.49 N*m/deg).
+                    </span>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
 
           {/* Part B: Bump Test */}
-          <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-4">
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-blue-600" />
-              <span>B. Dynamic Front-Wheel Bump Test (3G Impact)</span>
-            </h3>
+          <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-5">
+            <div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-600" />
+                <span>B. Bump Test Stress Analysis</span>
+              </h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal mt-1.5">
+                Bump test: 8 rear fixtures and a 2000 N load on the front left suspension points, used to see where peak stress occurs. The largest stress magnitude was the minimum combined stress of <strong>76.4 MPa</strong> (compressive); maximum combined was <strong>54.8 MPa</strong>. Against the <strong>483 MPa</strong> yield strength that is roughly a <strong>6.3x margin</strong>.
+              </p>
+            </div>
 
-            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-              Bump test: Ansys, 3G vertical bump load applied through the front suspension with the rear suspension fixed. Peak von Mises stress: <strong>[ADD: peak stress value] MPa</strong> vs yield strength of <strong>[ADD: yield strength] MPa</strong> for <strong>[ADD: steel alloy] tubing</strong>, giving a minimum factor of safety of <strong>[ADD: factor of safety]</strong>. Framed as preliminary pending physical testing in B-term.
-            </p>
+            {/* The 5 Bump Test FEA Visuals Grid */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
+                <span>The 5 Bump Test FEA Simulation Images:</span>
+                <span className="text-blue-600 dark:text-blue-400">Direct Axial · Max Bending · Max Combined · Min Combined · Setup</span>
+              </div>
 
-            <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-              (Report evaluation data: 2000 N vertical shock load on front-left suspension mounts with 8 rear suspension points constrained produced a minimum combined compressive stress of 76.4 MPa and maximum combined tensile stress of 54.8 MPa vs 483 MPa yield strength for AISI 1020 annealed steel, indicating a ~6.3× margin of safety under peak vertical dynamic loading).
-            </p>
-
-            {/* Technical Visuals Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
-              <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group">
-                <div
-                  className="relative aspect-[16/10] overflow-hidden cursor-pointer"
-                  onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test.jpg')}
-                >
-                  <img
-                    src="images/autonomous off-road vehicle chassis fea bump test.jpg"
-                    alt="Ansys FEA contour plot of front-wheel bump test"
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-1">
+                {/* 1. Bump Setup & Boundary Conditions */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis fea bump test setup.png"
+                    alt="Bump Test Setup & Boundary Conditions"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test setup.png')}
                   />
-                  <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <span className="px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs">
-                      <Maximize2 className="w-3 h-3" /> Full Resolution
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      1. Bump Test Setup
                     </span>
-                  </div>
-                </div>
-                <figcaption className="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-0.5">
-                  <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block">Figure 1: Bump Stress Simulation</span>
-                  <span>Ansys FEA stress contour plot under front suspension vertical shock input.</span>
-                </figcaption>
-              </figure>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      8 rear fixtures constrained with a 2000 N vertical shock load applied to front-left suspension points to observe stress concentrations.
+                    </span>
+                  </figcaption>
+                </figure>
 
-              <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group">
-                <div
-                  className="relative aspect-[16/10] overflow-hidden cursor-pointer"
-                  onClick={() => onInspectImage('images/autonomous off-road vehicle chassis rolling frame.jpg')}
-                >
-                  <img
-                    src="images/autonomous off-road vehicle chassis rolling frame.jpg"
-                    alt="Chassis structural boundary setup and triangulation layout"
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                {/* 2. Direct (Axial) Stress */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis fea bump test direct axial stress.png"
+                    alt="Bump Test Direct (Axial) Stress (+ Tension / - Compression)"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test direct axial stress.png')}
                   />
-                  <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <span className="px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs">
-                      <Maximize2 className="w-3 h-3" /> Full Resolution
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      2. Direct (Axial) Stress
                     </span>
-                  </div>
-                </div>
-                <figcaption className="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-0.5">
-                  <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block">Figure 2: Suspension Hardpoint Restraints</span>
-                  <span>Suspension pickup hardpoint coordinates utilized for isolated chassis boundary restraints.</span>
-                </figcaption>
-              </figure>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      Direct axial stress across spaceframe members, where (+) indicates tensile loading and (-) indicates compressive loading.
+                    </span>
+                  </figcaption>
+                </figure>
+
+                {/* 3. Maximum Bending Stress */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png"
+                    alt="Bump Test Maximum Bending Stress"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png')}
+                  />
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      3. Maximum Bending Stress
+                    </span>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      Maximum bending stress contours throughout tubular frame spans resulting from moment transfer under the 2000 N shock load.
+                    </span>
+                  </figcaption>
+                </figure>
+
+                {/* 4. Maximum Combined Stress */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis fea bump test max combined stress.png"
+                    alt="Bump Test Maximum Combined Stress (Direct + Max Bending: 54.8 MPa)"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test max combined stress.png')}
+                  />
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      4. Max Combined Stress (54.8 MPa)
+                    </span>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      Superposition of direct axial stress and maximum bending stress, resulting in a maximum combined tensile stress of 54.8 MPa.
+                    </span>
+                  </figcaption>
+                </figure>
+
+                {/* 5. Minimum Combined Stress */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis fea bump test min combined stress.png"
+                    alt="Bump Test Minimum Combined Stress (Direct + Min Bending: 76.4 MPa Compressive)"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test min combined stress.png')}
+                  />
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      5. Min Combined Stress (76.4 MPa Compressive)
+                    </span>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      Direct axial stress combined with minimum bending; largest stress magnitude overall at 76.4 MPa compressive (~6.3x margin vs 483 MPa yield).
+                    </span>
+                  </figcaption>
+                </figure>
+
+                {/* 6. Hardware Reference: Physical Rolling Chassis Frame */}
+                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
+                  <ProjectImage
+                    src="images/autonomous off-road vehicle chassis rolling frame.png"
+                    alt="Physical Rolling Chassis Frame Assembly"
+                    aspectRatioClass="aspect-[16/10]"
+                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis rolling frame.png')}
+                  />
+                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                      Hardware Frame Pickup Hardpoints
+                    </span>
+                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                      Physical welded frame pickup coordinates matching the simulated suspension boundary constraints.
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </div>
 

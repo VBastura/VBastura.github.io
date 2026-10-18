@@ -81,9 +81,9 @@ export const initialProjects: Project[] = [
     hoverDescription:
       'Major Qualifying Project (WPI & AVMI): Provided continuous tube and node design feedback on an off-road tube frame chassis, and performed all SolidWorks and Ansys FEA simulations to validate torsional stiffness and bump shock resistance.',
     category: 'CAD & Spaceframe',
-    coverImage: 'images/autonomous off-road vehicle chassis thumbnail.jpg',
+    coverImage: 'images/autonomous off-road vehicle chassis thumbnail.png',
     year: 'May 2026 - Present',
-    tools: ['SolidWorks', 'Ansys', 'Spaceframe Design', 'FEA Torsional Analysis', 'FEA Bump Testing'],
+    tools: ['SolidWorks', 'Ansys'],
     summaryStrip: {
       role: 'Chassis Design Feedback & All FEA Simulations',
       teamSize: 'Team of 4 (with Suspension & Mechatronics teams)',
@@ -97,7 +97,7 @@ export const initialProjects: Project[] = [
     brainstorm: {
       paragraph:
         'Over eleven design iterations, our team systematically eliminated manufacturing bottlenecks and optimized packaging. Starting from an exploratory concept with an overhead rollcage, we eliminated the cage in V2 because welding was complex and the roof-mounted LiDAR cannot allow rollover. We transitioned to rear A-arms in V5 when trailing arms proved overly complex for our timeline and budget, packaged motors horizontally in V6 to drop the center of mass, and simplified front frame offsets into a single continuous bottom tube in V10.',
-      image: 'images/autonomous off-road vehicle chassis thumbnail.jpg',
+      image: 'images/autonomous off-road vehicle chassis thumbnail.png',
       imageCaption:
         'Chassis V10 CAD model featuring continuous bottom tube and triangulated suspension pickup nodes.',
     },
@@ -115,7 +115,7 @@ export const initialProjects: Project[] = [
           'Safety / Rules: Vehicle prohibited from rollover to protect roofline LiDAR.',
           'DFM: Removed unnecessary cage members to cut welding joints and tube notching time.',
         ],
-        image: 'images/autonomous off-road vehicle chassis thumbnail.jpg',
+        image: 'images/autonomous off-road vehicle chassis v2.png',
         imageCaption:
           'Chassis V2 geometry with overhead rollcage removed to simplify welding and lower profile.',
       },
@@ -132,7 +132,7 @@ export const initialProjects: Project[] = [
           'Kinematics: Parallel arm and axle pivots to reduce CV joint binding.',
           'Manufacturability: Double wishbones matched available shop jigs and budget.',
         ],
-        image: 'images/autonomous off-road vehicle chassis fea bump test.jpg',
+        image: 'images/autonomous off-road vehicle chassis v5.png',
         imageCaption:
           'Chassis V5 packaging rear double wishbone A-arms and battery platform layout.',
       },
@@ -149,7 +149,7 @@ export const initialProjects: Project[] = [
           'Center of Mass: Horizontal motor placement lowered vehicle CG.',
           'Packaging: Opened clear top access for rapid battery swapping.',
         ],
-        image: 'images/autonomous off-road vehicle chassis rolling frame.jpg',
+        image: 'images/autonomous off-road vehicle chassis v6.png',
         imageCaption:
           'Chassis V6 configuration showing horizontal drive motor orientation and extended wheelbase.',
       },
@@ -166,7 +166,7 @@ export const initialProjects: Project[] = [
           'Continuous Tubing: My recommendation to replace segmented welds with continuous bent spans.',
           'Nodal Alignment: Joined intersecting members at shared structural nodes.',
         ],
-        image: 'images/autonomous off-road vehicle chassis thumbnail.jpg',
+        image: 'images/autonomous off-road vehicle chassis v10.png',
         imageCaption:
           'Chassis V10 with unified continuous bottom frame member and direct nodal triangulation.',
       },
@@ -174,7 +174,7 @@ export const initialProjects: Project[] = [
     productOutcome: {
       finalDesignAndResults:
         'Chassis design and analysis are nearly complete. Fabrication (cutting, notching, bending, welding) is expected to start in B-term. Stock is purchased and the welding safety training is done. Product and measured physical testing outcomes are currently pending.',
-      mediaUrl: 'images/autonomous off-road vehicle chassis thumbnail.jpg',
+      mediaUrl: 'images/autonomous off-road vehicle chassis thumbnail.png',
       mediaCaption:
         'Pending B-term fabrication: stock purchased, welding safety completed, and final FEA verification underway.',
       downloadLinks: [],
@@ -183,22 +183,76 @@ export const initialProjects: Project[] = [
       'Setting up multi-body FEA taught me that boundary conditions dictate simulation validity—isolating the chassis from suspension compliance was necessary to obtain an honest stiffness benchmark. [ADD: my reflection].',
     photos: [
       {
-        src: 'images/autonomous off-road vehicle chassis thumbnail.jpg',
-        alt: 'Autonomous Off-Road Vehicle Chassis Thumbnail',
-        caption: 'Overall spaceframe chassis assembly rendering showing tube triangulation and suspension hardpoints',
-        filename: 'autonomous off-road vehicle chassis thumbnail.jpg',
+        src: 'images/autonomous off-road vehicle chassis thumbnail.png',
+        alt: 'Torsional Rigidity Deformation Results (Project Thumbnail)',
+        caption: 'Torsional rigidity deformation results under opposing loads (final setup: 2271.72 N*m/deg), serving as the project thumbnail',
+        filename: 'autonomous off-road vehicle chassis thumbnail.png',
       },
       {
-        src: 'images/autonomous off-road vehicle chassis fea bump test.jpg',
-        alt: 'Autonomous Off-Road Vehicle Chassis FEA Bump Test',
-        caption: 'SolidWorks Simulation static FEA bump test validating von Mises stress contours under 3G vertical bump load',
-        filename: 'autonomous off-road vehicle chassis fea bump test.jpg',
+        src: 'images/autonomous off-road vehicle chassis fea torsional rigidity setup.png',
+        alt: 'Torsional Rigidity Setup & Boundary Conditions',
+        caption: 'Ansys boundary setup with proper joints, exact rear suspension coordinates, rigid struts, and stiffened suspension isolating the chassis',
+        filename: 'autonomous off-road vehicle chassis fea torsional rigidity setup.png',
       },
       {
-        src: 'images/autonomous off-road vehicle chassis rolling frame.jpg',
-        alt: 'Autonomous Off-Road Vehicle Chassis Rolling Frame',
-        caption: 'Physical welded 4130 chromoly rolling chassis with suspension arms, uprights, and wheels mounted',
-        filename: 'autonomous off-road vehicle chassis rolling frame.jpg',
+        src: 'images/autonomous off-road vehicle chassis fea bump test setup.png',
+        alt: 'Bump Test Setup & Boundary Conditions',
+        caption: '8 rear fixtures constrained with a 2000 N vertical shock load applied to front-left suspension points',
+        filename: 'autonomous off-road vehicle chassis fea bump test setup.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis fea bump test direct axial stress.png',
+        alt: 'Bump Test Direct (Axial) Stress (+ Tension / - Compression)',
+        caption: 'Direct (axial) stress distribution across spaceframe members, where (+) represents tension and (-) represents compression',
+        filename: 'autonomous off-road vehicle chassis fea bump test direct axial stress.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png',
+        alt: 'Bump Test Maximum Bending Stress',
+        caption: 'Maximum bending stress contours showing moment transfer through chassis tube spans under dynamic shock input',
+        filename: 'autonomous off-road vehicle chassis fea bump test maximum bending stress.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis fea bump test max combined stress.png',
+        alt: 'Bump Test Maximum Combined Stress (Direct + Max Bending)',
+        caption: 'Superposition of direct axial stress and maximum bending stress, reaching a maximum combined peak of 54.8 MPa',
+        filename: 'autonomous off-road vehicle chassis fea bump test max combined stress.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis fea bump test min combined stress.png',
+        alt: 'Bump Test Minimum Combined Stress (Direct + Min Bending)',
+        caption: 'Superposition of direct axial stress and minimum bending stress; peak magnitude was 76.4 MPa compressive (~6.3x margin vs 483 MPa yield)',
+        filename: 'autonomous off-road vehicle chassis fea bump test min combined stress.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis v2.png',
+        alt: 'Chassis V2 CAD: Rollcage Geometry Removal',
+        caption: 'V2: removed the rollcage geometry (welding complexity, and the vehicle cannot be allowed to roll because of the LiDAR)',
+        filename: 'autonomous off-road vehicle chassis v2.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis v5.png',
+        alt: 'Chassis V5 CAD: Rear Double A-Arms Architecture',
+        caption: 'V5: switched to A-arms at the rear (trailing arms were too complex for the team’s knowledge, budget, and time)',
+        filename: 'autonomous off-road vehicle chassis v5.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis v6.png',
+        alt: 'Chassis V6 CAD: Lengthened Frame & Low-CG Horizontal Motors',
+        caption: 'V6: made the chassis slightly longer and placed the motors horizontally to lower the center of mass',
+        filename: 'autonomous off-road vehicle chassis v6.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis v10.png',
+        alt: 'Chassis V10 CAD: Unified Continuous Full Bottom Tube',
+        caption: 'V10: simplified the front offsets into a single full bottom tube',
+        filename: 'autonomous off-road vehicle chassis v10.png',
+      },
+      {
+        src: 'images/autonomous off-road vehicle chassis rolling frame.png',
+        alt: 'Physical Rolling Chassis Frame Assembly',
+        caption: 'Physical welded rolling chassis verifying suspension hardpoint coordinates and packaging clearances',
+        filename: 'autonomous off-road vehicle chassis rolling frame.png',
       },
     ],
     tagline: 'Iterative spaceframe design, SolidWorks static FEA simulations, and rolling vehicle platform',
@@ -250,9 +304,9 @@ export const initialProjects: Project[] = [
           'Degrees of Freedom: Added a second servo so the air stream could be aimed in both elevation and azimuth.',
           'Firmware Calibration: Implemented per-note calibration arrays in Arduino EEPROM to store exact resonance angles.',
         ],
-        image: 'images/robotic pan flute 2dof nozzle.jpg',
+        image: 'images/pan flute robot software interface.jpg',
         imageCaption:
-          '2-DOF nozzle gimbal and 2GT timing belt stepper drive undergoing acoustic resonance calibration testing.',
+          'Interactive software calibration interface in Arduino C++ allowing sweep, measurement, and storage of optimal (X, Y) servo resonance coordinates for each musical note.',
         testConditions:
           'Acoustic resonance bench test: Microphone frequency sweep measuring fundamental tone decibels across pitch angles from 15° to 45° off tube rim plane.',
       },
@@ -270,9 +324,9 @@ export const initialProjects: Project[] = [
           'Motion Control: Trapezoidal acceleration profiles in stepper firmware to prevent tube drum vibration.',
           'Interface: Opto-isolated MIDI input socket allowing plug-and-play control from DAW software.',
         ],
-        image: 'images/robotic pan flute radial drum.jpg',
+        image: 'images/pan flute robot electric wiring diagram.jpg',
         imageCaption:
-          'Final wired layout showing clean ribbon cable harnesses connecting the Arduino shield, stepper driver, and dual-servo nozzle.',
+          'Three-rail electrical wiring schematic isolating 5V Arduino logic, 12V servo power, and 24V stepper motor rails with common star grounding.',
         testConditions:
           'Polyphonic MIDI stress test: 120 BPM rapid arpeggios executed continuously over 30 minutes with zero microcontroller resets.',
       },
@@ -309,6 +363,18 @@ export const initialProjects: Project[] = [
         caption: '3D printed radial carousel drum securing precision tuned acrylic pan flute pipes',
         filename: 'robotic pan flute radial drum.jpg',
       },
+      {
+        src: 'images/pan flute robot electric wiring diagram.jpg',
+        alt: 'Pan Flute Robot Electric Wiring Diagram',
+        caption: 'Three-rail electrical distribution schematic (5V logic, 12V servo, 24V stepper) with opto-isolated MIDI input and star grounding',
+        filename: 'pan flute robot electric wiring diagram.jpg',
+      },
+      {
+        src: 'images/pan flute robot software interface.jpg',
+        alt: 'Pan Flute Robot Software Interface',
+        caption: 'Interactive software calibration interface and Arduino tuning tool for setting per-note acoustic resonance coordinates',
+        filename: 'pan flute robot software interface.jpg',
+      },
     ],
     tagline: 'Radial tube drum, 2-DOF servo airflow nozzle, and Arduino 3-rail power MIDI control',
     shortDescription:
@@ -340,9 +406,9 @@ export const initialProjects: Project[] = [
     brainstorm: {
       paragraph:
         'We evaluated two actuation methods: miniature push-pull solenoids versus micro-servos with custom 3D-printed compliant rocker linkages. Solenoids offered rapid strike response, but they drew large current spikes, ran hot, and lacked position control—risking over-striking and snapping the delicate spring-steel tines. We selected micro-servos paired with custom 3D-printed rocker arms because their precise rotational control let us gently displace and release each tine, while staggered vertical mounting allowed all 20 actuators to fit neatly over the narrow tine spacing.',
-      image: 'images/midi music box actuator assembly.jpg',
+      image: 'images/midi music box-original music box.jpg',
       imageCaption:
-        'Custom 3D-printed actuator assembly mounted over spring-steel tines during breadboard testing and linkage fitting.',
+        'Original mechanical 20-note music box comb and cylinder mechanism prior to mechatronic retrofitting.',
     },
     prototypeIterations: [
       {
@@ -359,9 +425,9 @@ export const initialProjects: Project[] = [
           'Actuation Geometry: Staggered servo mounting levels to prevent adjacent servo horns from clashing.',
           'Driver Architecture: Utilized PCA9685 I2C 16-channel PWM driver boards to offload pulse timing from the Arduino.',
         ],
-        image: 'images/midi music box actuator assembly.jpg',
+        image: 'images/midi music box- modified to hold actuators.jpg',
         imageCaption:
-          'Close-up of the 20 micro-servos and 3D-printed rocker linkages aligned precisely above the comb tines.',
+          'Music box structure modified and fitted with mounting brackets to support the 20-servo actuator array.',
         testConditions:
           'Repeated actuation test: 50 consecutive plucks per tine to measure strike consistency and check for linkage fatigue.',
       },
@@ -379,7 +445,7 @@ export const initialProjects: Project[] = [
           'Power: Dedicated 5V 4A power supply to handle peak simultaneous servo currents during polyphonic chords.',
           'Acoustics: Rigid hardwood base coupling to amplify music box comb acoustic resonance.',
         ],
-        image: 'images/midi music box final build.jpg',
+        image: 'images/midi music box thumbnail.jpg',
         imageCaption:
           'Finished 20-servo MIDI music box operating under polyphonic DAW playback.',
         testConditions:
@@ -401,21 +467,27 @@ export const initialProjects: Project[] = [
     photos: [
       {
         src: 'images/midi music box thumbnail.jpg',
-        alt: 'MIDI Music Box Thumbnail',
-        caption: 'Modified acoustic music box with 20 micro-servo tine actuation array and driver boards',
+        alt: 'MIDI Music Box Thumbnail & Final Build',
+        caption: 'Modified acoustic music box with 20 micro-servo tine actuation array, driver boards, and hardwood acoustic base',
         filename: 'midi music box thumbnail.jpg',
+      },
+      {
+        src: 'images/midi music box-original music box.jpg',
+        alt: 'Original Unmodified Music Box',
+        caption: 'Original mechanical 20-note music box comb and cylinder mechanism prior to mechatronic retrofitting',
+        filename: 'midi music box-original music box.jpg',
+      },
+      {
+        src: 'images/midi music box- modified to hold actuators.jpg',
+        alt: 'Music Box Modified to Hold Actuators',
+        caption: 'Music box structure modified to support custom mounting brackets and 20-servo actuator linkages',
+        filename: 'midi music box- modified to hold actuators.jpg',
       },
       {
         src: 'images/midi music box actuator assembly.jpg',
         alt: 'MIDI Music Box Actuator Assembly',
-        caption: 'Close-up CAD model and physical assembly of the linear solenoid / servo tine strike mechanism',
+        caption: 'Close-up CAD model and physical assembly of the 20 micro-servo tine strike mechanism and rocker linkages',
         filename: 'midi music box actuator assembly.jpg',
-      },
-      {
-        src: 'images/midi music box final build.jpg',
-        alt: 'MIDI Music Box Final Build',
-        caption: 'Complete integrated build on testbench with custom wiring harness, logic rails, and Arduino microcontroller',
-        filename: 'midi music box final build.jpg',
       },
     ],
     tagline: '20-servo mechatronic mechanism with Arduino C++ MIDI parsing and software deflection compensation',
@@ -448,7 +520,7 @@ export const initialProjects: Project[] = [
     brainstorm: {
       paragraph:
         'When planning our research methodology, we debated between distributing an anonymous online survey versus conducting structured in-person interviews across local markets and administrative offices. We rejected online surveys because rural paramo farming communities had limited digital access and past university web surveys had virtually zero rural response. Partnering with University of Cuenca students, we decided on face-to-face bilingual interviews at local markets (such as Mercado Cajas) and government agencies, ensuring authentic, representative participation from both rural landholders and municipal leaders.',
-      image: 'images/understanding perceptions of wildfires- cajas national park and thumbnail.jpg',
+      image: 'images/understanding perceptions of wildfires- market.jpg',
       imageCaption:
         'Bilingual survey fieldwork at a rural mountain market outside Cuenca, Ecuador alongside University of Cuenca student researchers.',
     },
@@ -467,9 +539,9 @@ export const initialProjects: Project[] = [
           'Sampling: Stratified sampling across rural communities and municipal environmental departments.',
           'Partnership: Co-interviewing with University of Cuenca students to bridge cultural and dialect nuances.',
         ],
-        image: 'images/understanding perceptions of wildfires- cajas national park and thumbnail.jpg',
+        image: 'images/understanding perceptions of wildfires-interview.jpg',
         imageCaption:
-          'Paramo soil and vegetation assessment in the buffer zones of El Cajas National Park.',
+          'Conducting in-person bilingual stakeholder interviews with agricultural landholders and municipal leaders.',
         testConditions:
           'Pilot survey run: 8 initial interviews evaluated for question clarity, response time, and coding consistency.',
       },
@@ -512,6 +584,18 @@ export const initialProjects: Project[] = [
         alt: 'Understanding Perceptions of Wildfires - Cajas National Park and Thumbnail',
         caption: 'Field research study on wildfire threats, stakeholder perceptions, and land management policies in El Cajas National Park, Ecuador',
         filename: 'understanding perceptions of wildfires- cajas national park and thumbnail.jpg',
+      },
+      {
+        src: 'images/understanding perceptions of wildfires- market.jpg',
+        alt: 'Understanding Perceptions of Wildfires - Market',
+        caption: 'Bilingual survey fieldwork and stakeholder interviews conducted at community agricultural markets outside Cuenca',
+        filename: 'understanding perceptions of wildfires- market.jpg',
+      },
+      {
+        src: 'images/understanding perceptions of wildfires-interview.jpg',
+        alt: 'Understanding Perceptions of Wildfires - Interview',
+        caption: 'In-person stakeholder interviews assessing community knowledge, institutional trust, and wildfire prevention practices',
+        filename: 'understanding perceptions of wildfires-interview.jpg',
       },
     ],
     tagline: 'Cross-cultural field research, stakeholder interviews, and chi-squared statistical analysis with Holm-Bonferroni correction',

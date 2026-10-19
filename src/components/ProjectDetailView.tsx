@@ -131,11 +131,12 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             />
           </div>
         ) : (
-          <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer group">
+          <div className="relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer group bg-slate-950">
             <ProjectImage
               src={project.coverImage}
               alt={project.title}
-              aspectRatioClass="aspect-[16/9] max-h-[560px]"
+              aspectRatioClass="aspect-[16/9] w-full max-h-[560px]"
+              objectFitClass="object-cover"
               onClick={() => setLightboxImage(project.coverImage)}
             />
             <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-slate-950/80 hover:bg-slate-950 text-white rounded-lg text-xs font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors shadow-lg pointer-events-none opacity-0 group-hover:opacity-100">
@@ -243,13 +244,6 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               {projectPhotos.length}
             </span>
           </button>
-        </div>
-
-        <div className="text-xs font-mono text-slate-400 hidden sm:flex items-center gap-1.5">
-          <span>Folder:</span>
-          <code className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800/80 text-blue-600 dark:text-blue-400 font-mono text-[11px]">
-            images/
-          </code>
         </div>
       </div>
 
@@ -486,28 +480,6 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           </section>
             </>
           )}
-
-          {/* Photos Shortcut Banner */}
-          <div className="p-6 rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Camera className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span>Physical Build Photography</span>
-              </h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Explore all {projectPhotos.length} high-resolution photographs and fabrication visuals in the Project Photos tab.
-              </p>
-            </div>
-            <button
-              onClick={() => {
-                setActiveTab('photos');
-                window.scrollTo({ top: 380, behavior: 'smooth' });
-              }}
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-mono font-medium transition-colors cursor-pointer shrink-0"
-            >
-              Open Project Photos ({projectPhotos.length})
-            </button>
-          </div>
         </div>
       )}
 
@@ -519,13 +491,13 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
               <Camera className="w-4 h-4" />
-              <span>PROJECT PHOTOS & PHYSICAL DOCUMENTATION</span>
+              <span>PROJECT PHOTOS & VISUAL DOCUMENTATION</span>
             </div>
             <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Hardware Photography & Engineering Artifacts
+              Visual Documentation & Engineering Artifacts
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
-              Clean HTML image placeholders pointing to the local folder <code className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 font-mono text-xs font-semibold">images/</code>. Click any photo to view full resolution.
+              High-resolution CAD models, FEA simulation plots, and engineering visuals. Click any photo to view full resolution.
             </p>
           </div>
 
@@ -540,7 +512,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                 <ProjectImage
                   src={photo.src}
                   alt={photo.alt}
-                  aspectRatioClass="aspect-[16/10]"
+                  aspectRatioClass="aspect-[16/10] bg-slate-950"
+                  objectFitClass="object-contain"
                   onClick={() => setLightboxImage(photo.src)}
                 />
 

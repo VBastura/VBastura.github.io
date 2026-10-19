@@ -75,9 +75,9 @@ export const initialProjects: Project[] = [
     id: 'autonomous-offroad-chassis',
     title: 'Architecture and Chassis Design for an Off-Road Vehicle',
     oneLineOutcome:
-      'Engineering a lightweight tubular steel spaceframe chassis integrating suspension, independent braking, and weatherproofing to elevate an autonomous unmanned ground vehicle from 5 mph to 15 mph.',
+      'Engineering a tubular steel spaceframe chassis integrating suspension, independent braking, and weatherproofing to elevate an autonomous unmanned ground vehicle from 5 mph to 15 mph.',
     cardShortDescription:
-      'WPI MQP team of 4 in collaboration with AVMI lab. Tube-frame chassis integrating suspension and braking to achieve 15 mph safely without rollover risk for top-mounted LiDAR.',
+      'WPI MQP 4-person chassis team, collaborating with the Suspension and Mechatronics teams. Tube-frame chassis integrating suspension and braking to achieve 15 mph safely without rollover risk for top-mounted LiDAR.',
     hoverDescription:
       'Major Qualifying Project (WPI & AVMI): Provided continuous tube and node design feedback on an off-road tube frame chassis, and performed all SolidWorks and Ansys FEA simulations to validate torsional stiffness and bump shock resistance.',
     category: 'CAD & Spaceframe',
@@ -87,107 +87,137 @@ export const initialProjects: Project[] = [
     tools: ['SolidWorks', 'Ansys'],
     summaryStrip: {
       role: 'Chassis Design Feedback & All FEA Simulations',
-      teamSize: 'Team of 4 (with Suspension & Mechatronics teams)',
+      teamSize: '4-person chassis team, collaborating with the Suspension and Mechatronics teams',
       timeline: 'May 2026 – Present (Active Project)',
       tools: 'SolidWorks, Ansys',
       myContribution:
-        'Recommended continuous bent tubes, shared nodes, and excess tubing removal; performed 100% of SolidWorks and Ansys FEA; completed NFPA hot work safety training.',
+        'Flagged proportions, minimized bottom tubing, proposed vertical battery access lowering CG and flattening motors, gave tube and node design feedback, and performed all SolidWorks and Ansys FEA.',
     },
     objective:
-      'The lab\'s existing unmanned ground vehicle has no suspension, tops out around 5 mph, has no independent braking, and is not weatherproof. The goal is a new tube-frame chassis that integrates suspension, supports braking and weatherproofing, and reaches 15 mph, working alongside separate Suspension and Mechatronics teams. Key constraints require passing through lab doors/hallways (narrowest path 59 in, length under 6 ft), accommodating a 5-degree front tilt and shock mount locations set with the suspension team, and guaranteeing the vehicle never rolls over because the LiDAR sensor is exposed at the top.',
+      'The lab\'s existing unmanned ground vehicle has no suspension, tops out around 5 mph, has no independent braking, and is not weatherproof. The goal is a new tube-frame chassis that integrates suspension, supports braking and weatherproofing, and reaches 15 mph, developed by a 4-person chassis team, collaborating with the Suspension and Mechatronics teams. Key constraints require passing through lab doors/hallways (narrowest path 59 in, length under 6 ft), accommodating a 5-degree front tilt and shock mount locations set with the suspension team, and guaranteeing the vehicle never rolls over because the LiDAR sensor is exposed at the top.',
     brainstorm: {
       paragraph:
-        'Over eleven design iterations, our team systematically eliminated manufacturing bottlenecks and optimized packaging. Starting from an exploratory concept with an overhead rollcage, we eliminated the cage in V2 because welding was complex and the roof-mounted LiDAR cannot allow rollover. We transitioned to rear A-arms in V5 when trailing arms proved overly complex for our timeline and budget, packaged motors horizontally in V6 to drop the center of mass, and simplified front frame offsets into a single continuous bottom tube in V10.',
-      image: 'images/autonomous off-road vehicle chassis thumbnail.png',
+        'Over eleven design iterations, each version exposed a problem that shaped the next. We eliminated the cage in V2 because welding was complex and the roof-mounted LiDAR cannot allow rollover. We transitioned to rear A-arms in V5 when trailing arms proved overly complex for our timeline and budget, packaged motors horizontally and lengthened the frame in V7 to drop the center of mass, and simplified front frame offsets into a single continuous bottom tube in V10.',
+      image: 'images/chassis-v10.png',
       imageCaption:
         'Chassis V10 CAD model featuring continuous bottom tube and triangulated suspension pickup nodes.',
     },
     prototypeIterations: [
       {
-        version: 'v2',
-        title: 'Rollcage Removal & Inverted Packaging',
+        version: 'v2 to v3',
+        title: 'Clear Line of Sight for the LiDAR',
         whatWasBuilt:
-          'Removed the rollcage geometry to eliminate unnecessary weld joints, as roofline LiDAR exposure strictly prohibits rollover operation.',
+          'Cut down the upper chamber to give the top-mounted LiDAR an unobstructed field of view.',
         whatFailedOrUnderperformed:
-          'Chassis V2 retained a bulky upper chamber intended for logical components, which created obstacles for the LiDAR sensor line-of-sight and required mounting the sensor excessively high.',
+          'V2\'s upper chamber, built to hold logic components, was a large rectangle that would have blocked a top-mounted LiDAR, or forced it higher and more exposed.',
         whatChangedAndResult:
-          'Eliminated the upper chamber in V3, lowering the roofline and improving sensor field-of-view while reducing overall frame height.',
+          'Cut the upper chamber down. The LiDAR now has a clear line of sight, confirmed in CAD.',
         decisions: [
-          'Safety / Rules: Vehicle prohibited from rollover to protect roofline LiDAR.',
-          'DFM: Removed unnecessary cage members to cut welding joints and tube notching time.',
+          'Sensor Protection: Clear 360-degree LiDAR line of sight confirmed in CAD.',
+          'Packaging: Lowered logic enclosure to reduce total vehicle profile.',
         ],
-        image: 'images/autonomous off-road vehicle chassis v2.png',
+        image: 'images/chassis-v2-upper-chamber.png',
         imageCaption:
-          'Chassis V2 geometry with overhead rollcage removed to simplify welding and lower profile.',
+          'Chassis V2 upper chamber (red box) cut down in V3 for LiDAR clearance.',
       },
       {
-        version: 'v5',
-        title: 'Rear Double A-Arm Architecture Integration',
+        version: 'v3 to v5',
+        title: 'Fewer Welds, Simpler Suspension',
         whatWasBuilt:
-          'Switched to A-arms at the rear (trailing arms were too complex for the team\'s knowledge, budget, and time).',
+          'Standardized on bent tubes and rear A-arms with motor offsets.',
         whatFailedOrUnderperformed:
-          'Initial rear trailing arm geometry required intricate compound angles and custom pivots that exceeded team machining capability and budget.',
+          'V3 had little tube bending, so many welds, and rear trailing arms were too complex for the team\'s skills, budget, and time.',
         whatChangedAndResult:
-          'Standardized on double wishbone A-arms front and rear with motor offsets that keep axle pivots parallel to arm pivots, simplifying fabrication.',
+          'More bent tubes, and A-arms at the rear, with motor offsets so the axle pivot aligns with the arms.',
         decisions: [
-          'Kinematics: Parallel arm and axle pivots to reduce CV joint binding.',
           'Manufacturability: Double wishbones matched available shop jigs and budget.',
+          'Weld Minimization: Substituted welded segment clusters with bent continuous tubes.',
         ],
-        image: 'images/autonomous off-road vehicle chassis v5.png',
+        image: 'images/chassis-v5.png',
         imageCaption:
-          'Chassis V5 packaging rear double wishbone A-arms and battery platform layout.',
+          'Chassis V5 packaging rear double wishbone A-arms and bent tube geometry.',
       },
       {
-        version: 'v6',
-        title: 'Chassis Lengthening & Low-CG Horizontal Motor Mounting',
+        version: 'v5 to v7',
+        title: 'Chassis Proportions, Battery Access, and a Lower CG',
         whatWasBuilt:
-          'Made the chassis slightly longer and placed the motors horizontally to lower the center of mass.',
+          'Lengthened chassis, minimized bottom tubing, and shortened top section for vertical battery removal.',
         whatFailedOrUnderperformed:
-          'Vertical motor placement in V5 raised the vehicle center of gravity and restricted clearance above the battery access path.',
+          'Problems seen in the V5 assembly: poor wheelbase-to-track-width ratio, a center of gravity that was too high and too far back, a battery whose path was blocked, and a cluttered bottom frame.',
         whatChangedAndResult:
-          'Extended frame length slightly and clocked drive motors horizontally, lowering the center of mass and maximizing continuous bent tube spans.',
+          'I flagged the proportions, so the chassis was lengthened. I pushed to minimize the bottom tubing because a steel plate will cover the bottom (making it behave like a monocoque there). I rejected the idea of a removable side tube for the battery and proposed shortening the oversized top section so the battery lifts out vertically, for safer battery access. Cascading effects: CG moved forward, the motors could lie flat which lowered the CG and improved packaging, and the shorter top section leaves room for electronics above the motors.',
         decisions: [
-          'Center of Mass: Horizontal motor placement lowered vehicle CG.',
-          'Packaging: Opened clear top access for rapid battery swapping.',
+          'Chassis Geometry: Lengthened wheelbase to correct wheelbase-to-track-width ratio.',
+          'Battery Safety: Vertical extraction path without compromising structural side tubes.',
         ],
-        image: 'images/autonomous off-road vehicle chassis v6.png',
+        image: 'images/chassis-v7.png',
         imageCaption:
-          'Chassis V6 configuration showing horizontal drive motor orientation and extended wheelbase.',
+          'Chassis V7 with lengthened frame, lowered CG, and vertical battery removal path.',
       },
       {
-        version: 'v10',
-        title: 'Unified Full Continuous Bottom Tube',
+        version: 'v7 to v10',
+        title: 'Tube Optimization and Simplification',
         whatWasBuilt:
-          'Simplified the front offsets into a single full bottom tube.',
+          'Optimized tubes into continuous bent lengths and simplified front offsets into a single full bottom tube.',
         whatFailedOrUnderperformed:
-          'Chassis V7-V9 had small multi-piece front tube offsets that required tedious notching, difficult joint fitment, and concentrated weld stresses.',
+          'Excess tubing and multi-piece front offsets added weld joints and fabrication complexity.',
         whatChangedAndResult:
-          'Replaced segmented offsets with one continuous bent bottom tube, eliminating multiple weldments and strengthening the front crash structure.',
+          'Some tubes were optimized into continuous bent lengths, excess tubing was cut, and front offsets were simplified into a single full bottom tube. The tube list from V7 was used to plan and order stock.',
         decisions: [
-          'Continuous Tubing: My recommendation to replace segmented welds with continuous bent spans.',
-          'Nodal Alignment: Joined intersecting members at shared structural nodes.',
+          'Continuous Tubing: Tubes optimized into continuous lengths.',
+          'Front Structure: Single full bottom tube eliminating segmented offset welds.',
         ],
-        image: 'images/autonomous off-road vehicle chassis v10.png',
+        image: 'images/chassis-v10.png',
         imageCaption:
           'Chassis V10 with unified continuous bottom frame member and direct nodal triangulation.',
       },
     ],
     productOutcome: {
       finalDesignAndResults:
-        'Chassis design and analysis are nearly complete. Fabrication (cutting, notching, bending, welding) is expected to start in B-term. Stock is purchased and the welding safety training is done. Product and measured physical testing outcomes are currently pending.',
-      mediaUrl: 'images/autonomous off-road vehicle chassis thumbnail.png',
+        'Design and analysis are nearly complete; fabrication is expected to start in B-term; stock is purchased and welding safety training is done.',
+      mediaUrl: 'images/chassis-v10.png',
       mediaCaption:
-        'Pending B-term fabrication: stock purchased, welding safety completed, and final FEA verification underway.',
+        'Design and analysis nearly complete; fabrication expected to start in B-term.',
       downloadLinks: [],
     },
     whatILearned:
-      'Setting up multi-body FEA taught me that boundary conditions dictate simulation validity—isolating the chassis from suspension compliance was necessary to obtain an honest stiffness benchmark. [ADD: my reflection].',
+      'Setting up multi-body FEA taught me that boundary conditions dictate simulation validity—isolating the chassis from suspension compliance was necessary to obtain an honest stiffness benchmark.',
     photos: [
       {
-        src: 'images/autonomous off-road vehicle chassis thumbnail.png',
-        alt: 'Torsional Rigidity Deformation Results (Project Thumbnail)',
-        caption: 'Torsional rigidity deformation results under opposing loads (final setup: 2271.72 N*m/deg), serving as the project thumbnail',
-        filename: 'autonomous off-road vehicle chassis thumbnail.png',
+        src: 'images/chassis-v2-upper-chamber.png',
+        alt: 'Chassis V2: Upper Chamber Constraint',
+        caption: 'V2 upper logic chamber (red box) that would have obstructed top-mounted LiDAR sensor',
+        filename: 'chassis-v2-upper-chamber.png',
+      },
+      {
+        src: 'images/chassis-v3.png',
+        alt: 'Chassis V3: Cleared LiDAR Line of Sight',
+        caption: 'V3 cut down upper chamber, confirming clear line of sight in CAD for top LiDAR',
+        filename: 'chassis-v3.png',
+      },
+      {
+        src: 'images/chassis-v5.png',
+        alt: 'Chassis V5: Bent Tubes and Rear A-Arms',
+        caption: 'V5 transitioned to rear A-arms and bent tubes with motor offsets aligned with arm pivots',
+        filename: 'chassis-v5.png',
+      },
+      {
+        src: 'images/chassis-v5-assembly-battery-cg.png',
+        alt: 'Chassis V5 Assembly: Battery & CG Issues',
+        caption: 'V5 assembly showing blocked battery removal path and high center of gravity',
+        filename: 'chassis-v5-assembly-battery-cg.png',
+      },
+      {
+        src: 'images/chassis-v7.png',
+        alt: 'Chassis V7: Lengthened Frame & Low CG',
+        caption: 'V7 lengthened chassis, vertical battery access, flat motors lowering CG, and room for electronics',
+        filename: 'chassis-v7.png',
+      },
+      {
+        src: 'images/chassis-v10.png',
+        alt: 'Chassis V10: Continuous Bottom Tube',
+        caption: 'V10 tubes optimized into continuous bent lengths and single full bottom tube',
+        filename: 'chassis-v10.png',
       },
       {
         src: 'images/autonomous off-road vehicle chassis fea torsional rigidity setup.png',
@@ -196,69 +226,45 @@ export const initialProjects: Project[] = [
         filename: 'autonomous off-road vehicle chassis fea torsional rigidity setup.png',
       },
       {
+        src: 'images/autonomous off-road vehicle chassis thumbnail.png',
+        alt: 'Torsional Rigidity Deformation Results',
+        caption: 'Torsional deformation results under opposing loads (final conservative setup fixing suspension points: 2271.72 N*m/deg; 5-setup average: 2212.49 N*m/deg)',
+        filename: 'autonomous off-road vehicle chassis thumbnail.png',
+      },
+      {
         src: 'images/autonomous off-road vehicle chassis fea bump test setup.png',
-        alt: 'Bump Test Setup & Boundary Conditions',
-        caption: '8 rear fixtures constrained with a 2000 N vertical shock load applied to front-left suspension points',
+        alt: 'Figure 1: Bump Test Setup & Boundary Conditions',
+        caption: 'Figure 1: 8 rear fixtures constrained with a 2000 N vertical shock load applied to front-left suspension points',
         filename: 'autonomous off-road vehicle chassis fea bump test setup.png',
       },
       {
         src: 'images/autonomous off-road vehicle chassis fea bump test direct axial stress.png',
-        alt: 'Bump Test Direct (Axial) Stress (+ Tension / - Compression)',
-        caption: 'Direct (axial) stress distribution across spaceframe members, where (+) represents tension and (-) represents compression',
+        alt: 'Figure 2: Bump Test Direct (Axial) Stress',
+        caption: 'Figure 2: Direct (axial) stress distribution across spaceframe members (+ tension / - compression)',
         filename: 'autonomous off-road vehicle chassis fea bump test direct axial stress.png',
       },
       {
         src: 'images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png',
-        alt: 'Bump Test Maximum Bending Stress',
-        caption: 'Maximum bending stress contours showing moment transfer through chassis tube spans under dynamic shock input',
+        alt: 'Figure 3: Bump Test Maximum Bending Stress',
+        caption: 'Figure 3: Maximum bending stress contours showing moment transfer through chassis tube spans under shock input',
         filename: 'autonomous off-road vehicle chassis fea bump test maximum bending stress.png',
       },
       {
         src: 'images/autonomous off-road vehicle chassis fea bump test max combined stress.png',
-        alt: 'Bump Test Maximum Combined Stress (Direct + Max Bending)',
-        caption: 'Superposition of direct axial stress and maximum bending stress, reaching a maximum combined peak of 54.8 MPa',
+        alt: 'Figure 4: Bump Test Maximum Combined Stress',
+        caption: 'Figure 4: Superposition of direct axial stress and maximum bending stress, reaching a maximum combined peak of 54.8 MPa',
         filename: 'autonomous off-road vehicle chassis fea bump test max combined stress.png',
       },
       {
         src: 'images/autonomous off-road vehicle chassis fea bump test min combined stress.png',
-        alt: 'Bump Test Minimum Combined Stress (Direct + Min Bending)',
-        caption: 'Superposition of direct axial stress and minimum bending stress; peak magnitude was 76.4 MPa compressive (~6.3x margin vs 483 MPa yield)',
+        alt: 'Figure 5: Bump Test Minimum Combined Stress',
+        caption: 'Figure 5: Superposition of direct axial stress and minimum bending stress; peak magnitude was 76.4 MPa compressive (~6.3x margin vs 483 MPa yield)',
         filename: 'autonomous off-road vehicle chassis fea bump test min combined stress.png',
       },
-      {
-        src: 'images/autonomous off-road vehicle chassis v2.png',
-        alt: 'Chassis V2 CAD: Rollcage Geometry Removal',
-        caption: 'V2: removed the rollcage geometry (welding complexity, and the vehicle cannot be allowed to roll because of the LiDAR)',
-        filename: 'autonomous off-road vehicle chassis v2.png',
-      },
-      {
-        src: 'images/autonomous off-road vehicle chassis v5.png',
-        alt: 'Chassis V5 CAD: Rear Double A-Arms Architecture',
-        caption: 'V5: switched to A-arms at the rear (trailing arms were too complex for the team’s knowledge, budget, and time)',
-        filename: 'autonomous off-road vehicle chassis v5.png',
-      },
-      {
-        src: 'images/autonomous off-road vehicle chassis v6.png',
-        alt: 'Chassis V6 CAD: Lengthened Frame & Low-CG Horizontal Motors',
-        caption: 'V6: made the chassis slightly longer and placed the motors horizontally to lower the center of mass',
-        filename: 'autonomous off-road vehicle chassis v6.png',
-      },
-      {
-        src: 'images/autonomous off-road vehicle chassis v10.png',
-        alt: 'Chassis V10 CAD: Unified Continuous Full Bottom Tube',
-        caption: 'V10: simplified the front offsets into a single full bottom tube',
-        filename: 'autonomous off-road vehicle chassis v10.png',
-      },
-      {
-        src: 'images/autonomous off-road vehicle chassis rolling frame.png',
-        alt: 'Physical Rolling Chassis Frame Assembly',
-        caption: 'Physical welded rolling chassis verifying suspension hardpoint coordinates and packaging clearances',
-        filename: 'autonomous off-road vehicle chassis rolling frame.png',
-      },
     ],
-    tagline: 'Iterative spaceframe design, SolidWorks static FEA simulations, and rolling vehicle platform',
+    tagline: 'Iterative spaceframe design, SolidWorks & Ansys FEA simulations, and DFM tube chassis optimization',
     shortDescription:
-      'Contributed to iterative spaceframe chassis design and conducted SolidWorks static FEA simulations for an autonomous off-road platform.',
+      'Contributed to iterative spaceframe chassis design and conducted SolidWorks and Ansys FEA simulations for an autonomous off-road platform.',
   },
   {
     id: 'robotic-pan-flute',

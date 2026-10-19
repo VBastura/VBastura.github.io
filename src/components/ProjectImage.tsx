@@ -6,6 +6,7 @@ interface ProjectImageProps {
   alt: string;
   className?: string;
   aspectRatioClass?: string;
+  objectFitClass?: string;
   children?: React.ReactNode;
   onClick?: () => void;
 }
@@ -15,6 +16,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
   alt,
   className = '',
   aspectRatioClass = 'aspect-[16/10]',
+  objectFitClass = 'object-cover',
   children,
   onClick,
 }) => {
@@ -54,7 +56,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
             src={currentSrc}
             alt={alt}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className={`w-full h-full ${objectFitClass} transition-transform duration-500 group-hover:scale-105`}
             onError={handleError}
           />
           {onClick && (

@@ -249,14 +249,86 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
       </section>
 
-      {/* Engineering Toolchain & Capabilities Matrix */}
+      {/* Engineering Projects (Featured Showcase) */}
       <section className="border-b border-slate-200 dark:border-slate-800 pb-16 space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">
+              Mechanical Design & Validation
+            </div>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Engineering Projects
+            </h2>
+          </div>
+
+          <button
+            onClick={() => setCurrentRoute('gallery')}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors cursor-pointer group"
+          >
+            <span>View All Projects ({projects.length})</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
+        {/* 2-Column Showcase */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featuredProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => setCurrentRoute(`project-${project.id}`)}
+              className="group cursor-pointer rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-slate-400 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
+            >
+              {/* Image Container with Hover Scrim */}
+              <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                {project.statusBadge && (
+                  <div className="absolute top-3 left-3 z-20 pointer-events-none">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold tracking-wide bg-blue-600 text-white shadow-sm border border-blue-400/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-200 animate-pulse" />
+                      {project.statusBadge}
+                    </span>
+                  </div>
+                )}
+                <ProjectImage
+                  src={project.coverImage}
+                  alt={project.title}
+                  aspectRatioClass="aspect-[16/10]"
+                >
+                  {/* Hover Scrim Overlay: shows description only (no restated title, no ellipses) */}
+                  <div className="absolute inset-0 bg-slate-950/90 text-white p-5 sm:p-7 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between backdrop-blur-xs pointer-events-none">
+                    <div className="flex-1 flex items-center">
+                      <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+                        {project.hoverDescription}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+                      <span className="font-semibold text-blue-400 flex items-center gap-1">
+                        View Project Case Study <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </div>
+                </ProjectImage>
+              </div>
+
+              {/* Card Meta Content below image: Title only */}
+              <div className="p-5 sm:p-6 flex-1 flex items-center">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {project.title}
+                </h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Engineering Toolchain & Capabilities Matrix */}
+      <section className="space-y-8">
         <div>
           <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">
             Technical Skill Inventory
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            CAD, Fabrication & Embedded Systems
+            CAD, Fabrication & Electronics
           </h2>
         </div>
 
@@ -326,78 +398,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </ul>
           </div>
 
-        </div>
-      </section>
-
-      {/* Engineering Projects (Heading updated as requested) */}
-      <section className="space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">
-              Mechanical Design & Validation
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Engineering Projects
-            </h2>
-          </div>
-
-          <button
-            onClick={() => setCurrentRoute('gallery')}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors cursor-pointer group"
-          >
-            <span>View All Projects ({projects.length})</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </button>
-        </div>
-
-        {/* 2-Column Showcase */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredProjects.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => setCurrentRoute(`project-${project.id}`)}
-              className="group cursor-pointer rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-slate-400 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-xl flex flex-col justify-between"
-            >
-              {/* Image Container with Hover Scrim */}
-              <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-                {project.statusBadge && (
-                  <div className="absolute top-3 left-3 z-20 pointer-events-none">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold tracking-wide bg-blue-600 text-white shadow-sm border border-blue-400/30">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-200 animate-pulse" />
-                      {project.statusBadge}
-                    </span>
-                  </div>
-                )}
-                <ProjectImage
-                  src={project.coverImage}
-                  alt={project.title}
-                  aspectRatioClass="aspect-[16/10]"
-                >
-                  {/* Hover Scrim Overlay: shows description only (no restated title, no ellipses) */}
-                  <div className="absolute inset-0 bg-slate-950/90 text-white p-5 sm:p-7 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between backdrop-blur-xs pointer-events-none">
-                    <div className="flex-1 flex items-center">
-                      <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
-                        {project.hoverDescription}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-                      <span className="font-semibold text-blue-400 flex items-center gap-1">
-                        View Project Case Study <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </div>
-                </ProjectImage>
-              </div>
-
-              {/* Card Meta Content below image: Title only */}
-              <div className="p-5 sm:p-6 flex-1 flex items-center">
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {project.title}
-                </h3>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
     </div>

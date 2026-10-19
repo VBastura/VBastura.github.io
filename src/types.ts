@@ -46,6 +46,7 @@ export interface Project {
   hoverDescription: string;
   category: 'CAD & Spaceframe' | 'Robotics & Mechanisms' | 'Mechatronics & Embedded' | 'Data & Field Research';
   coverImage: string;
+  statusBadge?: string;
   videoEmbedUrl?: string;
   year: string;
   tools: string[];

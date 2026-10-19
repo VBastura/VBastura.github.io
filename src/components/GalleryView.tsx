@@ -109,6 +109,14 @@ export const GalleryView: React.FC<GalleryViewProps> = ({
             >
               {/* Image Container with Hover Scrim */}
               <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                {project.statusBadge && (
+                  <div className="absolute top-3 left-3 z-20 pointer-events-none">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold tracking-wide bg-blue-600 text-white shadow-sm border border-blue-400/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-200 animate-pulse" />
+                      {project.statusBadge}
+                    </span>
+                  </div>
+                )}
                 <ProjectImage
                   src={project.coverImage}
                   alt={project.title}

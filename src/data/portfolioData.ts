@@ -11,7 +11,7 @@ export const initialProfile: Profile = {
   phone: '(860) 481-1231',
   address: 'Pomfret, CT',
   linkedin: 'https://www.linkedin.com/in/vince-bastura-750444303',
-  github: 'https://github.com/vicentebastura',
+  github: 'https://github.com/VBastura',
   location: 'Pomfret, CT',
   bioSummary:
     'I’m a mechanical engineer who loves taking an idea from a messy brainstorm to a prototype to a final product. Nearly a decade of 3D printing has taught me how to turn an idea into physical parts and refine it through iterative design. By stepping into unfamiliar territory, like software and electronics, I’ve learned how a design comes together from more than just the mechanical side. I graduate in May 2027 and I’m looking for a position where I can keep developing my skills and build a well-rounded understanding of design.',
@@ -81,7 +81,8 @@ export const initialProjects: Project[] = [
     hoverDescription:
       'Major Qualifying Project (WPI & AVMI): Provided continuous tube and node design feedback on an off-road tube frame chassis, and performed all SolidWorks and Ansys FEA simulations to validate torsional stiffness and bump shock resistance.',
     category: 'CAD & Spaceframe',
-    coverImage: 'images/autonomous off-road vehicle chassis thumbnail.png',
+    coverImage: 'images/autonomous off-road vehicle chassis thumbnail cropped.png',
+    statusBadge: 'In progress',
     year: 'May 2026 - Present',
     tools: ['SolidWorks', 'Ansys'],
     summaryStrip: {
@@ -285,9 +286,9 @@ export const initialProjects: Project[] = [
     brainstorm: {
       paragraph:
         'We brainstormed two primary mechanical layouts: a stationary row of pan flute tubes with individual high-speed solenoid valves for each tube, versus a rotating radial drum of pipes with a single articulate airflow nozzle. We rejected the multi-solenoid concept because buying 20+ precision valves exceeded our budget, added excessive pneumatic piping weight, and caused loud clicking that overwhelmed the delicate acoustic flute sound. We selected the rotating radial drum with a stepper motor and a 2-DOF dual-servo nozzle because it concentrated mechanical complexity into one tunable air head, drastically cut component count, and allowed software micro-adjustments for each note’s embouchure.',
-      image: 'images/robotic pan flute 2dof nozzle.jpg',
+      image: 'images/pan flute robot top down view.jpg',
       imageCaption:
-        'CAD layout of the assembled radial drum, dual-servo 2-DOF airflow nozzle, stepper belt drive, and 3-rail Arduino control board.',
+        'Top-down overview of the mechatronic assembly showing the radial tube drum, servo gimbal nozzle, and Arduino electronics.',
     },
     prototypeIterations: [
       {
@@ -304,7 +305,7 @@ export const initialProjects: Project[] = [
           'Degrees of Freedom: Added a second servo so the air stream could be aimed in both elevation and azimuth.',
           'Firmware Calibration: Implemented per-note calibration arrays in Arduino EEPROM to store exact resonance angles.',
         ],
-        image: 'images/pan flute robot software interface.jpg',
+        image: 'images/pan flute robot software interface.png',
         imageCaption:
           'Interactive software calibration interface in Arduino C++ allowing sweep, measurement, and storage of optimal (X, Y) servo resonance coordinates for each musical note.',
         testConditions:
@@ -324,7 +325,7 @@ export const initialProjects: Project[] = [
           'Motion Control: Trapezoidal acceleration profiles in stepper firmware to prevent tube drum vibration.',
           'Interface: Opto-isolated MIDI input socket allowing plug-and-play control from DAW software.',
         ],
-        image: 'images/pan flute robot electric wiring diagram.jpg',
+        image: 'images/pan flute robot electric wiring diagram.png',
         imageCaption:
           'Three-rail electrical wiring schematic isolating 5V Arduino logic, 12V servo power, and 24V stepper motor rails with common star grounding.',
         testConditions:
@@ -352,28 +353,22 @@ export const initialProjects: Project[] = [
         filename: 'robotic pan flute thumbnail.jpg',
       },
       {
-        src: 'images/robotic pan flute 2dof nozzle.jpg',
-        alt: 'Robotic Pan Flute 2DOF Nozzle',
-        caption: 'Dual-servo 2-DOF airflow nozzle articulation assembly for dynamic embouchure positioning',
-        filename: 'robotic pan flute 2dof nozzle.jpg',
+        src: 'images/pan flute robot top down view.jpg',
+        alt: 'Pan Flute Robot Top Down View',
+        caption: 'Top-down mechanical overview of the robotic pan flute showing carousel drum, drive belt, and electronics layout',
+        filename: 'pan flute robot top down view.jpg',
       },
       {
-        src: 'images/robotic pan flute radial drum.jpg',
-        alt: 'Robotic Pan Flute Radial Drum',
-        caption: '3D printed radial carousel drum securing precision tuned acrylic pan flute pipes',
-        filename: 'robotic pan flute radial drum.jpg',
-      },
-      {
-        src: 'images/pan flute robot electric wiring diagram.jpg',
+        src: 'images/pan flute robot electric wiring diagram.png',
         alt: 'Pan Flute Robot Electric Wiring Diagram',
         caption: 'Three-rail electrical distribution schematic (5V logic, 12V servo, 24V stepper) with opto-isolated MIDI input and star grounding',
-        filename: 'pan flute robot electric wiring diagram.jpg',
+        filename: 'pan flute robot electric wiring diagram.png',
       },
       {
-        src: 'images/pan flute robot software interface.jpg',
+        src: 'images/pan flute robot software interface.png',
         alt: 'Pan Flute Robot Software Interface',
         caption: 'Interactive software calibration interface and Arduino tuning tool for setting per-note acoustic resonance coordinates',
-        filename: 'pan flute robot software interface.jpg',
+        filename: 'pan flute robot software interface.png',
       },
     ],
     tagline: 'Radial tube drum, 2-DOF servo airflow nozzle, and Arduino 3-rail power MIDI control',

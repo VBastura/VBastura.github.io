@@ -15,7 +15,6 @@ import {
   Compass,
   Wrench,
   ShieldCheck,
-  Edit3,
   MapPin,
   GraduationCap,
   Camera,
@@ -27,7 +26,7 @@ interface HomeViewProps {
   setCurrentRoute: (route: ViewRoute) => void;
   onOpenResume: () => void;
   onDownloadResumePdf: () => Promise<any> | void;
-  onOpenEditProfile: () => void;
+  onOpenEditProfile?: () => void;
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({
@@ -192,15 +191,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   </>
                 )}
               </a>
-
-              <button
-                onClick={onOpenEditProfile}
-                className="px-3 py-2 text-xs font-mono text-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer ml-auto"
-                title="Customize bio info"
-              >
-                <Edit3 className="w-3.5 h-3.5" />
-                <span>Edit Bio</span>
-              </button>
             </div>
 
           </div>
@@ -370,6 +360,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
             >
               {/* Image Container with Hover Scrim */}
               <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                {project.statusBadge && (
+                  <div className="absolute top-3 left-3 z-20 pointer-events-none">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold tracking-wide bg-blue-600 text-white shadow-sm border border-blue-400/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-200 animate-pulse" />
+                      {project.statusBadge}
+                    </span>
+                  </div>
+                )}
                 <ProjectImage
                   src={project.coverImage}
                   alt={project.title}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ViewRoute, Profile } from '../types';
-import { Sun, Moon, FileText, Code2 } from 'lucide-react';
+import { Sun, Moon, FileText } from 'lucide-react';
 
 interface NavbarProps {
   currentRoute: ViewRoute;
@@ -9,7 +9,7 @@ interface NavbarProps {
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   onOpenResume: () => void;
-  onOpenGitHubGuide: () => void;
+  onOpenGitHubGuide?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -74,15 +74,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <FileText className="w-3.5 h-3.5 text-slate-400" />
             <span>Resume</span>
-          </button>
-
-          <button
-            onClick={onOpenGitHubGuide}
-            className="whitespace-nowrap transition-colors cursor-pointer text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hidden md:flex items-center gap-1.5"
-            title="GitHub Pages Deployment Guide & Static Export"
-          >
-            <Code2 className="w-3.5 h-3.5 text-slate-400" />
-            <span>Host on GitHub</span>
           </button>
         </nav>
 

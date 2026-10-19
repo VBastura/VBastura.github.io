@@ -6,14 +6,13 @@ interface FooterProps {
   profile: Profile;
   setCurrentRoute: (route: ViewRoute) => void;
   onOpenResume: () => void;
-  onOpenGitHubGuide: () => void;
+  onOpenGitHubGuide?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   profile,
   setCurrentRoute,
   onOpenResume,
-  onOpenGitHubGuide,
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -33,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Quick links */}
+          {/* Quick links matching top nav: Overview, Projects, Resume */}
           <nav className="flex flex-wrap items-center gap-6 text-xs text-slate-600 dark:text-slate-400 font-medium">
             <button
               onClick={() => setCurrentRoute('home')}
@@ -45,19 +44,13 @@ export const Footer: React.FC<FooterProps> = ({
               onClick={() => setCurrentRoute('gallery')}
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
             >
-              Project Gallery
+              Projects
             </button>
             <button
               onClick={onOpenResume}
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
             >
-              Curriculum Vitae
-            </button>
-            <button
-              onClick={onOpenGitHubGuide}
-              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
-            >
-              GitHub Pages Export
+              Resume
             </button>
           </nav>
 
@@ -73,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         <div className="border-t border-slate-100 dark:border-slate-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400 dark:text-slate-500">
           <div>
-            © {new Date().getFullYear()} {profile.name}. Designed for GitHub Pages.
+            © {new Date().getFullYear()} {profile.name}.
           </div>
           <div className="flex items-center gap-4">
             <a href={`mailto:${profile.email}`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -84,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({
               LinkedIn
             </a>
             <span aria-hidden="true">·</span>
-            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <a href="https://github.com/VBastura" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               GitHub
             </a>
           </div>

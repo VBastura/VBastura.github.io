@@ -26,7 +26,7 @@ export default function App() {
 
   // Profile data state - resets to latest initialProfile if schema changes
   const [profile, setProfile] = useState<Profile>(() => {
-    const saved = localStorage.getItem('portfolio-profile-v2');
+    const saved = localStorage.getItem('portfolio-profile-v3');
     if (saved) {
       try {
         return { ...initialProfile, ...JSON.parse(saved) };
@@ -96,13 +96,13 @@ export default function App() {
   // Handle saving profile changes
   const handleSaveProfile = (updated: Profile) => {
     setProfile(updated);
-    localStorage.setItem('portfolio-profile-v2', JSON.stringify(updated));
+    localStorage.setItem('portfolio-profile-v3', JSON.stringify(updated));
   };
 
   // Reset profile to defaults
   const handleResetProfile = () => {
     setProfile(initialProfile);
-    localStorage.removeItem('portfolio-profile-v2');
+    localStorage.removeItem('portfolio-profile-v3');
   };
 
   // Find active project if route is project detail

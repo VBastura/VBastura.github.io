@@ -220,12 +220,6 @@ export const initialProjects: Project[] = [
         filename: 'chassis-v10.png',
       },
       {
-        src: 'images/torsional-rigidity-hand-calc.png',
-        alt: 'Hand Calculation of Torsional Rigidity',
-        caption: 'Hand calculation of torsional rigidity, worked through with the Setup 4 values.',
-        filename: 'torsional-rigidity-hand-calc.png',
-      },
-      {
         src: 'images/autonomous off-road vehicle chassis fea torsional rigidity setup.png',
         alt: 'Torsional Rigidity Setup & Boundary Conditions',
         caption: 'Ansys boundary setup with proper joints, exact rear suspension coordinates, rigid struts, and stiffened suspension isolating the chassis',

@@ -149,10 +149,10 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
       {/* =========================================================================
           2. SUMMARY STRIP (compact row of labeled fields)
-          - Role | Team size | Timeline | Tools | My specific contribution (one line)
+          - Role | Team size | Timeline | Tools (four cells)
           ========================================================================= */}
       <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-5 sm:p-6 shadow-xs">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 dark:divide-slate-800">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 dark:divide-slate-800">
           {/* Role */}
           <div className="space-y-1 sm:pr-4">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
@@ -186,22 +186,12 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           </div>
 
           {/* Tools */}
-          <div className="pt-3 sm:pt-0 sm:px-4 space-y-1">
+          <div className="pt-3 sm:pt-0 sm:pl-4 space-y-1">
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Tools
             </div>
             <div className="text-xs font-mono font-medium text-slate-800 dark:text-slate-200 line-clamp-3">
               {project.summaryStrip.tools}
-            </div>
-          </div>
-
-          {/* My Specific Contribution */}
-          <div className="pt-3 sm:pt-0 sm:pl-4 space-y-1">
-            <div className="text-[11px] font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-semibold">
-              My Contribution
-            </div>
-            <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-              {project.summaryStrip.myContribution}
             </div>
           </div>
         </div>

@@ -24,11 +24,61 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
   return (
     <div className="space-y-12 animate-in fade-in duration-200">
       {/* =========================================================================
-          1. OBJECTIVE & CONSTRAINTS
+          01. MY CONTRIBUTION
           ========================================================================= */}
       <section className="space-y-4">
         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-          <span>01. OBJECTIVE & CONSTRAINTS</span>
+          <UserCheck className="w-4 h-4" />
+          <span>01. MY CONTRIBUTION</span>
+        </div>
+        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+          My Contribution
+        </h2>
+
+        <div className="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-5">
+          <ul className="grid grid-cols-1 gap-3">
+            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <span>Shaped the chassis layout: flagged poor proportions and pushed to lengthen the frame</span>
+            </li>
+            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <span>Simplified the structure: pushed to minimize bottom tubing and remove excess tubing</span>
+            </li>
+            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <span>Proposed a vertical battery lift-out for safety and a better center of gravity</span>
+            </li>
+            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <span>Gave tube and joint design feedback to reduce weld count</span>
+            </li>
+            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <span>Performed all of the FEA: torsional rigidity (SolidWorks and Ansys) and the Ansys bump test, including boundary condition setup</span>
+            </li>
+            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <span>Completed NFPA hot work welding safety training</span>
+            </li>
+            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+              <span>Gave input on other team tasks throughout the project</span>
+            </li>
+          </ul>
+
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+            CAD assembly, cutting plan, and fixtures were handled by teammates.
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          02. OBJECTIVE & CONSTRAINTS
+          ========================================================================= */}
+      <section className="space-y-4">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <span>02. OBJECTIVE & CONSTRAINTS</span>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Objective & Constraints
@@ -87,12 +137,12 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
       </section>
 
       {/* =========================================================================
-          2. DESIGN EVOLUTION (VERTICAL TIMELINE - ONE ROW PER STEP)
+          03. DESIGN EVOLUTION (VERTICAL TIMELINE - ONE ROW PER STEP)
           ========================================================================= */}
       <section className="space-y-6">
         <div>
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-            <span>02. DESIGN EVOLUTION</span>
+            <span>03. DESIGN EVOLUTION</span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             Design Evolution
@@ -478,55 +528,6 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
         </div>
       </section>
 
-      {/* =========================================================================
-          3. MY CONTRIBUTION
-          ========================================================================= */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-          <UserCheck className="w-4 h-4" />
-          <span>03. MY CONTRIBUTION</span>
-        </div>
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-          My Contribution
-        </h2>
-
-        <div className="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-5">
-          <ul className="grid grid-cols-1 gap-3">
-            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Flagged poor chassis proportions and pushed to lengthen the chassis</span>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Pushed to minimize bottom tubing, given the steel bottom plate</span>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Proposed vertical battery access for safety and optimizing the CG</span>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Design feedback: continuous bent tubes instead of separate segments, tubes meeting at shared nodes instead of offsets, and removal of excess tubing</span>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Performed all of the FEA (SolidWorks weldments and Ansys torsional rigidity studies, and the Ansys bump test), including boundary condition setup</span>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Completed the NFPA hot work welding safety training</span>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Gave input on other team tasks throughout the project</span>
-            </li>
-          </ul>
-
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
-            CAD assembly, cutting plan, and fixtures were handled by teammates.
-          </div>
-        </div>
-      </section>
 
       {/* =========================================================================
           4. FINITE ELEMENT ANALYSIS (FEA)
@@ -550,67 +551,26 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
               <span>A. Torsional Rigidity: Modeling Evolution & Boundary Conditions</span>
             </h3>
 
-            {/* Block (a): What torsional rigidity is and why it matters */}
+            {/* Block A: What torsional rigidity is and why it matters */}
             <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
               <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                 What torsional rigidity is and why it matters
               </h4>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                Torsional rigidity is how much a frame resists twisting. Picture holding one end of a long box and twisting the other: a stiffer frame twists less for the same twisting force. It is measured as torque per degree of twist (N*m/deg). Why I test it: the suspension is supposed to absorb bumps. If the frame is softer than the suspension, the frame twists instead, which wastes the suspension's work and can damage the frame. So I want to know how stiff the chassis is on its own, before the suspension is attached. A reference point: student race car competitions like Formula SAE and Baja commonly use about 2000 N*m/deg as a benchmark. This vehicle will not run under the same conditions, so I treat it as a sanity check, not a pass/fail target.
+                Torsional rigidity is how much a frame resists twisting, measured as torque per degree of twist (N*m/deg). I test it because the suspension is meant to absorb bumps: if the frame is softer than the suspension, the frame twists instead, which wastes the suspension's work and can damage the frame.
               </p>
             </div>
 
-            {/* Block (b): How the test works */}
-            <div className="space-y-4 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+            {/* Block B: How I set up the test */}
+            <div className="space-y-3 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
               <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                How the test works
+                How I set up the test
               </h4>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                Opposite forces on the two front corners twist the chassis while the rear is held fixed. I measure how far each corner moves vertically, convert that to an angle of twist, and divide the applied torque by that angle.
+                To measure it, opposite loads twist the front corners while the rear is held fixed. I measure how far each corner moves vertically, convert that to a twist angle, and divide the applied torque by it.
               </p>
-              <div className="space-y-2 max-w-xl">
-                <div
-                  className="cursor-pointer border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-xs hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
-                  onClick={() => onInspectImage('images/torsional-rigidity-hand-calc.png')}
-                >
-                  <ProjectImage
-                    src="images/torsional-rigidity-hand-calc.png"
-                    alt="Hand calculation of torsional rigidity, worked through with the Setup 4 values."
-                  />
-                </div>
-                <div className="text-xs font-mono text-slate-600 dark:text-slate-400">
-                  Hand calculation of torsional rigidity, worked through with the Setup 4 values.
-                </div>
-              </div>
-            </div>
-
-            {/* Block (c): Modeling decision: stand-in A-arms */}
-            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
-              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                Modeling decision: stand-in A-arms
-              </h4>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                The goal is to measure the chassis, not the suspension. The real suspension would flex too, and that flex would get mixed into the answer. Instead I replaced it with simple "dummy" A-arms and uprights, set to behave as stiff, rigid parts. They carry the load into the chassis the way the real suspension would, without adding flex of their own. I placed them at the exact suspension coordinates from the most recent full assembly, so the loads enter the chassis at the correct points. That assembly was the V8, which is why the simulation uses V8 and not the newest chassis.
-              </p>
-            </div>
-
-            {/* Block (d): My approach, and what I was unsure about */}
-            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
-              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                My approach, and what I was unsure about
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                This was my first time setting up a torsional rigidity analysis. While researching, I found that Formula SAE teams use several different boundary conditions, and I was not sure which was right. Instead of picking one, I built the model that most closely matches a physical test rig. I also kept the results from simpler setups, each adding complexity, so I could cross-check that the approach gave consistent results. The three Ansys setups landed within about 1.2% of each other (2246 to 2274 N*m/deg), which gave me confidence in the final setup.
-              </p>
-            </div>
-
-            {/* Explanation of Setup 1's limitations above table */}
-            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
-              <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
-                Simulation Limitations in Initial SolidWorks Beam Run
-              </div>
-              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                Meshing errors affected joint/node accuracy, and the dummy A-arms transmitted moment and added deformation. So I moved to Ansys with proper joints, exact rear suspension coordinates, a rigid strut representation, and suspension components set to stiff so the result isolates the chassis.
+                The real suspension would compress and absorb part of the torsional load, hiding the chassis's own stiffness. So I replaced it with dummy A-arms and uprights placed at the exact suspension coordinates from the most recent assembly (V8), which keeps the load entering the chassis at the correct points. This was my first torsional rigidity analysis, and there is no single universally accepted boundary-condition setup for it, so I ran five setups of increasing complexity to cross-check. The three Ansys setups landed within 1.2% of each other (2246 to 2274 N*m/deg), which gave me confidence in the final result.
               </p>
             </div>
 

@@ -97,12 +97,17 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           ========================================================================= */}
       <section className="space-y-6">
         <div className="space-y-3">
-          {isMqp && (
+          {project.statusBadge ? (
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800/80">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>{project.statusBadge}</span>
+            </div>
+          ) : isMqp ? (
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800/80">
               <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
               <span>Active Project · Fabrication Pending (B-Term)</span>
             </div>
-          )}
+          ) : null}
 
           <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-blue-600 dark:text-blue-400">
             <span className="font-semibold uppercase tracking-wider">{project.category}</span>
@@ -248,226 +253,231 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <>
               {/* 1. OBJECTIVE */}
               <section className="space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              <span>01. OBJECTIVE & CONSTRAINTS</span>
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Problem Statement & Design Constraints
-            </h2>
-            <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-xs">
-              <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                {project.objective}
-              </p>
-            </div>
-          </section>
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  <span>01. OBJECTIVE & CONSTRAINTS</span>
+                </div>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Problem Statement & Design Constraints
+                </h2>
+                <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-xs">
+                  <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+                    {project.objective}
+                  </p>
+                </div>
+              </section>
 
-          {/* 2. BRAINSTORM */}
-          <section className="space-y-5">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              <span>02. BRAINSTORM</span>
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Architectural Concepts & Tradeoffs
-            </h2>
-
-            <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 space-y-5 shadow-xs">
-              <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-                {project.brainstorm.paragraph}
-              </p>
-
-              <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 cursor-pointer group relative">
-                <ProjectImage
-                  src={project.brainstorm.image}
-                  alt="Brainstorming concept visual"
-                  aspectRatioClass="aspect-[16/9] max-h-96"
-                  onClick={() => {
-                    if (project.brainstorm.image) setLightboxImage(project.brainstorm.image);
-                  }}
-                />
-                {project.brainstorm.imageCaption && (
-                  <div className="p-3 bg-slate-100 dark:bg-slate-900/90 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 italic">
-                    {project.brainstorm.imageCaption}
+              {/* 2. BRAINSTORM (Optional) */}
+              {project.brainstorm?.paragraph && (
+                <section className="space-y-5">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                    <span>02. BRAINSTORM</span>
                   </div>
-                )}
-              </div>
-            </div>
-          </section>
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                    Architectural Concepts & Tradeoffs
+                  </h2>
 
-          {/* 3. PROTOTYPE */}
-          <section className="space-y-6">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              <span>03. PROTOTYPE</span>
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Iterative Engineering Sequence
-            </h2>
-
-            <div className="space-y-8">
-              {project.prototypeIterations.map((iter, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs space-y-6 p-6 sm:p-8"
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="px-2.5 py-1 rounded-md bg-blue-600 text-white font-mono text-xs font-bold uppercase tracking-wider">
-                        Iteration {iter.version.toUpperCase()}
-                      </span>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                        {iter.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                      What Was Built & Fabrication Method:
-                    </div>
+                  <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 space-y-5 shadow-xs">
                     <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-                      {iter.whatWasBuilt}
+                      {project.brainstorm.paragraph}
                     </p>
-                  </div>
 
-                  <div className="p-4 rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-950/20 space-y-1.5">
-                    <div className="text-xs font-mono uppercase tracking-wider text-amber-800 dark:text-amber-400 font-bold flex items-center gap-1.5">
-                      <AlertTriangle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>Observed Failure / Underperformance:</span>
-                    </div>
-                    <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-                      {iter.whatFailedOrUnderperformed}
-                    </p>
-                  </div>
-
-                  <div className="p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/60 dark:bg-emerald-950/20 space-y-1.5">
-                    <div className="text-xs font-mono uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-bold flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                      <span>Engineering Redesign & Physical Result:</span>
-                    </div>
-                    <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-                      {iter.whatChangedAndResult}
-                    </p>
-                  </div>
-
-                  {iter.decisions && iter.decisions.length > 0 && (
-                    <div className="space-y-2.5 pt-2">
-                      <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                        Key Engineering Decisions (Material, Geometry, Slicer / Code):
+                    {project.brainstorm.image && (
+                      <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 cursor-pointer group relative">
+                        <ProjectImage
+                          src={project.brainstorm.image}
+                          alt="Brainstorming concept visual"
+                          onClick={() => {
+                            if (project.brainstorm.image) setLightboxImage(project.brainstorm.image);
+                          }}
+                        />
+                        {project.brainstorm.imageCaption && (
+                          <div className="p-3 bg-slate-100 dark:bg-slate-900/90 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 italic">
+                            {project.brainstorm.imageCaption}
+                          </div>
+                        )}
                       </div>
-                      <ul className="grid grid-cols-1 gap-2">
-                        {iter.decisions.map((dec, dIdx) => (
-                          <li
-                            key={dIdx}
-                            className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
-                            <span>{dec}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    )}
+                  </div>
+                </section>
+              )}
+
+              {/* PROTOTYPE */}
+              <section className="space-y-6">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  <span>{project.brainstorm?.paragraph ? '03. PROTOTYPE' : '02. PROTOTYPE'}</span>
+                </div>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Iterative Engineering Sequence
+                </h2>
+
+                <div className="space-y-8">
+                  {project.prototypeIterations.map((iter, idx) => (
+                    <div
+                      key={idx}
+                      className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs space-y-6 p-6 sm:p-8"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2.5 py-1 rounded-md bg-blue-600 text-white font-mono text-xs font-bold uppercase tracking-wider">
+                            Iteration {iter.version.toUpperCase()}
+                          </span>
+                          <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                            {iter.title}
+                          </h3>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+                          What Was Built & Fabrication Method:
+                        </div>
+                        <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+                          {iter.whatWasBuilt}
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-950/20 space-y-1.5">
+                        <div className="text-xs font-mono uppercase tracking-wider text-amber-800 dark:text-amber-400 font-bold flex items-center gap-1.5">
+                          <AlertTriangle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                          <span>Observed Failure / Underperformance:</span>
+                        </div>
+                        <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+                          {iter.whatFailedOrUnderperformed}
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/60 dark:bg-emerald-950/20 space-y-1.5">
+                        <div className="text-xs font-mono uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-bold flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                          <span>Engineering Redesign & Physical Result:</span>
+                        </div>
+                        <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+                          {iter.whatChangedAndResult}
+                        </p>
+                      </div>
+
+                      {iter.decisions && iter.decisions.length > 0 && (
+                        <div className="space-y-2.5 pt-2">
+                          <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+                            Key Engineering Decisions (Material, Geometry, Slicer / Code):
+                          </div>
+                          <ul className="grid grid-cols-1 gap-2">
+                            {iter.decisions.map((dec, dIdx) => (
+                              <li
+                                key={dIdx}
+                                className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
+                                <span>{dec}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {iter.image && (
+                        <div className="space-y-2 pt-2">
+                          <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 cursor-pointer group relative">
+                            <ProjectImage
+                              src={iter.image}
+                              alt={`${iter.title} iteration visual`}
+                              onClick={() => {
+                                if (iter.image) setLightboxImage(iter.image);
+                              }}
+                            />
+                          </div>
+
+                          {iter.imageCaption && (
+                            <p className="text-xs text-slate-500 dark:text-slate-400 italic">
+                              {iter.imageCaption}
+                            </p>
+                          )}
+
+                          {iter.testConditions && (
+                            <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 text-xs font-mono text-slate-700 dark:text-slate-300">
+                              <span className="font-semibold text-blue-600 dark:text-blue-400">
+                                Boundary / Test Conditions:{' '}
+                              </span>
+                              {iter.testConditions}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* PRODUCT / OUTCOME */}
+              <section className="space-y-5">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  <span>{project.brainstorm?.paragraph ? '04. PRODUCT / OUTCOME' : '03. PRODUCT / OUTCOME'}</span>
+                </div>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Final Design & Measured Results
+                </h2>
+
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 space-y-6 shadow-xs">
+                  <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                    {project.productOutcome.finalDesignAndResults}
+                  </p>
+
+                  {project.productOutcome.mediaUrl && (
+                    <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 cursor-pointer group relative">
+                      <ProjectImage
+                        src={project.productOutcome.mediaUrl}
+                        alt="Final product outcome"
+                        onClick={() => {
+                          if (project.productOutcome.mediaUrl)
+                            setLightboxImage(project.productOutcome.mediaUrl);
+                        }}
+                      />
+                      {project.productOutcome.mediaCaption && (
+                        <div className="p-3 bg-slate-100 dark:bg-slate-900/90 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 italic">
+                          {project.productOutcome.mediaCaption}
+                        </div>
+                      )}
                     </div>
                   )}
 
-                  <div className="space-y-2 pt-2">
-                    <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 cursor-pointer group relative">
-                      <ProjectImage
-                        src={iter.image}
-                        alt={`${iter.title} iteration visual`}
-                        aspectRatioClass="aspect-[16/9] max-h-80"
-                        onClick={() => {
-                          if (iter.image) setLightboxImage(iter.image);
-                        }}
-                      />
-                    </div>
-
-                    {iter.imageCaption && (
-                      <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-                        {iter.imageCaption}
-                      </p>
-                    )}
-
-                    {iter.testConditions && (
-                      <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 text-xs font-mono text-slate-700 dark:text-slate-300">
-                        <span className="font-semibold text-blue-600 dark:text-blue-400">
-                          Boundary / Test Conditions:{' '}
-                        </span>
-                        {iter.testConditions}
+                  {project.productOutcome.downloadLinks &&
+                    project.productOutcome.downloadLinks.length > 0 && (
+                      <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
+                        <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+                          Project Documentation & Deliverables:
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                          {project.productOutcome.downloadLinks.map((link, lIdx) => (
+                            <a
+                              key={lIdx}
+                              href={link.url}
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:border-blue-300 dark:hover:border-blue-700 text-xs font-mono text-slate-800 dark:text-slate-200 transition-colors"
+                              download
+                            >
+                              <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                              <span>{link.label}</span>
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     )}
-                  </div>
                 </div>
-              ))}
-            </div>
-          </section>
+              </section>
 
-          {/* 4. PRODUCT / OUTCOME */}
-          <section className="space-y-5">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              <span>04. PRODUCT / OUTCOME</span>
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Final Design & Measured Results
-            </h2>
-
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 space-y-6 shadow-xs">
-              <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                {project.productOutcome.finalDesignAndResults}
-              </p>
-
-              <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 cursor-pointer group relative">
-                <ProjectImage
-                  src={project.productOutcome.mediaUrl}
-                  alt="Final product outcome"
-                  aspectRatioClass="aspect-[16/9] max-h-80"
-                  onClick={() => {
-                    if (project.productOutcome.mediaUrl)
-                      setLightboxImage(project.productOutcome.mediaUrl);
-                  }}
-                />
-                {project.productOutcome.mediaCaption && (
-                  <div className="p-3 bg-slate-100 dark:bg-slate-900/90 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 italic">
-                    {project.productOutcome.mediaCaption}
-                  </div>
-                )}
-              </div>
-
-              {project.productOutcome.downloadLinks &&
-                project.productOutcome.downloadLinks.length > 0 && (
-                  <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                      Project Documentation & Deliverables:
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                      {project.productOutcome.downloadLinks.map((link, lIdx) => (
-                        <a
-                          key={lIdx}
-                          href={link.url}
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:border-blue-300 dark:hover:border-blue-700 text-xs font-mono text-slate-800 dark:text-slate-200 transition-colors"
-                          download
-                        >
-                          <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                          <span>{link.label}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-            </div>
-          </section>
-
-          {/* 5. WHAT I LEARNED */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              <span>05. WHAT I LEARNED</span>
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Engineering Takeaways
-            </h2>
-            <div className="p-6 rounded-2xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/20 shadow-xs">
-              <p className="text-base text-slate-800 dark:text-slate-200 font-medium leading-relaxed">
-                "{project.whatILearned}"
-              </p>
-            </div>
-          </section>
+              {/* WHAT I LEARNED */}
+              <section className="space-y-4">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  <span>{project.brainstorm?.paragraph ? '05. WHAT I LEARNED' : '04. WHAT I LEARNED'}</span>
+                </div>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  Engineering Takeaways
+                </h2>
+                <div className="p-6 rounded-2xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/20 shadow-xs">
+                  <p className="text-base text-slate-800 dark:text-slate-200 font-medium leading-relaxed">
+                    "{project.whatILearned}"
+                  </p>
+                </div>
+              </section>
             </>
           )}
         </div>

@@ -20,6 +20,7 @@ interface MqpCaseStudyProps {
 
 export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) => {
   const [versionLogOpen, setVersionLogOpen] = useState(false);
+  const [moreBumpFiguresOpen, setMoreBumpFiguresOpen] = useState(false);
 
   return (
     <div className="space-y-12 animate-in fade-in duration-200">
@@ -96,7 +97,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
 
           <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
             <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
-              Constraint Cards
+              Constraints
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Constraint 1: Doorway & hallway clearance */}
@@ -596,7 +597,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       <td className="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">1</td>
                       <td className="py-3 px-3 text-slate-700 dark:text-slate-300 whitespace-nowrap">SolidWorks Simulation</td>
                       <td className="py-3 px-3 text-slate-600 dark:text-slate-300">
-                        Dummy A-arms and uprights as beams; 8 rear suspension points fixed (closest chassis points); forces at lower ball joint
+                        Dummy A-arms and uprights as beams; 8 rear points fixed (closest chassis points, not exact); force at lower ball joint. <strong>Limitation:</strong> suspension arm deformation and transferred bending moments added error.
                       </td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">1787.25</td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">0.933</td>
@@ -606,7 +607,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       <td className="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">2</td>
                       <td className="py-3 px-3 text-slate-700 dark:text-slate-300 whitespace-nowrap">SolidWorks Simulation</td>
                       <td className="py-3 px-3 text-slate-600 dark:text-slate-300">
-                        Same, but 4 rear bulkhead points fixed instead
+                        Same as Setup 1, but 4 rear bulkhead points fixed instead. <strong>Limitation:</strong> same as Setup 1.
                       </td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">1787.25</td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">0.759</td>
@@ -616,7 +617,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       <td className="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">3</td>
                       <td className="py-3 px-3 text-slate-700 dark:text-slate-300 whitespace-nowrap">Ansys Mechanical</td>
                       <td className="py-3 px-3 text-slate-600 dark:text-slate-300">
-                        Dummy A-arms, uprights, and load path set to flexible; 8 rear suspension points fixed (exact)
+                        Dummy A-arms, uprights, and load path set to flexible; beams bonded; 8 rear points fixed (exact); force at lower ball joint. <strong>Limitation:</strong> flexible parts and bonded rather than jointed connections.
                       </td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">1787.25</td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">0.786</td>
@@ -626,7 +627,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       <td className="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">4</td>
                       <td className="py-3 px-3 text-slate-700 dark:text-slate-300 whitespace-nowrap">Ansys Mechanical</td>
                       <td className="py-3 px-3 text-slate-600 dark:text-slate-300">
-                        Same, with suspension parts set to stiff and properly jointed
+                        Same parts set to stiff and properly jointed. <strong>Limitation:</strong> force still applied at the lower ball joint rather than the tire contact patch.
                       </td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">1787.25</td>
                       <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 text-right whitespace-nowrap">0.796</td>
@@ -636,7 +637,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       <td className="py-3 px-3 font-mono font-extrabold text-blue-700 dark:text-blue-300">5 (final)</td>
                       <td className="py-3 px-3 font-semibold text-blue-900 dark:text-blue-200 whitespace-nowrap">Ansys Mechanical</td>
                       <td className="py-3 px-3 text-blue-950 dark:text-blue-100 font-medium">
-                        Stiff, jointed; remote forces applied to the upright from the contact patch
+                        Stiff, jointed; remote force applied to the upright from the contact patch.
                       </td>
                       <td className="py-3 px-3 font-mono font-semibold text-blue-900 dark:text-blue-200 text-right whitespace-nowrap">2003.19</td>
                       <td className="py-3 px-3 font-mono font-semibold text-blue-900 dark:text-blue-200 text-right whitespace-nowrap">0.882</td>
@@ -684,7 +685,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       1. Torsional Rigidity Setup & Constraints
                     </div>
                     <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      Ansys boundary setup with proper joints, exact rear suspension coordinates, rigid strut representation, and suspension components set to stiff so the result isolates the chassis.
+                      Final Ansys setup: exact suspension coordinates, rigid struts, stiff suspension parts.
                     </div>
                   </div>
                 </div>
@@ -705,7 +706,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       2. Torsional Rigidity Deformation Results
                     </div>
                     <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      Torsional deformation results under opposing loads (final conservative setup fixing suspension points: 2271.72 N*m/deg; 5-setup average: 2212.49 N*m/deg).
+                      Deformation under opposing loads (final setup: 2271.72 N*m/deg).
                     </div>
                   </div>
                 </div>
@@ -722,23 +723,13 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
               </h3>
             </div>
 
-            {/* Block 1: Why I run a bump test */}
+            {/* Why I run a bump test */}
             <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
               <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                 Why I run a bump test
               </h4>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                Torsional rigidity tells me how stiff the frame is, but not whether any single tube is overloaded. A bump test answers that. I push up on the front-left wheel mounts with 2000 N, the way a wheel hitting a bump would, and see where stress concentrates. That shows which tubes and joints carry the most load, and how close the peak stress comes to the steel's yield strength, the point where it would start to bend permanently.
-              </p>
-            </div>
-
-            {/* Block 2: Why the stand-in suspension is left out here */}
-            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
-              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                Why the stand-in suspension is left out here
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                Unlike the torsional rigidity test, this one leaves out the dummy suspension. The torsional test measures how far the frame moves, so I needed stiff stand-ins to keep suspension flex out of the answer. The bump test looks at stress, not movement, and the stress inside stand-in parts means nothing since they are not real components, so I removed them. The load goes straight into the suspension mounting points on the chassis.
+                The torsional test shows how stiff the frame is, but not whether any single tube is overloaded. A bump test answers that: I push up on the front-left wheel mount with 2000 N, like a wheel hitting a bump, to see which tubes and joints carry the most load and how close the peak stress comes to the steel's yield strength. I left the stand-in suspension out here, since stress inside non-real parts means nothing, so the load goes straight into the suspension mounting points on the chassis.
               </p>
             </div>
 
@@ -747,13 +738,9 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
               Bump test: 8 rear fixtures and a 2000 N load on the front left suspension points, used to see where peak stress occurs. The largest stress magnitude was the minimum combined stress of <strong>76.4 MPa</strong> (compressive); maximum combined was <strong>54.8 MPa</strong>. Against the <strong>483 MPa</strong> yield strength that is roughly a <strong>6.3x margin</strong>.
             </div>
 
-            {/* The 5 Bump Test FEA Visuals Grid - Sequentially Numbered, No Truncation, Natural Heights */}
-            <div className="space-y-3">
-              <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
-                The 5 Bump Test FEA Simulation Figures:
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start pt-1">
+            {/* Bump Test Simulation Figures: Figures 1 & 5 Visible */}
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start pt-1">
                 {/* Figure 1: Bump Setup */}
                 <div className="space-y-2">
                   <div
@@ -770,70 +757,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       Figure 1: Bump Test Setup
                     </div>
                     <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      8 rear fixtures constrained with a 2000 N vertical shock load applied to front-left suspension points to observe stress concentrations.
-                    </div>
-                  </div>
-                </div>
-
-                {/* Figure 2: Direct (Axial) Stress */}
-                <div className="space-y-2">
-                  <div
-                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
-                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test direct axial stress.png')}
-                  >
-                    <ProjectImage
-                      src="images/autonomous off-road vehicle chassis fea bump test direct axial stress.png"
-                      alt="Figure 2: Bump Test Direct (Axial) Stress (+ Tension / - Compression)"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
-                      Figure 2: Direct (Axial) Stress
-                    </div>
-                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      Direct axial stress across spaceframe members, where (+) indicates tensile loading and (-) indicates compressive loading.
-                    </div>
-                  </div>
-                </div>
-
-                {/* Figure 3: Maximum Bending Stress */}
-                <div className="space-y-2">
-                  <div
-                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
-                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png')}
-                  >
-                    <ProjectImage
-                      src="images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png"
-                      alt="Figure 3: Bump Test Maximum Bending Stress"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
-                      Figure 3: Maximum Bending Stress
-                    </div>
-                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      Maximum bending stress contours throughout tubular frame spans resulting from moment transfer under the 2000 N shock load.
-                    </div>
-                  </div>
-                </div>
-
-                {/* Figure 4: Maximum Combined Stress */}
-                <div className="space-y-2">
-                  <div
-                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
-                    onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test max combined stress.png')}
-                  >
-                    <ProjectImage
-                      src="images/autonomous off-road vehicle chassis fea bump test max combined stress.png"
-                      alt="Figure 4: Bump Test Maximum Combined Stress (54.8 MPa)"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
-                      Figure 4: Max Combined Stress (54.8 MPa)
-                    </div>
-                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      Superposition of direct axial stress and maximum bending stress, resulting in a maximum combined tensile stress of 54.8 MPa.
+                      8 rear fixtures; 2000 N vertical load on the front-left suspension points.
                     </div>
                   </div>
                 </div>
@@ -854,10 +778,96 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       Figure 5: Min Combined Stress (76.4 MPa)
                     </div>
                     <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      Direct axial stress combined with minimum bending; largest stress magnitude overall at 76.4 MPa compressive (6.3x margin vs 483 MPa yield).
+                      Axial plus bending; largest magnitude overall at 76.4 MPa (compressive).
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Expandable More Bump Test Figures (Figures 2, 3, 4) */}
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs">
+                <button
+                  onClick={() => setMoreBumpFiguresOpen(!moreBumpFiguresOpen)}
+                  className="w-full px-6 py-4 flex items-center justify-between gap-4 text-left hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5 font-mono text-sm font-bold text-slate-900 dark:text-white">
+                    <Layers className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    <span>More bump test figures (3)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400">
+                    <span>{moreBumpFiguresOpen ? 'Collapse Figures' : 'Expand Figures (2–4)'}</span>
+                    {moreBumpFiguresOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </div>
+                </button>
+
+                {moreBumpFiguresOpen && (
+                  <div className="p-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 space-y-4 font-sans animate-in fade-in duration-150">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+                      {/* Figure 2: Direct (Axial) Stress */}
+                      <div className="space-y-2">
+                        <div
+                          className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
+                          onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test direct axial stress.png')}
+                        >
+                          <ProjectImage
+                            src="images/autonomous off-road vehicle chassis fea bump test direct axial stress.png"
+                            alt="Figure 2: Bump Test Direct (Axial) Stress (+ Tension / - Compression)"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
+                            Figure 2: Direct (Axial) Stress
+                          </div>
+                          <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Axial stress in the members; (+) tensile, (-) compressive.
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Figure 3: Maximum Bending Stress */}
+                      <div className="space-y-2">
+                        <div
+                          className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
+                          onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png')}
+                        >
+                          <ProjectImage
+                            src="images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png"
+                            alt="Figure 3: Bump Test Maximum Bending Stress"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
+                            Figure 3: Maximum Bending Stress
+                          </div>
+                          <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Maximum bending stress from moment transfer under the 2000 N load.
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Figure 4: Maximum Combined Stress */}
+                      <div className="space-y-2">
+                        <div
+                          className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
+                          onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test max combined stress.png')}
+                        >
+                          <ProjectImage
+                            src="images/autonomous off-road vehicle chassis fea bump test max combined stress.png"
+                            alt="Figure 4: Bump Test Maximum Combined Stress (54.8 MPa)"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
+                            Figure 4: Max Combined Stress (54.8 MPa)
+                          </div>
+                          <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Axial plus bending; maximum combined stress is 54.8 MPa (tensile).
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -871,19 +881,11 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
             <ul className="grid grid-cols-1 gap-2 text-xs text-slate-700 dark:text-slate-300">
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                <span><strong>Preliminary Status:</strong> All torsional rigidity and stress results presented are preliminary engineering models subject to final physical verification.</span>
+                <span><strong>Preliminary status:</strong> All torsional rigidity and stress results are preliminary engineering models subject to final physical verification. A definitive FEA re-run on the final chassis design will be done before tube fabrication begins.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                <span><strong>Chassis Baseline:</strong> FEA runs were executed on earlier chassis geometry (V8), rather than the final design.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                <span><strong>Material Property:</strong> The bump evaluation utilized AISI 1020 annealed steel properties rather than cold-rolled stock.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                <span><strong>Final Re-Run Planned:</strong> A definitive FEA re-run will be conducted on the final chassis design before tube fabrication begins.</span>
+                <span><strong>Baseline:</strong> Runs used the earlier V8 chassis geometry (not the final design) and AISI 1020 annealed steel properties rather than cold-rolled stock.</span>
               </li>
             </ul>
           </div>

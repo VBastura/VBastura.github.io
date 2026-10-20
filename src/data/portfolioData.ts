@@ -73,11 +73,11 @@ export const initialProfile: Profile = {
 export const initialProjects: Project[] = [
   {
     id: 'autonomous-offroad-chassis',
-    title: 'Architecture and Chassis Design for an Off-Road Vehicle',
+    title: 'Architecture and Chassis Design for an Autonomous Off-Road Vehicle',
     oneLineOutcome:
-      'Engineering a tubular steel spaceframe chassis integrating suspension, independent braking, and weatherproofing to elevate an autonomous unmanned ground vehicle from 5 mph to 15 mph.',
+      'A new tubular steel spaceframe chassis to improve the off-road mobility of an autonomous unmanned ground vehicle.',
     cardShortDescription:
-      'WPI MQP 4-person chassis team, collaborating with the Suspension and Mechatronics teams. Tube-frame chassis integrating suspension and braking to achieve 15 mph safely without rollover risk for top-mounted LiDAR.',
+      'WPI MQP 4-person chassis team, collaborating with the Suspension and Mechatronics teams. Tube-frame chassis integrating suspension and braking to achieve 15 mph safely.',
     hoverDescription:
       'Major Qualifying Project (WPI & AVMI): Provided continuous tube and node design feedback on an off-road tube frame chassis, and performed all SolidWorks and Ansys FEA simulations to validate torsional stiffness and bump shock resistance.',
     category: 'CAD & Spaceframe',
@@ -86,15 +86,15 @@ export const initialProjects: Project[] = [
     year: 'May 2026 - Present',
     tools: ['SolidWorks', 'Ansys'],
     summaryStrip: {
-      role: 'Chassis Design Feedback & All FEA Simulations',
+      role: 'Chassis design input & all FEA',
       teamSize: '4-person chassis team, collaborating with the Suspension and Mechatronics teams',
       timeline: 'May 2026 – Present (Active Project)',
       tools: 'SolidWorks, Ansys',
       myContribution:
-        'Flagged proportions, minimized bottom tubing, proposed vertical battery access lowering CG and flattening motors, gave tube and node design feedback, and performed all SolidWorks and Ansys FEA.',
+        'Flagged proportions, minimized bottom tubing, proposed vertical battery access for safety and optimizing the CG, gave tube and node design feedback, and performed all SolidWorks and Ansys FEA.',
     },
     objective:
-      'The lab\'s existing unmanned ground vehicle has no suspension, tops out around 5 mph, has no independent braking, and is not weatherproof. The goal is a new tube-frame chassis that integrates suspension, supports braking and weatherproofing, and reaches 15 mph, developed by a 4-person chassis team, collaborating with the Suspension and Mechatronics teams. Key constraints require passing through lab doors/hallways (narrowest path 59 in, length under 6 ft), accommodating a 5-degree front tilt and shock mount locations set with the suspension team, and guaranteeing the vehicle never rolls over because the LiDAR sensor is exposed at the top.',
+      'The lab\'s research UGV needs improved off-road mobility, but it is slow, has no suspension system, and isn\'t weatherproof. This chassis will integrate the Suspension and Mechatronics teams\' work into one vehicle and serve as a platform the lab can keep improving for future research. Key constraints require passing through lab doors/hallways (narrowest path 59 in, length under 6 ft), accommodating a 5-degree front tilt and shock mount locations set with the suspension team, and achieving a 15 mph speed target (up from 5 mph).',
     brainstorm: {
       paragraph:
         'Over eleven design iterations, each version exposed a problem that shaped the next. We eliminated the cage in V2 because welding was complex and the roof-mounted LiDAR cannot allow rollover. We transitioned to rear A-arms in V5 when trailing arms proved overly complex for our timeline and budget, packaged motors horizontally and lengthened the frame in V7 to drop the center of mass, and simplified front frame offsets into a single continuous bottom tube in V10.',
@@ -109,9 +109,9 @@ export const initialProjects: Project[] = [
         whatWasBuilt:
           'Cut down the upper chamber to give the top-mounted LiDAR an unobstructed field of view.',
         whatFailedOrUnderperformed:
-          'V2\'s upper chamber, built to hold logic components, was a large rectangle that would have blocked a top-mounted LiDAR, or forced it higher and more exposed.',
+          'V2\'s upper chamber, added to hold logic components, rose into the LiDAR\'s sightline. A top-mounted sensor would have been blocked, or forced higher and more exposed.',
         whatChangedAndResult:
-          'Cut the upper chamber down. The LiDAR now has a clear line of sight, confirmed in CAD.',
+          'Cut the upper section down so the LiDAR has a clear line of sight, confirmed in CAD.',
         decisions: [
           'Sensor Protection: Clear 360-degree LiDAR line of sight confirmed in CAD.',
           'Packaging: Lowered logic enclosure to reduce total vehicle profile.',
@@ -122,20 +122,20 @@ export const initialProjects: Project[] = [
       },
       {
         version: 'v3 to v5',
-        title: 'Fewer Welds, Simpler Suspension',
+        title: 'Fewer Welds',
         whatWasBuilt:
-          'Standardized on bent tubes and rear A-arms with motor offsets.',
+          'Standardized on more bent tubes to cut the weld count.',
         whatFailedOrUnderperformed:
-          'V3 had little tube bending, so many welds, and rear trailing arms were too complex for the team\'s skills, budget, and time.',
+          'V3 used little tube bending, which meant many welded joints.',
         whatChangedAndResult:
-          'More bent tubes, and A-arms at the rear, with motor offsets so the axle pivot aligns with the arms.',
+          'More bent tubes to cut the weld count.',
         decisions: [
-          'Manufacturability: Double wishbones matched available shop jigs and budget.',
+          'Manufacturability: Tube bending reduced manual weldments.',
           'Weld Minimization: Substituted welded segment clusters with bent continuous tubes.',
         ],
         image: 'images/chassis-v5.png',
         imageCaption:
-          'Chassis V5 packaging rear double wishbone A-arms and bent tube geometry.',
+          'Chassis V5 with bent tube geometry cutting overall weld count.',
       },
       {
         version: 'v5 to v7',
@@ -143,9 +143,9 @@ export const initialProjects: Project[] = [
         whatWasBuilt:
           'Lengthened chassis, minimized bottom tubing, and shortened top section for vertical battery removal.',
         whatFailedOrUnderperformed:
-          'Problems seen in the V5 assembly: poor wheelbase-to-track-width ratio, a center of gravity that was too high and too far back, a battery whose path was blocked, and a cluttered bottom frame.',
+          'Problems in V5: poor wheelbase-to-track-width ratio; CG too high and too far back; battery path blocked; excessive bottom tubing.',
         whatChangedAndResult:
-          'I flagged the proportions, so the chassis was lengthened. I pushed to minimize the bottom tubing because a steel plate will cover the bottom (making it behave like a monocoque there). I rejected the idea of a removable side tube for the battery and proposed shortening the oversized top section so the battery lifts out vertically, for safer battery access. Cascading effects: CG moved forward, the motors could lie flat which lowered the CG and improved packaging, and the shorter top section leaves room for electronics above the motors.',
+          'Flagged the proportions, so the chassis was lengthened. Pushed to minimize the bottom tubing since a steel plate will cover the bottom. Proposed shortening the oversized top section so the battery lifts out vertically, which is safer than removing a side tube. Effects: CG moved forward; the motors could lie flat (lower CG, better packaging); the shorter top section leaves room for electronics above.',
         decisions: [
           'Chassis Geometry: Lengthened wheelbase to correct wheelbase-to-track-width ratio.',
           'Battery Safety: Vertical extraction path without compromising structural side tubes.',
@@ -186,38 +186,44 @@ export const initialProjects: Project[] = [
       {
         src: 'images/chassis-v2-upper-chamber.png',
         alt: 'Chassis V2: Upper Chamber Constraint',
-        caption: 'V2 upper logic chamber (red box) that would have obstructed top-mounted LiDAR sensor',
+        caption: 'V2, chamber: upper logic chamber that would have obstructed top-mounted LiDAR sensor',
         filename: 'chassis-v2-upper-chamber.png',
       },
       {
         src: 'images/chassis-v3.png',
         alt: 'Chassis V3: Cleared LiDAR Line of Sight',
-        caption: 'V3 cut down upper chamber, confirming clear line of sight in CAD for top LiDAR',
+        caption: 'V3: upper chamber cut down so the LiDAR has a clear line of sight, confirmed in CAD',
         filename: 'chassis-v3.png',
       },
       {
         src: 'images/chassis-v5.png',
-        alt: 'Chassis V5: Bent Tubes and Rear A-Arms',
-        caption: 'V5 transitioned to rear A-arms and bent tubes with motor offsets aligned with arm pivots',
+        alt: 'Chassis V5: Bent Tubes',
+        caption: 'V5: more bent tubes to cut the weld count',
         filename: 'chassis-v5.png',
       },
       {
         src: 'images/chassis-v5-assembly-battery-cg.png',
         alt: 'Chassis V5 Assembly: Battery & CG Issues',
-        caption: 'V5 assembly showing blocked battery removal path and high center of gravity',
+        caption: 'V5 assembly: poor wheelbase ratio, high and rearward CG, and blocked battery removal',
         filename: 'chassis-v5-assembly-battery-cg.png',
       },
       {
         src: 'images/chassis-v7.png',
         alt: 'Chassis V7: Lengthened Frame & Low CG',
-        caption: 'V7 lengthened chassis, vertical battery access, flat motors lowering CG, and room for electronics',
+        caption: 'V7: lengthened chassis, vertical battery access, flat motors lowering CG, and room for electronics',
         filename: 'chassis-v7.png',
       },
       {
         src: 'images/chassis-v10.png',
         alt: 'Chassis V10: Continuous Bottom Tube',
-        caption: 'V10 tubes optimized into continuous bent lengths and single full bottom tube',
+        caption: 'V10: tubes optimized into continuous bent lengths and single full bottom tube',
         filename: 'chassis-v10.png',
+      },
+      {
+        src: 'images/torsional-rigidity-hand-calc.png',
+        alt: 'Hand Calculation of Torsional Rigidity',
+        caption: 'Hand calculation of torsional rigidity, worked through with the Setup 4 values.',
+        filename: 'torsional-rigidity-hand-calc.png',
       },
       {
         src: 'images/autonomous off-road vehicle chassis fea torsional rigidity setup.png',
@@ -257,8 +263,8 @@ export const initialProjects: Project[] = [
       },
       {
         src: 'images/autonomous off-road vehicle chassis fea bump test min combined stress.png',
-        alt: 'Figure 5: Bump Test Minimum Combined Stress',
-        caption: 'Figure 5: Superposition of direct axial stress and minimum bending stress; peak magnitude was 76.4 MPa compressive (~6.3x margin vs 483 MPa yield)',
+        alt: 'Figure 5: Min Combined Stress (76.4 MPa)',
+        caption: 'Figure 5: Superposition of direct axial stress and minimum bending stress; peak magnitude was 76.4 MPa compressive (6.3x margin vs 483 MPa yield)',
         filename: 'autonomous off-road vehicle chassis fea bump test min combined stress.png',
       },
     ],

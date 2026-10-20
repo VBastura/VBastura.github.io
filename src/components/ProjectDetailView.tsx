@@ -502,7 +502,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           </div>
 
           {/* Clean CSS Grid ready to style exact filenames */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
             {projectPhotos.map((photo, idx) => (
               <figure
                 key={idx}
@@ -512,14 +512,12 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                 <ProjectImage
                   src={photo.src}
                   alt={photo.alt}
-                  aspectRatioClass="aspect-[16/10] bg-slate-950"
-                  objectFitClass="object-contain"
                   onClick={() => setLightboxImage(photo.src)}
                 />
 
                 <figcaption className="p-4 sm:p-5 space-y-2 border-t border-slate-200 dark:border-slate-800 flex-1 flex flex-col justify-between">
                   <div className="space-y-1">
-                    <div className="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold truncate">
+                    <div className="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold break-all">
                       {photo.filename}
                     </div>
                     <h4 className="text-sm font-bold text-slate-900 dark:text-white">

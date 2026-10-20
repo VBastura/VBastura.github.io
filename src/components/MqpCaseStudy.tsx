@@ -8,10 +8,10 @@ import {
   Layers,
   UserCheck,
   Activity,
-  ArrowRight,
-  ArrowDown,
   Sparkles,
-  Users,
+  Gauge,
+  Maximize,
+  Compass,
 } from 'lucide-react';
 
 interface MqpCaseStudyProps {
@@ -31,7 +31,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
           <span>01. OBJECTIVE & CONSTRAINTS</span>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Operational Deficiencies & Physical Constraints
+          Objective & Constraints
         </h2>
 
         <div className="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-6">
@@ -40,40 +40,45 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
               Problem Statement
             </h3>
             <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-              The lab's existing unmanned ground vehicle has no suspension, tops out around 5 mph, has no independent braking, and is not weatherproof. The goal is a new tube-frame chassis that integrates suspension, supports braking and weatherproofing, and reaches 15 mph, developed by a 4-person chassis team, collaborating with the Suspension and Mechatronics teams.
+              The lab's research unmanned ground vehicle (UGV) needs improved off-road mobility, but it is slow, has no suspension system, and isn't weatherproof. This chassis will integrate the Suspension and Mechatronics teams' work into one vehicle and serve as a platform the lab can keep improving for future research.
             </p>
           </div>
 
           <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
             <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
-              Geometric & Operational Constraints
+              Constraint Cards
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Constraint 1: Doorway & hallway clearance */}
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
-                <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold">
-                  Doorway & Hallway Clearances
+                <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1.5">
+                  <Maximize className="w-3.5 h-3.5" />
+                  <span>Doorway & Hallway Clearance</span>
                 </div>
                 <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-                  Must pass through lab doors and hallways (narrowest path <strong>59 in</strong>, overall vehicle length under <strong>6 ft</strong>).
+                  Must pass through lab doors and hallways (narrowest path <strong>59 in</strong>, overall length under <strong>6 ft</strong>).
                 </p>
               </div>
 
+              {/* Constraint 2: Suspension team interface */}
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
-                <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold">
-                  Suspension Team Interface
+                <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1.5">
+                  <Compass className="w-3.5 h-3.5" />
+                  <span>Suspension Interface</span>
                 </div>
                 <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-                  Chassis features a <strong>5-degree front tilt</strong> and shock mount pickup hardpoint locations set jointly with the suspension team.
+                  A <strong>5-degree front tilt</strong> and shock mount locations set jointly with the Suspension team.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/60 space-y-1.5">
-                <div className="text-xs font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400 font-bold flex items-center gap-1.5">
-                  <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
-                  <span>Strict Anti-Rollover Rule</span>
+              {/* Constraint 3: Speed target */}
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
+                <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1.5">
+                  <Gauge className="w-3.5 h-3.5" />
+                  <span>Speed Target</span>
                 </div>
                 <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-                  The LiDAR sensor is exposed at the top, so the vehicle <strong>must never roll over</strong> under any dynamic conditions.
+                  <strong>15 mph</strong>, up from about 5 mph on the current vehicle.
                 </p>
               </div>
             </div>
@@ -82,134 +87,152 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
       </section>
 
       {/* =========================================================================
-          2. DESIGN EVOLUTION (PROBLEM -> DECISION FLOW)
+          2. DESIGN EVOLUTION (VERTICAL TIMELINE - ONE ROW PER STEP)
           ========================================================================= */}
-      <section className="space-y-5">
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              <span>02. DESIGN EVOLUTION</span>
-            </div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Design Evolution
-            </h2>
+      <section className="space-y-6">
+        <div>
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <span>02. DESIGN EVOLUTION</span>
           </div>
-          <span className="text-xs font-mono text-slate-500">5-Stage Iterative Flow</span>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Design Evolution
+          </h2>
+          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mt-1">
+            Each version exposed a problem that shaped the next.
+          </p>
         </div>
 
-        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-          Each version exposed a problem that shaped the next.
-        </p>
+        {/* Vertical Timeline Container */}
+        <div className="relative pl-6 sm:pl-8 border-l-2 border-blue-200 dark:border-blue-900/60 space-y-8">
+          {/* STEP 1: V2 to V3 */}
+          <div className="relative">
+            {/* Timeline Marker */}
+            <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-6 h-6 rounded-full bg-white dark:bg-slate-900 border-2 border-blue-600 dark:border-blue-400 flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400" />
+            </div>
 
-        {/* Problem -> Decision Flow (Reads left-to-right on desktop, stacks vertically on mobile) */}
-        <div className="space-y-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-            {/* Step 1: V2 to V3 */}
-            <article className="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs flex flex-col justify-between">
-              <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+            <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-7 shadow-xs">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                {/* Text on Left */}
+                <div className="lg:col-span-5 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200">
                       Step 1 · V2 → V3
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug">
                     Clear line of sight for the LiDAR
                   </h3>
-                </div>
-
-                <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  <p>
-                    <strong className="text-slate-900 dark:text-white font-semibold">Problem:</strong> V2's upper chamber, built to hold logic components, was a large rectangle that would have blocked a top-mounted LiDAR, or forced it higher and more exposed.
-                  </p>
-                  <p>
-                    <strong className="text-blue-600 dark:text-blue-400 font-semibold">Decision:</strong> Cut the upper chamber down. The LiDAR now has a clear line of sight, confirmed in CAD.
-                  </p>
-                </div>
-              </div>
-
-              {/* Images: V2 upper chamber and V3 */}
-              <div className="grid grid-cols-2 gap-1 p-2 bg-slate-950 border-t border-slate-200 dark:border-slate-800">
-                <div
-                  className="cursor-pointer"
-                  onClick={() => onInspectImage('images/chassis-v2-upper-chamber.png')}
-                  title="Chassis V2 upper chamber (red box)"
-                >
-                  <ProjectImage
-                    src="images/chassis-v2-upper-chamber.png"
-                    alt="Chassis V2 upper chamber (red box)"
-                    aspectRatioClass="aspect-[4/3] bg-slate-950"
-                    objectFitClass="object-contain"
-                  />
-                  <div className="text-[10px] font-mono text-center text-slate-400 py-1 bg-slate-900">
-                    V2 (Chamber)
+                  <div className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p>
+                      <strong className="text-slate-900 dark:text-white font-semibold">Problem:</strong> V2's upper chamber, added to hold logic components, rose into the LiDAR's sightline. A top-mounted sensor would have been blocked, or forced higher and more exposed.
+                    </p>
+                    <p>
+                      <strong className="text-blue-600 dark:text-blue-400 font-semibold">Decision:</strong> Cut the upper section down so the LiDAR (light detection and ranging laser scanner) has a clear line of sight, confirmed in CAD.
+                    </p>
                   </div>
                 </div>
-                <div
-                  className="cursor-pointer"
-                  onClick={() => onInspectImage('images/chassis-v3.png')}
-                  title="Chassis V3 with upper chamber cut down"
-                >
-                  <ProjectImage
-                    src="images/chassis-v3.png"
-                    alt="Chassis V3"
-                    aspectRatioClass="aspect-[4/3] bg-slate-950"
-                    objectFitClass="object-contain"
-                  />
-                  <div className="text-[10px] font-mono text-center text-slate-400 py-1 bg-slate-900">
-                    V3 (Cleared)
+
+                {/* Images on Right (Side-by-side aligned at top at natural heights) */}
+                <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+                  <div className="space-y-2">
+                    <div
+                      className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
+                      onClick={() => onInspectImage('images/chassis-v2-upper-chamber.png')}
+                      title="Chassis V2 upper chamber (red box)"
+                    >
+                      <ProjectImage
+                        src="images/chassis-v2-upper-chamber.png"
+                        alt="Chassis V2 upper chamber (red box)"
+                      />
+                    </div>
+                    <div className="text-xs font-mono text-center text-slate-600 dark:text-slate-400">
+                      V2, chamber
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div
+                      className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
+                      onClick={() => onInspectImage('images/chassis-v3.png')}
+                      title="Chassis V3 with upper chamber cut down"
+                    >
+                      <ProjectImage
+                        src="images/chassis-v3.png"
+                        alt="Chassis V3 with clear LiDAR line of sight"
+                      />
+                    </div>
+                    <div className="text-xs font-mono text-center text-slate-600 dark:text-slate-400">
+                      V3
+                    </div>
                   </div>
                 </div>
               </div>
             </article>
+          </div>
 
-            {/* Step 2: V3 to V5 */}
-            <article className="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs flex flex-col justify-between">
-              <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          {/* STEP 2: V3 to V5 */}
+          <div className="relative">
+            {/* Timeline Marker */}
+            <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-6 h-6 rounded-full bg-white dark:bg-slate-900 border-2 border-blue-600 dark:border-blue-400 flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400" />
+            </div>
+
+            <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-7 shadow-xs">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                {/* Text on Left */}
+                <div className="lg:col-span-5 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200">
                       Step 2 · V3 → V5
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
-                    Fewer welds, simpler suspension
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                    Fewer welds
                   </h3>
+                  <div className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p>
+                      <strong className="text-slate-900 dark:text-white font-semibold">Problem:</strong> V3 used little tube bending, which meant many welded joints.
+                    </p>
+                    <p>
+                      <strong className="text-blue-600 dark:text-blue-400 font-semibold">Decision:</strong> More bent tubes to cut the weld count.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  <p>
-                    <strong className="text-slate-900 dark:text-white font-semibold">Problem:</strong> V3 had little tube bending, so many welds, and rear trailing arms were too complex for the team's skills, budget, and time.
-                  </p>
-                  <p>
-                    <strong className="text-blue-600 dark:text-blue-400 font-semibold">Decision:</strong> More bent tubes, and A-arms at the rear, with motor offsets so the axle pivot aligns with the arms.
-                  </p>
-                </div>
-              </div>
-
-              {/* Image: V5 */}
-              <div
-                className="p-2 bg-slate-950 border-t border-slate-200 dark:border-slate-800 cursor-pointer"
-                onClick={() => onInspectImage('images/chassis-v5.png')}
-              >
-                <ProjectImage
-                  src="images/chassis-v5.png"
-                  alt="Chassis V5 with rear A-arms and bent tubes"
-                  aspectRatioClass="aspect-[16/10] bg-slate-950"
-                  objectFitClass="object-contain"
-                />
-                <div className="text-[10px] font-mono text-center text-slate-400 py-1 bg-slate-900">
-                  V5 (A-Arms & Bent Tubes)
+                {/* Image on Right */}
+                <div className="lg:col-span-7 max-w-lg space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
+                    onClick={() => onInspectImage('images/chassis-v5.png')}
+                    title="Chassis V5 with more bent tubes"
+                  >
+                    <ProjectImage
+                      src="images/chassis-v5.png"
+                      alt="Chassis V5 with bent tubes"
+                    />
+                  </div>
+                  <div className="text-xs font-mono text-center text-slate-600 dark:text-slate-400">
+                    V5
+                  </div>
                 </div>
               </div>
             </article>
+          </div>
 
-            {/* Step 3 (FEATURED): V5 to V7 - Largest card with "My call" badge */}
-            <article className="lg:col-span-4 rounded-2xl border-2 border-blue-500 dark:border-blue-500/80 bg-blue-50/20 dark:bg-blue-950/20 overflow-hidden shadow-md flex flex-col justify-between relative">
-              <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200">
+          {/* STEP 3 (FEATURED): V5 to V7 with "My call" badge */}
+          <div className="relative">
+            {/* Timeline Marker */}
+            <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-sm">
+              <Sparkles className="w-3.5 h-3.5" />
+            </div>
+
+            <article className="rounded-2xl border-2 border-blue-500 dark:border-blue-500/80 bg-blue-50/20 dark:bg-blue-950/20 p-5 sm:p-7 shadow-md">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                {/* Text on Left (Three labeled blocks) */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-blue-100 text-blue-900 dark:bg-blue-900/60 dark:text-blue-200">
                       Step 3 · V5 → V7
                     </span>
                     <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-blue-600 text-white shadow-xs">
@@ -217,120 +240,148 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                       My call
                     </span>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">
+
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">
                     Chassis proportions, battery access, and a lower CG
                   </h3>
-                </div>
 
-                <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                  <p>
-                    <strong className="text-slate-900 dark:text-white font-semibold">Problems seen in the V5 assembly:</strong> Poor wheelbase-to-track-width ratio, a center of gravity that was too high and too far back, a battery whose path was blocked, and a cluttered bottom frame.
-                  </p>
-                  <p>
-                    <strong className="text-blue-600 dark:text-blue-400 font-semibold">What I did:</strong> I flagged the proportions, so the chassis was lengthened. I pushed to minimize the bottom tubing because a steel plate will cover the bottom (making it behave like a monocoque there). I rejected the idea of a removable side tube for the battery and proposed shortening the oversized top section so the battery lifts out vertically, for safer battery access.
-                  </p>
-                  <p className="text-xs text-slate-600 dark:text-slate-400">
-                    <strong className="text-slate-800 dark:text-slate-200 font-semibold">Cascading effects:</strong> CG moved forward, the motors could lie flat which lowered the CG and improved packaging, and the shorter top section leaves room for electronics above the motors.
-                  </p>
-                </div>
-              </div>
+                  <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                    <div className="p-3 rounded-lg bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1">
+                      <div className="text-xs font-mono font-bold uppercase text-slate-900 dark:text-white">
+                        Problems in V5
+                      </div>
+                      <p>
+                        Poor wheelbase-to-track-width ratio; center of gravity (CG) too high and too far back; battery path blocked; excessive bottom tubing.
+                      </p>
+                    </div>
 
-              {/* Images: V5 assembly battery CG and V7 */}
-              <div className="grid grid-cols-2 gap-1.5 p-2.5 bg-slate-950 border-t border-blue-200 dark:border-blue-900/60">
-                <div
-                  className="cursor-pointer"
-                  onClick={() => onInspectImage('images/chassis-v5-assembly-battery-cg.png')}
-                  title="Chassis V5 assembly showing battery and CG issues"
-                >
-                  <ProjectImage
-                    src="images/chassis-v5-assembly-battery-cg.png"
-                    alt="Chassis V5 assembly (battery and CG constraints)"
-                    aspectRatioClass="aspect-[4/3] bg-slate-950"
-                    objectFitClass="object-contain"
-                  />
-                  <div className="text-[10px] font-mono text-center text-slate-400 py-1 bg-slate-900">
-                    V5 Assembly (Issues)
+                    <div className="p-3 rounded-lg bg-blue-50/80 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 space-y-1">
+                      <div className="text-xs font-mono font-bold uppercase text-blue-800 dark:text-blue-300">
+                        What I did
+                      </div>
+                      <p>
+                        Flagged the proportions, so the chassis was lengthened. Pushed to minimize the bottom tubing since a steel plate will cover the bottom. Proposed shortening the oversized top section so the battery lifts out vertically, which is safer than removing a side tube.
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-lg bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1">
+                      <div className="text-xs font-mono font-bold uppercase text-slate-900 dark:text-white">
+                        Effects
+                      </div>
+                      <p>
+                        CG moved forward; the motors could lie flat (lower CG, better packaging); the shorter top section leaves room for electronics above.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div
-                  className="cursor-pointer"
-                  onClick={() => onInspectImage('images/chassis-v7.png')}
-                  title="Chassis V7 with lengthened frame, vertical battery access, and low CG"
-                >
-                  <ProjectImage
-                    src="images/chassis-v7.png"
-                    alt="Chassis V7 lengthened frame and low CG"
-                    aspectRatioClass="aspect-[4/3] bg-slate-950"
-                    objectFitClass="object-contain"
-                  />
-                  <div className="text-[10px] font-mono text-center text-blue-400 py-1 bg-slate-900 font-semibold">
-                    V7 (My Call Architecture)
+
+                {/* Larger Images on Right */}
+                <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+                  <div className="space-y-2">
+                    <div
+                      className="cursor-pointer border border-blue-300 dark:border-blue-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
+                      onClick={() => onInspectImage('images/chassis-v5-assembly-battery-cg.png')}
+                      title="Chassis V5 assembly showing blocked battery access and high CG"
+                    >
+                      <ProjectImage
+                        src="images/chassis-v5-assembly-battery-cg.png"
+                        alt="Chassis V5 assembly"
+                      />
+                    </div>
+                    <div className="text-xs font-mono text-center text-slate-700 dark:text-slate-300 font-medium">
+                      V5 assembly
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div
+                      className="cursor-pointer border border-blue-300 dark:border-blue-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
+                      onClick={() => onInspectImage('images/chassis-v7.png')}
+                      title="Chassis V7 with lengthened frame, vertical battery access, and lower CG"
+                    >
+                      <ProjectImage
+                        src="images/chassis-v7.png"
+                        alt="Chassis V7"
+                      />
+                    </div>
+                    <div className="text-xs font-mono text-center text-blue-600 dark:text-blue-400 font-bold">
+                      V7
+                    </div>
                   </div>
                 </div>
               </div>
             </article>
+          </div>
 
-            {/* Step 4: V7 to V10 */}
-            <article className="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs flex flex-col justify-between">
-              <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          {/* STEP 4: V7 to V10 */}
+          <div className="relative">
+            {/* Timeline Marker */}
+            <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-6 h-6 rounded-full bg-white dark:bg-slate-900 border-2 border-blue-600 dark:border-blue-400 flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400" />
+            </div>
+
+            <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-7 shadow-xs">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                {/* Text on Left */}
+                <div className="lg:col-span-5 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200">
                       Step 4 · V7 → V10
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug">
                     Tube optimization and simplification
                   </h3>
+                  <div className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p>
+                      Some tubes were optimized into continuous bent lengths, excess tubing was cut, and the front offsets were simplified into a single full bottom tube. The V7 tube list was used to plan and order stock.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  <p>
-                    Some tubes were optimized into continuous bent lengths, excess tubing was cut, and front offsets were simplified into a single full bottom tube. The tube list from V7 was used to plan and order stock.
-                  </p>
-                </div>
-              </div>
-
-              {/* Image: V10 */}
-              <div
-                className="p-2 bg-slate-950 border-t border-slate-200 dark:border-slate-800 cursor-pointer"
-                onClick={() => onInspectImage('images/chassis-v10.png')}
-              >
-                <ProjectImage
-                  src="images/chassis-v10.png"
-                  alt="Chassis V10 CAD model"
-                  aspectRatioClass="aspect-[16/10] bg-slate-950"
-                  objectFitClass="object-contain"
-                />
-                <div className="text-[10px] font-mono text-center text-slate-400 py-1 bg-slate-900">
-                  V10 (Single Bottom Tube)
+                {/* Image on Right */}
+                <div className="lg:col-span-7 max-w-lg space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
+                    onClick={() => onInspectImage('images/chassis-v10.png')}
+                    title="Chassis V10 CAD model"
+                  >
+                    <ProjectImage
+                      src="images/chassis-v10.png"
+                      alt="Chassis V10"
+                    />
+                  </div>
+                  <div className="text-xs font-mono text-center text-slate-600 dark:text-slate-400">
+                    V10
+                  </div>
                 </div>
               </div>
             </article>
+          </div>
 
-            {/* Step 5: V11 */}
-            <article className="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs flex flex-col justify-between">
-              <div className="p-4 space-y-3 flex-1 flex flex-col">
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-300">
-                      Step 5 · V11
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
-                    In progress: parametric dimensions
-                  </h3>
+          {/* STEP 5: V11 (In progress) */}
+          <div className="relative">
+            {/* Timeline Marker */}
+            <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-6 h-6 rounded-full bg-white dark:bg-slate-900 border-2 border-amber-500 flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
+            </div>
+
+            <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-7 shadow-xs">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+                    Step 5 · V11
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                    In progress
+                  </span>
                 </div>
-
-                <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-2">
-                  <p>
-                    Improving the customizability of the chassis dimensions and resolving under-defined sketch dimensions, in ongoing coordination with the Suspension team on tube mounts.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-500 text-center">
-                Active CAD Modeling
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                  Parametric dimensions
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                  Making the chassis dimensions easy to adjust and resolving under-defined sketch dimensions, in ongoing coordination with the Suspension team on tube mounts.
+                </p>
               </div>
             </article>
           </div>
@@ -358,31 +409,31 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                 <li className="py-2.5 flex items-start gap-3">
                   <span className="font-mono font-bold text-slate-500 dark:text-slate-400 w-10 shrink-0">V1</span>
                   <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Early concept with a rollcage geometry that was removed due to welding complexity and because the vehicle can't be allowed to roll with the LiDAR exposed.
+                    Early concept including a rollcage geometry, removed because of welding complexity and because the vehicle cannot be allowed to roll with the LiDAR exposed.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3 bg-blue-50/50 dark:bg-blue-950/20 px-2 rounded">
                   <span className="font-mono font-bold text-blue-600 dark:text-blue-400 w-10 shrink-0">V2</span>
                   <span className="text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                    Removed the rollcage geometry (welding complexity, and the vehicle can't be allowed to roll because of the LiDAR).
+                    Rollcage removed, upper chamber for logic components.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3">
                   <span className="font-mono font-bold text-blue-600 dark:text-blue-400 w-10 shrink-0">V3</span>
                   <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Cut down the upper logic chamber to give the top-mounted LiDAR a clear line of sight, confirmed in CAD.
+                    Upper chamber cut down for the LiDAR sightline.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3">
                   <span className="font-mono font-bold text-slate-500 dark:text-slate-400 w-10 shrink-0">V4</span>
                   <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Explored rear trailing arm geometry and preliminary suspension pivot mounts.
+                    First attempt at more tube bending, needing a better bend radius and space for the camera, steering motor, and other components.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3 bg-blue-50/50 dark:bg-blue-950/20 px-2 rounded">
                   <span className="font-mono font-bold text-blue-600 dark:text-blue-400 w-10 shrink-0">V5</span>
                   <span className="text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                    Switched to A-arms at the rear (trailing arms were too complex for the team's skills, budget, and time) and introduced tube bending.
+                    Bent tubes added and rear mounting geometry reworked.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3 bg-blue-50/50 dark:bg-blue-950/20 px-2 rounded">
@@ -394,31 +445,31 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
                 <li className="py-2.5 flex items-start gap-3 bg-blue-50/50 dark:bg-blue-950/20 px-2 rounded">
                   <span className="font-mono font-bold text-blue-600 dark:text-blue-400 w-10 shrink-0">V7</span>
                   <span className="text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                    Lengthened wheelbase, shortened top section for vertical battery removal, flattened motors lowering CG, and minimized bottom tubing.
+                    Excess upper tubing cut, frame widened to avoid small hard-to-weld tubes at the rear, and used to estimate and order tube stock.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3">
                   <span className="font-mono font-bold text-slate-500 dark:text-slate-400 w-10 shrink-0">V8</span>
                   <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Used as the geometric baseline for preliminary SolidWorks and Ansys finite element stiffness and bump evaluations.
+                    Interim revision used as the version for the FEA.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3">
                   <span className="font-mono font-bold text-slate-500 dark:text-slate-400 w-10 shrink-0">V9</span>
                   <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Refined structural nodes and prepared tube lists for material ordering.
+                    Interim revision with joint refinements.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3 bg-blue-50/50 dark:bg-blue-950/20 px-2 rounded">
                   <span className="font-mono font-bold text-blue-600 dark:text-blue-400 w-10 shrink-0">V10</span>
                   <span className="text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                    Simplified front offsets into a single full bottom tube and finalized stock planning.
+                    Front offsets simplified into one bottom tube.
                   </span>
                 </li>
                 <li className="py-2.5 flex items-start gap-3 bg-amber-50/50 dark:bg-amber-950/20 px-2 rounded">
                   <span className="font-mono font-bold text-amber-600 dark:text-amber-400 w-10 shrink-0">V11</span>
                   <span className="text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                    <span className="font-bold text-amber-700 dark:text-amber-400">In progress:</span> improving dimension customizability and resolving under-defined sketch dimensions with the Suspension team.
+                    <span className="font-bold text-amber-700 dark:text-amber-400">In progress:</span> making dimensions easy to adjust and resolving under-defined sketches.
                   </span>
                 </li>
               </ul>
@@ -451,7 +502,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
             </li>
             <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
               <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-              <span>Proposed shortening the top section so the battery lifts out vertically, which moved the CG forward and let the motors lie flat</span>
+              <span>Proposed vertical battery access for safety and optimizing the CG</span>
             </li>
             <li className="flex items-start gap-3 text-sm text-slate-800 dark:text-slate-200">
               <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
@@ -493,11 +544,65 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
 
         <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-8 shadow-xs">
           {/* Part A: Torsional Rigidity */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-blue-600" />
               <span>A. Torsional Rigidity: Modeling Evolution & Boundary Conditions</span>
             </h3>
+
+            {/* Block (a): What torsional rigidity is and why it matters */}
+            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                What torsional rigidity is and why it matters
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                Torsional rigidity is how much a frame resists twisting. Picture holding one end of a long box and twisting the other: a stiffer frame twists less for the same twisting force. It is measured as torque per degree of twist (N*m/deg). Why I test it: the suspension is supposed to absorb bumps. If the frame is softer than the suspension, the frame twists instead, which wastes the suspension's work and can damage the frame. So I want to know how stiff the chassis is on its own, before the suspension is attached. A reference point: student race car competitions like Formula SAE and Baja commonly use about 2000 N*m/deg as a benchmark. This vehicle will not run under the same conditions, so I treat it as a sanity check, not a pass/fail target.
+              </p>
+            </div>
+
+            {/* Block (b): How the test works */}
+            <div className="space-y-4 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                How the test works
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                Opposite forces on the two front corners twist the chassis while the rear is held fixed. I measure how far each corner moves vertically, convert that to an angle of twist, and divide the applied torque by that angle.
+              </p>
+              <div className="space-y-2 max-w-xl">
+                <div
+                  className="cursor-pointer border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-xs hover:border-blue-500 transition-colors bg-white dark:bg-slate-950"
+                  onClick={() => onInspectImage('images/torsional-rigidity-hand-calc.png')}
+                >
+                  <ProjectImage
+                    src="images/torsional-rigidity-hand-calc.png"
+                    alt="Hand calculation of torsional rigidity, worked through with the Setup 4 values."
+                  />
+                </div>
+                <div className="text-xs font-mono text-slate-600 dark:text-slate-400">
+                  Hand calculation of torsional rigidity, worked through with the Setup 4 values.
+                </div>
+              </div>
+            </div>
+
+            {/* Block (c): Modeling decision: stand-in A-arms */}
+            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                Modeling decision: stand-in A-arms
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                The goal is to measure the chassis, not the suspension. The real suspension would flex too, and that flex would get mixed into the answer. Instead I replaced it with simple "dummy" A-arms and uprights, set to behave as stiff, rigid parts. They carry the load into the chassis the way the real suspension would, without adding flex of their own. I placed them at the exact suspension coordinates from the most recent full assembly, so the loads enter the chassis at the correct points. That assembly was the V8, which is why the simulation uses V8 and not the newest chassis.
+              </p>
+            </div>
+
+            {/* Block (d): My approach, and what I was unsure about */}
+            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                My approach, and what I was unsure about
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                This was my first time setting up a torsional rigidity analysis. While researching, I found that Formula SAE teams use several different boundary conditions, and I was not sure which was right. Instead of picking one, I built the model that most closely matches a physical test rig. I also kept the results from simpler setups, each adding complexity, so I could cross-check that the approach gave consistent results. The three Ansys setups landed within about 1.2% of each other (2246 to 2274 N*m/deg), which gave me confidence in the final setup.
+              </p>
+            </div>
 
             {/* Explanation of Setup 1's limitations above table */}
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
@@ -598,166 +703,201 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
             </div>
 
             {/* Torsional Rigidity Visual Documentation */}
-            <div className="pt-4 space-y-2">
+            <div className="pt-4 space-y-3">
               <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
                 Torsional Rigidity Visual Documentation:
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                 {/* Torsion 1: Setup */}
-                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
-                  <ProjectImage
-                    src="images/autonomous off-road vehicle chassis fea torsional rigidity setup.png"
-                    alt="Torsional Rigidity Simulation Setup and Boundary Constraints"
-                    aspectRatioClass="aspect-[16/10] bg-slate-950"
-                    objectFitClass="object-contain"
+                <div className="space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
                     onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea torsional rigidity setup.png')}
-                  />
-                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                  >
+                    <ProjectImage
+                      src="images/autonomous off-road vehicle chassis fea torsional rigidity setup.png"
+                      alt="Torsional Rigidity Simulation Setup and Boundary Constraints"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                       1. Torsional Rigidity Setup & Constraints
-                    </span>
-                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                    </div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       Ansys boundary setup with proper joints, exact rear suspension coordinates, rigid strut representation, and suspension components set to stiff so the result isolates the chassis.
-                    </span>
-                  </figcaption>
-                </figure>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Torsion 2: Deformation Results */}
-                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
-                  <ProjectImage
-                    src="images/autonomous off-road vehicle chassis thumbnail.png"
-                    alt="Torsional Rigidity Deformation Results"
-                    aspectRatioClass="aspect-[16/10] bg-slate-950"
-                    objectFitClass="object-contain"
+                <div className="space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
                     onClick={() => onInspectImage('images/autonomous off-road vehicle chassis thumbnail.png')}
-                  />
-                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                  >
+                    <ProjectImage
+                      src="images/autonomous off-road vehicle chassis thumbnail.png"
+                      alt="Torsional Rigidity Deformation Results"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                       2. Torsional Rigidity Deformation Results
-                    </span>
-                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                    </div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       Torsional deformation results under opposing loads (final conservative setup fixing suspension points: 2271.72 N*m/deg; 5-setup average: 2212.49 N*m/deg).
-                    </span>
-                  </figcaption>
-                </figure>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Part B: Bump Test */}
-          <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-5">
+          <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-6">
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-600" />
                 <span>B. Bump Test Stress Analysis</span>
               </h3>
-              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal mt-1.5">
-                Bump test: 8 rear fixtures and a 2000 N load on the front left suspension points, used to see where peak stress occurs. The largest stress magnitude was the minimum combined stress of <strong>76.4 MPa</strong> (compressive); maximum combined was <strong>54.8 MPa</strong>. Against the <strong>483 MPa</strong> yield strength that is roughly a <strong>6.3x margin</strong>.
+            </div>
+
+            {/* Block 1: Why I run a bump test */}
+            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                Why I run a bump test
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                Torsional rigidity tells me how stiff the frame is, but not whether any single tube is overloaded. A bump test answers that. I push up on the front-left wheel mounts with 2000 N, the way a wheel hitting a bump would, and see where stress concentrates. That shows which tubes and joints carry the most load, and how close the peak stress comes to the steel's yield strength, the point where it would start to bend permanently.
               </p>
             </div>
 
-            {/* The 5 Bump Test FEA Visuals Grid - Sequentially Numbered, No physical rolling frame tile */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
-                <span>The 5 Bump Test FEA Simulation Figures:</span>
-                <span className="text-blue-600 dark:text-blue-400">Figures 1 through 5</span>
+            {/* Block 2: Why the stand-in suspension is left out here */}
+            <div className="space-y-2 p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                Why the stand-in suspension is left out here
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                Unlike the torsional rigidity test, this one leaves out the dummy suspension. The torsional test measures how far the frame moves, so I needed stiff stand-ins to keep suspension flex out of the answer. The bump test looks at stress, not movement, and the stress inside stand-in parts means nothing since they are not real components, so I removed them. The load goes straight into the suspension mounting points on the chassis.
+              </p>
+            </div>
+
+            {/* Existing Result Sentence */}
+            <div className="p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/60 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Bump test: 8 rear fixtures and a 2000 N load on the front left suspension points, used to see where peak stress occurs. The largest stress magnitude was the minimum combined stress of <strong>76.4 MPa</strong> (compressive); maximum combined was <strong>54.8 MPa</strong>. Against the <strong>483 MPa</strong> yield strength that is roughly a <strong>6.3x margin</strong>.
+            </div>
+
+            {/* The 5 Bump Test FEA Visuals Grid - Sequentially Numbered, No Truncation, Natural Heights */}
+            <div className="space-y-3">
+              <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
+                The 5 Bump Test FEA Simulation Figures:
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-1">
-                {/* Figure 1: Bump Setup & Boundary Conditions */}
-                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
-                  <ProjectImage
-                    src="images/autonomous off-road vehicle chassis fea bump test setup.png"
-                    alt="Figure 1: Bump Test Setup & Boundary Conditions"
-                    aspectRatioClass="aspect-[16/10] bg-slate-950"
-                    objectFitClass="object-contain"
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start pt-1">
+                {/* Figure 1: Bump Setup */}
+                <div className="space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
                     onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test setup.png')}
-                  />
-                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                  >
+                    <ProjectImage
+                      src="images/autonomous off-road vehicle chassis fea bump test setup.png"
+                      alt="Figure 1: Bump Test Setup & Boundary Conditions"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                       Figure 1: Bump Test Setup
-                    </span>
-                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                    </div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       8 rear fixtures constrained with a 2000 N vertical shock load applied to front-left suspension points to observe stress concentrations.
-                    </span>
-                  </figcaption>
-                </figure>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Figure 2: Direct (Axial) Stress */}
-                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
-                  <ProjectImage
-                    src="images/autonomous off-road vehicle chassis fea bump test direct axial stress.png"
-                    alt="Figure 2: Bump Test Direct (Axial) Stress (+ Tension / - Compression)"
-                    aspectRatioClass="aspect-[16/10] bg-slate-950"
-                    objectFitClass="object-contain"
+                <div className="space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
                     onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test direct axial stress.png')}
-                  />
-                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                  >
+                    <ProjectImage
+                      src="images/autonomous off-road vehicle chassis fea bump test direct axial stress.png"
+                      alt="Figure 2: Bump Test Direct (Axial) Stress (+ Tension / - Compression)"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                       Figure 2: Direct (Axial) Stress
-                    </span>
-                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                    </div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       Direct axial stress across spaceframe members, where (+) indicates tensile loading and (-) indicates compressive loading.
-                    </span>
-                  </figcaption>
-                </figure>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Figure 3: Maximum Bending Stress */}
-                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
-                  <ProjectImage
-                    src="images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png"
-                    alt="Figure 3: Bump Test Maximum Bending Stress"
-                    aspectRatioClass="aspect-[16/10] bg-slate-950"
-                    objectFitClass="object-contain"
+                <div className="space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
                     onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png')}
-                  />
-                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                  >
+                    <ProjectImage
+                      src="images/autonomous off-road vehicle chassis fea bump test maximum bending stress.png"
+                      alt="Figure 3: Bump Test Maximum Bending Stress"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                       Figure 3: Maximum Bending Stress
-                    </span>
-                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                    </div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       Maximum bending stress contours throughout tubular frame spans resulting from moment transfer under the 2000 N shock load.
-                    </span>
-                  </figcaption>
-                </figure>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Figure 4: Maximum Combined Stress */}
-                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
-                  <ProjectImage
-                    src="images/autonomous off-road vehicle chassis fea bump test max combined stress.png"
-                    alt="Figure 4: Bump Test Maximum Combined Stress (Direct + Max Bending: 54.8 MPa)"
-                    aspectRatioClass="aspect-[16/10] bg-slate-950"
-                    objectFitClass="object-contain"
+                <div className="space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
                     onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test max combined stress.png')}
-                  />
-                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
+                  >
+                    <ProjectImage
+                      src="images/autonomous off-road vehicle chassis fea bump test max combined stress.png"
+                      alt="Figure 4: Bump Test Maximum Combined Stress (54.8 MPa)"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                       Figure 4: Max Combined Stress (54.8 MPa)
-                    </span>
-                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
+                    </div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       Superposition of direct axial stress and maximum bending stress, resulting in a maximum combined tensile stress of 54.8 MPa.
-                    </span>
-                  </figcaption>
-                </figure>
+                    </div>
+                  </div>
+                </div>
 
-                {/* Figure 5: Minimum Combined Stress */}
-                <figure className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 overflow-hidden group flex flex-col justify-between shadow-xs">
-                  <ProjectImage
-                    src="images/autonomous off-road vehicle chassis fea bump test min combined stress.png"
-                    alt="Figure 5: Bump Test Minimum Combined Stress (Direct + Min Bending: 76.4 MPa Compressive)"
-                    aspectRatioClass="aspect-[16/10] bg-slate-950"
-                    objectFitClass="object-contain"
+                {/* Figure 5: Min Combined Stress (76.4 MPa) */}
+                <div className="space-y-2">
+                  <div
+                    className="cursor-pointer border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs"
                     onClick={() => onInspectImage('images/autonomous off-road vehicle chassis fea bump test min combined stress.png')}
-                  />
-                  <figcaption className="p-3.5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 block truncate">
-                      Figure 5: Min Combined Stress (76.4 MPa Compressive)
-                    </span>
-                    <span className="text-[11px] leading-relaxed block text-slate-600 dark:text-slate-300">
-                      Direct axial stress combined with minimum bending; largest stress magnitude overall at 76.4 MPa compressive (~6.3x margin vs 483 MPa yield).
-                    </span>
-                  </figcaption>
-                </figure>
+                  >
+                    <ProjectImage
+                      src="images/autonomous off-road vehicle chassis fea bump test min combined stress.png"
+                      alt="Figure 5: Min Combined Stress (76.4 MPa)"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
+                      Figure 5: Min Combined Stress (76.4 MPa)
+                    </div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      Direct axial stress combined with minimum bending; largest stress magnitude overall at 76.4 MPa compressive (6.3x margin vs 483 MPa yield).
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -775,7 +915,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                <span><strong>Chassis Baseline:</strong> FEA runs were executed on earlier chassis geometry (V8), rather than the finalized V11 layout.</span>
+                <span><strong>Chassis Baseline:</strong> FEA runs were executed on earlier chassis geometry (V8), rather than the final design.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
@@ -783,7 +923,7 @@ export const MqpCaseStudy: React.FC<MqpCaseStudyProps> = ({ onInspectImage }) =>
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                <span><strong>Final Re-Run Planned:</strong> A definitive FEA re-run will be conducted on the finalized V11 chassis model before tube fabrication begins.</span>
+                <span><strong>Final Re-Run Planned:</strong> A definitive FEA re-run will be conducted on the final chassis design before tube fabrication begins.</span>
               </li>
             </ul>
           </div>

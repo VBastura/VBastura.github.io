@@ -614,7 +614,7 @@ export const initialProjects: Project[] = [
     hoverDescription:
       '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
     category: 'Robotics & Mechanisms',
-    coverImage: 'images/combat-robot-v2-final.jpg',
+    coverImage: 'images/combat-robot-v2-prototype.jpg',
     year: 'October 2025 - Present',
     tools: ['SolidWorks (v1)', 'Fusion 360 (v2)', 'FDM 3D Printing', 'Custom Slicer Settings'],
     summaryStrip: {
@@ -623,57 +623,57 @@ export const initialProjects: Project[] = [
       timeline: 'October 2025 – Present',
       tools: 'SolidWorks (v1), Fusion 360 (v2), FDM 3D printing, custom slicer settings',
       myContribution:
-        'Solely responsible for weapon design on both versions, contributed to overall robot design, 3D printed the complete robot, and soldered/wired the whole electrical harness, tested components, and diagnosed problems on both versions.',
+        'I designed the weapon on both versions, contributed to the overall robot design, 3D printed the robot, and wired, tested, and troubleshot the electronics.',
     },
     objective:
-      'Plastic antweight class: 1 lb weight limit and plastic construction. Our chosen robot architecture is an undercutter spinner, spinning a blade horizontally close to the floor to hit opponent chassis and wheels. The weapon geometry was built parametrically so it could scale with the robot body.',
+      'The 1 lb plastic class requires all-plastic structure. This is an undercutter spinner: the weapon spins horizontally just above the floor to hit the opponent\'s body and wheels. It had to be parametric so it could scale with the robot body.',
     brainstorm: {
       paragraph: '',
     },
     prototypeIterations: [],
     productOutcome: {
       finalDesignAndResults:
-        'The version 2 weapon lasted the entire competition without breaking or needing replacement.',
+        'The v2 weapon lasted the entire competition without breaking or needing replacement.',
       mediaUrl: 'images/combat-robot-v2-final.jpg',
-      mediaCaption: 'Version 2 final competition build.',
+      mediaCaption: 'Version 2 final: lasted every match.',
     },
     whatILearned:
       'I can work through real versions: evaluating what failed, proposing a fix, and iterating. I am comfortable with 3D printing and pushing it to get more out of the process.',
     photos: [
       {
         src: 'images/combat-robot-v1-final.jpg',
-        alt: 'Combat Robot V1 Final Build',
-        caption: 'Version 1 final robot with initial symmetric PETG disk weapon before match testing.',
+        alt: 'Version 1 final: symmetric two-tooth PETG disk.',
+        caption: 'Version 1 final: symmetric two-tooth PETG disk.',
         filename: 'combat-robot-v1-final.jpg',
       },
       {
         src: 'images/combat-robot-v2-prototype.jpg',
-        alt: 'Combat Robot V2 Prototype',
-        caption: 'Version 2 prototype with single-tooth asymmetric spinner during bench fit checks.',
+        alt: 'Version 2 prototype: asymmetric single-tooth weapon.',
+        caption: 'Version 2 prototype: asymmetric single-tooth weapon.',
         filename: 'combat-robot-v2-prototype.jpg',
       },
       {
         src: 'images/combat-robot-v2-final.jpg',
-        alt: 'Combat Robot V2 Final Competition Build',
-        caption: 'Version 2 final robot that lasted through competition without breaking.',
+        alt: 'Version 2 final: lasted every match.',
+        caption: 'Version 2 final: lasted every match.',
         filename: 'combat-robot-v2-final.jpg',
       },
       {
         src: 'images/combat-robot-v1-weapon-cad.png',
         alt: 'V1 Weapon CAD Model',
-        caption: 'CAD of the v1 two-tooth symmetric disk weapon with internal relief pockets.',
+        caption: 'CAD of the v1 weapon.',
         filename: 'combat-robot-v1-weapon-cad.png',
       },
       {
         src: 'images/combat-robot-v2-weapon-cad.png',
         alt: 'V2 Weapon CAD Model',
-        caption: 'CAD of the v2 asymmetric single-tooth weapon with counterweighted hub.',
+        caption: 'CAD of the v2 weapon.',
         filename: 'combat-robot-v2-weapon-cad.png',
       },
       {
         src: 'images/combat-robot-layer-gaps.png',
-        alt: 'Layer-Gap Cross-Section Illustration',
-        caption: 'Illustration of the line-width and stagger principle, not an exact-scale drawing.',
+        alt: 'Illustration of the line-width and stagger principle, not to exact scale.',
+        caption: 'Illustration of the line-width and stagger principle, not to exact scale.',
         filename: 'combat-robot-layer-gaps.png',
       },
     ],

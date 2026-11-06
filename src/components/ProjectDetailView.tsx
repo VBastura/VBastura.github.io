@@ -142,8 +142,16 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <ProjectImage
               src={project.coverImage}
               alt={project.title}
-              aspectRatioClass="aspect-[16/9] w-full max-h-[560px]"
-              objectFitClass="object-cover"
+              aspectRatioClass={
+                isCombatRobot
+                  ? "aspect-[16/10] sm:aspect-[3/2] w-full max-h-[580px]"
+                  : "aspect-[16/9] w-full max-h-[560px]"
+              }
+              objectFitClass={
+                isCombatRobot
+                  ? "object-cover object-[center_62%]"
+                  : "object-cover"
+              }
               onClick={() => setLightboxImage(project.coverImage)}
             />
             <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-slate-950/80 hover:bg-slate-950 text-white rounded-lg text-xs font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors shadow-lg pointer-events-none opacity-0 group-hover:opacity-100">

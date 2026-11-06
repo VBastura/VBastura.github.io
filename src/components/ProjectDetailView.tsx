@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Project, ViewRoute } from '../types';
 import { ProjectImage } from './ProjectImage';
 import { MqpCaseStudy } from './MqpCaseStudy';
+import { CombatRobotCaseStudy } from './CombatRobotCaseStudy';
 import {
   ArrowLeft,
   ArrowRight,
@@ -40,6 +41,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   const [versionLogOpen, setVersionLogOpen] = useState(false);
 
   const isMqp = project.id === 'autonomous-offroad-chassis';
+  const isCombatRobot = project.id === 'plastic-combat-robot';
 
   const projectPhotos = project.photos && project.photos.length > 0
     ? project.photos
@@ -249,6 +251,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
         <div className="space-y-14 animate-in fade-in duration-200">
           {isMqp ? (
             <MqpCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
+          ) : isCombatRobot ? (
+            <CombatRobotCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
           ) : (
             <>
               {/* 1. OBJECTIVE */}

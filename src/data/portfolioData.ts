@@ -606,91 +606,79 @@ export const initialProjects: Project[] = [
   {
     id: 'plastic-combat-robot',
     title: '1-Pound Plastic Combat Robot',
-    statusBadge: 'Ongoing. Two versions built and competed with; new versions follow each competition. Built for my combat robotics club.',
+    statusBadge: 'Two versions competed, next version planned',
     oneLineOutcome:
-      '1 lb plastic combat robot for my combat robotics club. I led weapon design and fabrication; the version 2 weapon lasted a full competition without breaking.',
+      '1 lb plastic combat robot for my combat robotics club; I designed the weapon and fabricated the robot; the version 2 weapon lasted the full competition without breaking.',
     cardShortDescription:
-      '1 lb plastic combat robot for my combat robotics club. Led weapon design and fabrication; version 2 lasted a full competition without breaking.',
+      '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
     hoverDescription:
-      '1 lb plastic combat robot for my combat robotics club. Led weapon design and fabrication; the version 2 weapon lasted a full competition without breaking.',
+      '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
     category: 'Robotics & Mechanisms',
-    coverImage: 'images/combat robot version 2 prototype.jpg',
+    coverImage: 'images/combat-robot-v2-final.jpg',
     year: 'October 2025 - Present',
     tools: ['SolidWorks (v1)', 'Fusion 360 (v2)', 'FDM 3D Printing', 'Custom Slicer Settings'],
     summaryStrip: {
-      role: 'Lead Weapon Designer & Fabricator (3D printing and electronics)',
-      teamSize: 'v1 team of 3, v2 team of 4',
+      role: 'Weapon design, 3D-printed fabrication, and electronics',
+      teamSize: '3 people for v1, 4 for v2',
       timeline: 'October 2025 – Present',
       tools: 'SolidWorks (v1), Fusion 360 (v2), FDM 3D printing, custom slicer settings',
       myContribution:
-        'Led weapon design and fabrication across two iterations, redesigning the weapon from a symmetric blade to an asymmetric single-tooth spinner with custom slicer tuning.',
+        'Solely responsible for weapon design on both versions, contributed to overall robot design, 3D printed the complete robot, and soldered/wired the whole electrical harness, tested components, and diagnosed problems on both versions.',
     },
     objective:
-      'Plastic antweight class: 1 lb limit, plastic construction. The weapon takes the highest impact loads, so my focus was designing and 3D printing a weapon that survives heavy impacts without breaking. Our robot is a plastic undercutter-style combat robot.',
+      'Plastic antweight class: 1 lb weight limit and plastic construction. Our chosen robot architecture is an undercutter spinner, spinning a blade horizontally close to the floor to hit opponent chassis and wheels. The weapon geometry was built parametrically so it could scale with the robot body.',
     brainstorm: {
       paragraph: '',
     },
-    prototypeIterations: [
-      {
-        version: 'v1',
-        title: 'Symmetric Weapon Blade (SolidWorks)',
-        whatWasBuilt:
-          'In v1, I modeled a symmetric two-tooth spinning blade in SolidWorks and 3D printed the weapon with standard print settings.',
-        whatFailedOrUnderperformed:
-          'During competition, the symmetric weapon broke on impact near the central hub.',
-        whatChangedAndResult:
-          'For the next version, I redesigned the weapon to be an asymmetric single-tooth spinner and overhauled the 3D printing process with high infill and higher extrusion temperatures so the plastic weapon could take hard hits without shattering.',
-        decisions: [
-          'Modeled initial symmetric blade in SolidWorks',
-          'Standard infill settings cracked under competition impact',
-        ],
-        image: 'images/combat robot version 1 final.jpg',
-        imageCaption:
-          'Version 1 combat robot with initial symmetric weapon blade before competition.',
-      },
-      {
-        version: 'v2',
-        title: 'Asymmetric Single-Tooth Weapon (Fusion 360)',
-        whatWasBuilt:
-          'In v2, I modeled a counterweighted asymmetric single-tooth spinner in Fusion 360 and printed it with 100% infill and optimized temperature settings.',
-        whatFailedOrUnderperformed:
-          'V1 had broken under match impact, requiring higher impact strength and better layer adhesion.',
-        whatChangedAndResult:
-          'The single-tooth profile concentrated impact into a durable geometry. In competition, the printed weapon absorbed heavy collisions without cracking.',
-        decisions: [
-          'Modeled asymmetric single-tooth weapon with counterweight in Fusion 360',
-          'Tuned slicer for 100% infill and higher extrusion temperature for strong layer adhesion',
-        ],
-        image: 'images/combat robot version 2 prototype.jpg',
-        imageCaption:
-          'Version 2 combat robot with redesigned asymmetric single-tooth spinner.',
-      },
-    ],
+    prototypeIterations: [],
     productOutcome: {
       finalDesignAndResults:
-        'In tournament competition, the redesigned version 2 weapon survived the entire event without breaking or needing replacement. Iterating from the v1 failure into an asymmetric single-tooth design and tuning print settings produced a durable, impact-resistant weapon system.',
-      mediaUrl: 'images/combat robot version 2 prototype.jpg',
-      mediaCaption:
-        'Version 2 combat robot with asymmetric single-tooth spinner ready for competition.',
+        'The version 2 weapon lasted the entire competition without breaking or needing replacement.',
+      mediaUrl: 'images/combat-robot-v2-final.jpg',
+      mediaCaption: 'Version 2 final competition build.',
     },
     whatILearned:
-      'I learned how critical print settings—especially print temperature, orientation, and solid infill—are for impact strength in 3D-printed functional parts, and how switching from a symmetric to an asymmetric weapon geometry significantly increases durability under repeated impacts.',
+      'I can work through real versions: evaluating what failed, proposing a fix, and iterating. I am comfortable with 3D printing and pushing it to get more out of the process.',
     photos: [
       {
-        src: 'images/combat robot version 1 final.jpg',
-        alt: 'Combat Robot Version 1 Final',
-        caption: 'Version 1 antweight combat robot with initial symmetric weapon blade before competition',
-        filename: 'combat robot version 1 final.jpg',
+        src: 'images/combat-robot-v1-final.jpg',
+        alt: 'Combat Robot V1 Final Build',
+        caption: 'Version 1 final robot with initial symmetric PETG disk weapon before match testing.',
+        filename: 'combat-robot-v1-final.jpg',
       },
       {
-        src: 'images/combat robot version 2 prototype.jpg',
-        alt: 'Combat Robot Version 2 Prototype',
-        caption: 'Version 2 antweight combat robot with redesigned asymmetric single-tooth spinner',
-        filename: 'combat robot version 2 prototype.jpg',
+        src: 'images/combat-robot-v2-prototype.jpg',
+        alt: 'Combat Robot V2 Prototype',
+        caption: 'Version 2 prototype with single-tooth asymmetric spinner during bench fit checks.',
+        filename: 'combat-robot-v2-prototype.jpg',
+      },
+      {
+        src: 'images/combat-robot-v2-final.jpg',
+        alt: 'Combat Robot V2 Final Competition Build',
+        caption: 'Version 2 final robot that lasted through competition without breaking.',
+        filename: 'combat-robot-v2-final.jpg',
+      },
+      {
+        src: 'images/combat-robot-v1-weapon-cad.png',
+        alt: 'V1 Weapon CAD Model',
+        caption: 'CAD of the v1 two-tooth symmetric disk weapon with internal relief pockets.',
+        filename: 'combat-robot-v1-weapon-cad.png',
+      },
+      {
+        src: 'images/combat-robot-v2-weapon-cad.png',
+        alt: 'V2 Weapon CAD Model',
+        caption: 'CAD of the v2 asymmetric single-tooth weapon with counterweighted hub.',
+        filename: 'combat-robot-v2-weapon-cad.png',
+      },
+      {
+        src: 'images/combat-robot-layer-gaps.png',
+        alt: 'Layer-Gap Cross-Section Illustration',
+        caption: 'Illustration of the line-width and stagger principle, not an exact-scale drawing.',
+        filename: 'combat-robot-layer-gaps.png',
       },
     ],
     tagline: 'Plastic undercutter combat robot: weapon design, custom slicer tuning, and impact-resistant 3D printing',
     shortDescription:
-      '1 lb plastic combat robot for my combat robotics club. Led weapon design and fabrication across two versions, iterating to an asymmetric spinner that lasted a full competition.',
+      '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
   },
 ];

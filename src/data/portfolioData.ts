@@ -617,18 +617,17 @@ export const initialProjects: Project[] = [
     coverImage: 'images/combat-robot-v2-prototype.jpg',
     year: 'October 2025 - Present',
     tools: [
-      'SolidWorks (v1)',
-      'Fusion 360 (v2)',
+      'SolidWorks',
+      'Fusion 360',
       'FDM 3D Printing',
-      'Custom Slicer Settings',
-      'Electronics (Soldering, Wiring, Testing)',
+      'Slicer Tuning',
+      'Electronics',
     ],
     summaryStrip: {
       role: 'Weapon design and overall design input, 3D-printed fabrication, electronics wiring and troubleshooting',
       teamSize: '3 people for v1, 4 for v2',
       timeline: 'October 2025 – Present',
-      tools:
-        'SolidWorks (v1), Fusion 360 (v2), FDM 3D printing, custom slicer settings, electronics (soldering, wiring, testing)',
+      tools: 'SolidWorks, Fusion 360, FDM 3D printing, slicer tuning, electronics',
       myContribution:
         'Weapon design and overall design input, 3D-printed fabrication, electronics wiring and troubleshooting.',
     },

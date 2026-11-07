@@ -281,9 +281,9 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           </ul>
 
           {/* Inline Layer-Gap Cross-Section Figure */}
-          <div className="pt-3 space-y-2">
+          <div className="pt-3 space-y-2 w-full">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white dark:bg-slate-950 p-2 cursor-pointer max-w-2xl mx-auto shadow-xs"
+              className="w-full border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white dark:bg-slate-950 cursor-pointer shadow-xs"
               onClick={() => onInspectImage('images/combat-robot-layer-gaps.png')}
             >
               <ProjectImage
@@ -292,7 +292,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
                 hideCaptionInPlaceholder={true}
               />
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center max-w-xl mx-auto">
+            <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center">
               Illustration of the line-width and stagger principle, not to exact scale.
             </p>
           </div>

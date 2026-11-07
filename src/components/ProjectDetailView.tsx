@@ -205,7 +205,11 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Tools
             </div>
-            <div className="text-xs font-mono font-medium text-slate-800 dark:text-slate-200 line-clamp-3">
+            <div
+              className={`text-xs font-mono font-medium text-slate-800 dark:text-slate-200 leading-relaxed ${
+                isCombatRobot ? '' : 'line-clamp-3'
+              }`}
+            >
               {project.summaryStrip.tools}
             </div>
           </div>

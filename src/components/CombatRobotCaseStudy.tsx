@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ProjectImage } from './ProjectImage';
 import {
-  Wrench,
   CheckCircle2,
   ChevronDown,
   ChevronUp,
@@ -16,19 +15,6 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
 
   return (
     <div className="space-y-10 animate-in fade-in duration-200">
-      {/* =========================================================================
-          MY ROLE SUMMARY
-          ========================================================================= */}
-      <section className="p-5 sm:p-6 rounded-2xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/20 shadow-xs space-y-2">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold">
-          <Wrench className="w-4 h-4" />
-          <span>My Role</span>
-        </div>
-        <p className="text-base sm:text-lg text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-          I designed the weapon on both versions, contributed to the overall robot design, 3D printed the robot, and wired, tested, and troubleshot the electronics.
-        </p>
-      </section>
-
       {/* =========================================================================
           ROBOT PHOTO PROGRESSION
           ========================================================================= */}
@@ -81,6 +67,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
               <ProjectImage
                 src="images/combat-robot-v2-final.jpg"
                 alt="Version 2 final: lasted every match."
+                hideCaptionInPlaceholder={true}
               />
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
@@ -149,7 +136,10 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
             </ul>
           </div>
 
-          <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80">
+          <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 space-y-1.5">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
+              Electronics
+            </h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               I diagnosed and resolved an incorrect battery connector, a faulty switch, and a defective brushed drive motor.
             </p>
@@ -172,7 +162,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           <span>03. VERSION 2 (FUSION 360 & SUPER PLA+)</span>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Asymmetric Single-Tooth Redesign & High-Density FDM Tuning
+          Asymmetric Single-Tooth Redesign and Print Tuning
         </h2>
 
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 space-y-6 shadow-xs">
@@ -236,6 +226,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
                     <ProjectImage
                       src="images/combat-robot-v1-weapon-cad.png"
                       alt="CAD Model of V1 Symmetric Disk Weapon"
+                      hideCaptionInPlaceholder={true}
                     />
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400 italic">
@@ -251,6 +242,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
                     <ProjectImage
                       src="images/combat-robot-v2-weapon-cad.png"
                       alt="CAD Model of V2 Asymmetric Single-Tooth Weapon"
+                      hideCaptionInPlaceholder={true}
                     />
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400 italic">
@@ -297,6 +289,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
               <ProjectImage
                 src="images/combat-robot-layer-gaps.png"
                 alt="Illustration of the line-width and stagger principle, not to exact scale."
+                hideCaptionInPlaceholder={true}
               />
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center max-w-xl mx-auto">

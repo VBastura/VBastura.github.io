@@ -9,6 +9,7 @@ interface ProjectImageProps {
   objectFitClass?: string;
   children?: React.ReactNode;
   onClick?: () => void;
+  hideCaptionInPlaceholder?: boolean;
 }
 
 export const ProjectImage: React.FC<ProjectImageProps> = ({
@@ -19,6 +20,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
   objectFitClass = 'object-contain',
   children,
   onClick,
+  hideCaptionInPlaceholder = false,
 }) => {
   const [currentSrc, setCurrentSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
@@ -78,7 +80,9 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
           <div className="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-500 mb-2">
             <ImageIcon className="w-4 h-4 text-blue-500 dark:text-blue-400" />
           </div>
-          <span className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 line-clamp-1 mb-1">{alt}</span>
+          {!hideCaptionInPlaceholder && (
+            <span className="text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 line-clamp-1 mb-1">{alt}</span>
+          )}
           <span className="text-[10px] font-mono text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-950 px-2 py-0.5 rounded border border-slate-300 dark:border-slate-800 truncate max-w-full">
             {src || 'images/<filename>'}
           </span>

@@ -616,14 +616,21 @@ export const initialProjects: Project[] = [
     category: 'Robotics & Mechanisms',
     coverImage: 'images/combat-robot-v2-prototype.jpg',
     year: 'October 2025 - Present',
-    tools: ['SolidWorks (v1)', 'Fusion 360 (v2)', 'FDM 3D Printing', 'Custom Slicer Settings'],
+    tools: [
+      'SolidWorks (v1)',
+      'Fusion 360 (v2)',
+      'FDM 3D Printing',
+      'Custom Slicer Settings',
+      'Electronics (Soldering, Wiring, Testing)',
+    ],
     summaryStrip: {
-      role: 'Weapon design, 3D-printed fabrication, and electronics',
+      role: 'Weapon design and overall design input, 3D-printed fabrication, electronics wiring and troubleshooting',
       teamSize: '3 people for v1, 4 for v2',
       timeline: 'October 2025 – Present',
-      tools: 'SolidWorks (v1), Fusion 360 (v2), FDM 3D printing, custom slicer settings',
+      tools:
+        'SolidWorks (v1), Fusion 360 (v2), FDM 3D printing, custom slicer settings, electronics (soldering, wiring, testing)',
       myContribution:
-        'I designed the weapon on both versions, contributed to the overall robot design, 3D printed the robot, and wired, tested, and troubleshot the electronics.',
+        'Weapon design and overall design input, 3D-printed fabrication, electronics wiring and troubleshooting.',
     },
     objective:
       'The 1 lb plastic class requires all-plastic structure. This is an undercutter spinner: the weapon spins horizontally just above the floor to hit the opponent\'s body and wheels. It had to be parametric so it could scale with the robot body.',

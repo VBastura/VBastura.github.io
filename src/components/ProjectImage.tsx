@@ -7,6 +7,7 @@ interface ProjectImageProps {
   className?: string;
   aspectRatioClass?: string;
   objectFitClass?: string;
+  objectPosition?: string;
   children?: React.ReactNode;
   onClick?: () => void;
   hideCaptionInPlaceholder?: boolean;
@@ -18,6 +19,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
   className = '',
   aspectRatioClass = '',
   objectFitClass = 'object-contain',
+  objectPosition,
   children,
   onClick,
   hideCaptionInPlaceholder = false,
@@ -60,6 +62,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
             src={currentSrc}
             alt={alt}
             loading="lazy"
+            style={objectPosition ? { objectPosition } : undefined}
             className={
               hasFixedAspect
                 ? `w-full h-full ${objectFitClass} transition-transform duration-500 group-hover:scale-105`

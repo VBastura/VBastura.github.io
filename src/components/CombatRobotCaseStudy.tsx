@@ -29,14 +29,15 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           {/* V1 Final */}
           <div className="space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
+              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer aspect-square w-full"
               onClick={() => onInspectImage('images/combat-robot-v1-final.jpg')}
             >
               <ProjectImage
                 src="images/combat-robot-v1-final.jpg"
                 alt="Version 1 final: symmetric two-tooth PETG disk."
-                aspectRatioClass="aspect-[4/3] w-full"
-                objectFitClass="object-contain"
+                aspectRatioClass="aspect-square w-full"
+                objectFitClass="object-cover"
+                objectPosition="center 50%"
               />
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
@@ -47,14 +48,15 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           {/* V2 Prototype */}
           <div className="space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
+              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer aspect-square w-full"
               onClick={() => onInspectImage('images/combat-robot-v2-prototype.jpg')}
             >
               <ProjectImage
                 src="images/combat-robot-v2-prototype.jpg"
                 alt="Version 2 prototype: asymmetric single-tooth weapon."
-                aspectRatioClass="aspect-[4/3] w-full"
-                objectFitClass="object-contain"
+                aspectRatioClass="aspect-square w-full"
+                objectFitClass="object-cover"
+                objectPosition="center 60%"
               />
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
@@ -65,14 +67,15 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           {/* V2 Final */}
           <div className="space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
+              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer aspect-square w-full"
               onClick={() => onInspectImage('images/combat-robot-v2-final.jpg')}
             >
               <ProjectImage
                 src="images/combat-robot-v2-final.jpg"
                 alt="Version 2 final."
-                aspectRatioClass="aspect-[4/3] w-full"
-                objectFitClass="object-contain"
+                aspectRatioClass="aspect-square w-full"
+                objectFitClass="object-cover"
+                objectPosition="70% center"
                 hideCaptionInPlaceholder={true}
               />
             </div>

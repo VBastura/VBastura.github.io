@@ -606,15 +606,15 @@ export const initialProjects: Project[] = [
   {
     id: 'plastic-combat-robot',
     title: '1-Pound Plastic Combat Robot',
-    statusBadge: 'Two versions competed, next version planned',
+    statusBadge: 'Two versions completed, next version planned',
     oneLineOutcome:
-      '1 lb plastic combat robot for my combat robotics club; I designed the weapon and fabricated the robot; the version 2 weapon lasted the full competition without breaking.',
+      'A 3D-printed 1 lb undercutter combat robot for my combat robotics club, with a spinning weapon redesigned between competitions.',
     cardShortDescription:
       '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
     hoverDescription:
       '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
     category: 'Robotics & Mechanisms',
-    coverImage: 'images/combat-robot-v2-prototype.jpg',
+    coverImage: 'images/combat-robot-v2-final.jpg',
     year: 'October 2025 - Present',
     tools: [
       'SolidWorks',
@@ -632,16 +632,16 @@ export const initialProjects: Project[] = [
         'Weapon design and overall design input, 3D-printed fabrication, electronics wiring and troubleshooting.',
     },
     objective:
-      'The 1 lb plastic class requires all-plastic structure. This is an undercutter spinner: the weapon spins horizontally just above the floor to hit the opponent\'s body and wheels. It had to be parametric so it could scale with the robot body.',
+      "This robot competes in the 1 lb plastic class, which requires a plastic structure. It is an undercutter spinner: its weapon spins flat, just above the floor, to strike the opponent's body and wheels.",
     brainstorm: {
       paragraph: '',
     },
     prototypeIterations: [],
     productOutcome: {
       finalDesignAndResults:
-        'The v2 weapon lasted the entire competition without breaking or needing replacement.',
+        'The v2 weapon lasted every match of the competition without breaking.',
       mediaUrl: 'images/combat-robot-v2-final.jpg',
-      mediaCaption: 'Version 2 final: lasted every match.',
+      mediaCaption: 'Version 2 final.',
     },
     whatILearned:
       'I can work through real versions: evaluating what failed, proposing a fix, and iterating. I am comfortable with 3D printing and pushing it to get more out of the process.',
@@ -660,8 +660,8 @@ export const initialProjects: Project[] = [
       },
       {
         src: 'images/combat-robot-v2-final.jpg',
-        alt: 'Version 2 final: lasted every match.',
-        caption: 'Version 2 final: lasted every match.',
+        alt: 'Version 2 final.',
+        caption: 'Version 2 final.',
         filename: 'combat-robot-v2-final.jpg',
       },
       {

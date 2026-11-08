@@ -29,12 +29,14 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           {/* V1 Final */}
           <div className="space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs cursor-pointer"
+              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
               onClick={() => onInspectImage('images/combat-robot-v1-final.jpg')}
             >
               <ProjectImage
                 src="images/combat-robot-v1-final.jpg"
                 alt="Version 1 final: symmetric two-tooth PETG disk."
+                aspectRatioClass="aspect-[4/3] w-full"
+                objectFitClass="object-contain"
               />
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
@@ -45,12 +47,14 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           {/* V2 Prototype */}
           <div className="space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs cursor-pointer"
+              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
               onClick={() => onInspectImage('images/combat-robot-v2-prototype.jpg')}
             >
               <ProjectImage
                 src="images/combat-robot-v2-prototype.jpg"
                 alt="Version 2 prototype: asymmetric single-tooth weapon."
+                aspectRatioClass="aspect-[4/3] w-full"
+                objectFitClass="object-contain"
               />
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
@@ -61,17 +65,19 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           {/* V2 Final */}
           <div className="space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-white dark:bg-slate-950 shadow-xs cursor-pointer"
+              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
               onClick={() => onInspectImage('images/combat-robot-v2-final.jpg')}
             >
               <ProjectImage
                 src="images/combat-robot-v2-final.jpg"
-                alt="Version 2 final: lasted every match."
+                alt="Version 2 final."
+                aspectRatioClass="aspect-[4/3] w-full"
+                objectFitClass="object-contain"
                 hideCaptionInPlaceholder={true}
               />
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-              Version 2 final: lasted every match.
+              Version 2 final.
             </p>
           </div>
         </div>
@@ -90,7 +96,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
 
         <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-            The 1 lb plastic class requires all-plastic structure. This is an undercutter spinner: the weapon spins horizontally just above the floor to hit the opponent's body and wheels. It had to be parametric so it could scale with the robot body.
+            This robot competes in the 1 lb plastic class, which requires a plastic structure. It is an undercutter spinner: its weapon spins flat, just above the floor, to strike the opponent's body and wheels.
           </p>
         </div>
       </section>
@@ -108,7 +114,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
 
         <div className="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-5">
           <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            Two-tooth symmetric disk, modeled in SolidWorks, prototyped in PLA and printed in PETG for competition. To meet the weight budget, two weight-relief pockets near the center were printed at roughly 60% infill instead of solid walls.
+            Two-tooth symmetric disk, modeled in SolidWorks, prototyped in PLA and printed in PETG for competition. Combat robot weapons are normally printed with solid walls throughout. To meet the weight budget, I instead printed two weight-relief pockets near the center at roughly 60% infill.
           </p>
 
           <div className="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/60 space-y-1.5">
@@ -174,10 +180,10 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
           {/* Bite box (neutral heading) */}
           <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
             <div className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold">
-              Weapon Bite & Tooth Geometry
+              Weapon bite
             </div>
             <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-              Bite is how much of the opponent a weapon takes on each hit. One tooth hits half as often as two, so each hit can take a bigger bite. I also set 10° of rake and 3° of relief on the tooth.
+              Bite is how deep a weapon cuts into the opponent on each hit. With one tooth, a full revolution passes between hits, so the robot has driven further into the opponent by the next hit and the tooth goes deeper.
             </p>
           </div>
 
@@ -209,7 +215,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
               className="w-full flex items-center justify-between p-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 text-left transition-colors cursor-pointer border border-slate-200 dark:border-slate-700/60"
             >
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-                View CAD Models: V1 Symmetric Disk vs. V2 Asymmetric Bar
+                View CAD models: v1 symmetric disk vs. v2 asymmetric tooth
               </span>
               <span className="text-xs font-mono text-blue-600 dark:text-blue-400 flex items-center gap-1">
                 {v1CadOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -261,7 +267,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
               Print Settings
             </div>
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-              I chose Super PLA+ for strength that is easier to print than PETG. The slicer settings aim for a near-solid part:
+              For v2 I switched to Super PLA+. It is strong and easier to print than PETG. The slicer settings aim for a near-solid part:
             </p>
           </div>
 
@@ -305,7 +311,7 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
             <span>Outcome</span>
           </div>
           <p className="text-base sm:text-lg text-slate-900 dark:text-white font-medium leading-relaxed">
-            The v2 weapon lasted the entire competition without breaking or needing replacement.
+            The v2 weapon lasted every match of the competition without breaking.
           </p>
         </div>
       </section>

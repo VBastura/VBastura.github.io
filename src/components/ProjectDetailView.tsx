@@ -3,6 +3,7 @@ import { Project, ViewRoute } from '../types';
 import { ProjectImage } from './ProjectImage';
 import { MqpCaseStudy } from './MqpCaseStudy';
 import { CombatRobotCaseStudy } from './CombatRobotCaseStudy';
+import { MidiMusicBoxCaseStudy } from './MidiMusicBoxCaseStudy';
 import {
   ArrowLeft,
   ArrowRight,
@@ -42,6 +43,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
   const isMqp = project.id === 'autonomous-offroad-chassis';
   const isCombatRobot = project.id === 'plastic-combat-robot';
+  const isMidiMusicBox = project.id === 'midi-music-box';
 
   const projectPhotos = project.photos && project.photos.length > 0
     ? project.photos
@@ -138,18 +140,28 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             />
           </div>
         ) : (
-          <div className="relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer group bg-slate-950">
+          <div
+            className={`relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer group ${
+              isMidiMusicBox
+                ? 'bg-slate-50 dark:bg-slate-900/60 max-w-2xl mx-auto'
+                : 'bg-slate-950'
+            }`}
+          >
             <ProjectImage
               src={project.coverImage}
               alt={project.title}
               aspectRatioClass={
                 isCombatRobot
                   ? "aspect-[16/10] sm:aspect-[3/2] w-full max-h-[580px]"
+                  : isMidiMusicBox
+                  ? ""
                   : "aspect-[16/9] w-full max-h-[560px]"
               }
               objectFitClass={
                 isCombatRobot
                   ? "object-cover object-[center_62%]"
+                  : isMidiMusicBox
+                  ? "w-full h-auto block"
                   : "object-cover"
               }
               onClick={() => setLightboxImage(project.coverImage)}
@@ -207,7 +219,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             </div>
             <div
               className={`text-xs font-mono font-medium text-slate-800 dark:text-slate-200 leading-relaxed ${
-                isCombatRobot ? '' : 'line-clamp-3'
+                isCombatRobot || isMidiMusicBox ? '' : 'line-clamp-3'
               }`}
             >
               {project.summaryStrip.tools}
@@ -218,43 +230,46 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
       {/* =========================================================================
           TAB NAVIGATION: Case Study Breakdown vs Project Photos
+          (Hidden for projects with a single Case Study Breakdown view)
           ========================================================================= */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-px">
-        <div className="flex gap-4 sm:gap-8">
-          <button
-            onClick={() => setActiveTab('case-study')}
-            className={`pb-3 text-sm font-mono flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
-              activeTab === 'case-study'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 font-bold'
-                : 'border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium'
-            }`}
-          >
-            <FileText className="w-4 h-4" />
-            <span>Case Study Breakdown</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('photos')}
-            className={`pb-3 text-sm font-mono flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
-              activeTab === 'photos'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 font-bold'
-                : 'border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium'
-            }`}
-          >
-            <Camera className="w-4 h-4" />
-            <span>Project Photos</span>
-            <span
-              className={`px-2 py-0.5 rounded-full text-[10px] font-mono transition-colors ${
-                activeTab === 'photos'
-                  ? 'bg-blue-600 text-white dark:bg-blue-500 font-bold'
-                  : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold'
+      {!isMidiMusicBox && (
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-px">
+          <div className="flex gap-4 sm:gap-8">
+            <button
+              onClick={() => setActiveTab('case-study')}
+              className={`pb-3 text-sm font-mono flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
+                activeTab === 'case-study'
+                  ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 font-bold'
+                  : 'border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium'
               }`}
             >
-              {projectPhotos.length}
-            </span>
-          </button>
+              <FileText className="w-4 h-4" />
+              <span>Case Study Breakdown</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('photos')}
+              className={`pb-3 text-sm font-mono flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
+                activeTab === 'photos'
+                  ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 font-bold'
+                  : 'border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium'
+              }`}
+            >
+              <Camera className="w-4 h-4" />
+              <span>Project Photos</span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-[10px] font-mono transition-colors ${
+                  activeTab === 'photos'
+                    ? 'bg-blue-600 text-white dark:bg-blue-500 font-bold'
+                    : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold'
+                }`}
+              >
+                {projectPhotos.length}
+              </span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* =========================================================================
           TAB 1: CASE STUDY BREAKDOWN (Narrative Structure: 1, 2, 3, 4, 5)
@@ -265,6 +280,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <MqpCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
           ) : isCombatRobot ? (
             <CombatRobotCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
+          ) : isMidiMusicBox ? (
+            <MidiMusicBoxCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
           ) : (
             <>
               {/* 1. OBJECTIVE */}

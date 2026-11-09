@@ -384,116 +384,42 @@ export const initialProjects: Project[] = [
   {
     id: 'midi-music-box',
     title: 'MIDI Music Box',
+    statusBadge: 'COMPLETED',
     oneLineOutcome:
-      'Engineered a 20-servo electro-mechanical music box with custom 3D-printed actuators and Arduino C++ firmware that compensates for mechanical linkage compliance.',
+      'A punch-card music box converted to play MIDI input, using 20 servos with 3D-printed actuators to pluck individual tines.',
     cardShortDescription:
-      'Built an automated 20-servo music box with custom 3D-printed actuators and Arduino C++ firmware that compensates for mechanical compliance.',
+      'A punch-card music box converted to play MIDI input, using 20 servos with 3D-printed actuators to pluck individual tines.',
     hoverDescription:
-      'Collaborated on the mechanical design and electronics for a modified acoustic music box. Wired and integrated 20 micro-servos with driver boards to independently actuate individual spring-steel tines. Developed Arduino C++ code to parse MIDI input and implemented per-servo software angular offsets to eliminate mechanical assembly variations.',
+      'A punch-card music box converted to play MIDI input, using 20 servos with 3D-printed actuators to pluck individual tines.',
     category: 'Mechatronics & Embedded',
     coverImage: 'images/midi music box thumbnail.jpg',
     year: 'August 2025 - October 2025',
-    tools: ['Arduino (C++)', '3D Printing (FDM)', 'SolidWorks', '20x Micro-Servos', 'PCA9685 I2C Drivers', 'Wire Linkages'],
+    tools: ['Arduino', 'PCA9685 Servo Drivers', 'MIDI', '3D Printing'],
     summaryStrip: {
-      role: 'Mechanical Design & Firmware Contributor',
-      teamSize: '3-4 Person Collaboration',
+      role: 'All programming, electronics wiring and integration, assembly and design support',
+      teamSize: '3 people',
       timeline: 'August 2025 – October 2025',
-      tools: 'SolidWorks, FDM 3D Printing, Arduino C++, PCA9685 Drivers, Calipers, Wire Forming',
+      tools: 'Arduino, PCA9685 servo drivers, MIDI, 3D printing',
       myContribution:
-        'Co-designed 3D-printed actuator brackets, wired 20 servos to PWM driver boards, authored Arduino MIDI parsing code, and implemented software position offsets.',
+        'All programming, electronics wiring and integration, assembly and design support',
     },
     objective:
-      'The objective was to modify a mechanical 20-note acoustic music box into an automated instrument capable of playing dynamic musical files over standard MIDI. We had to fit 20 independent actuators into a compact envelope directly over the spring-steel comb without interfering with neighboring tines or damping acoustic vibration. The system needed fast, repeatable note strikes with low latency [ADD: target latency limit] within a tight student budget and limited fabrication turnaround.',
+      'A punch-card music box converted to play MIDI input, using 20 servos with 3D-printed actuators to pluck individual tines.',
     brainstorm: {
-      paragraph:
-        'We evaluated two actuation methods: miniature push-pull solenoids versus micro-servos with custom 3D-printed compliant rocker linkages. Solenoids offered rapid strike response, but they drew large current spikes, ran hot, and lacked position control—risking over-striking and snapping the delicate spring-steel tines. We selected micro-servos paired with custom 3D-printed rocker arms because their precise rotational control let us gently displace and release each tine, while staggered vertical mounting allowed all 20 actuators to fit neatly over the narrow tine spacing.',
-      image: 'images/midi music box-original music box.jpg',
-      imageCaption:
-        'Original mechanical 20-note music box comb and cylinder mechanism prior to mechatronic retrofitting.',
+      paragraph: '',
     },
-    prototypeIterations: [
-      {
-        version: 'v1',
-        title: '3D-Printed Linkages & Mechanical Compliance Challenges',
-        whatWasBuilt:
-          'In v1, we 3D printed rocker arms in PLA and attached them to the servo horns using thin steel linkage wires, mounting the assembly directly above the music box comb.',
-        whatFailedOrUnderperformed:
-          'Because of minor dimensional tolerances across 20 3D-printed brackets and elastic deflection in the thin linkage wires under tine resistance, some tines were plucked too shallowly (producing faint sound) while others pushed past the tine and jammed underneath, causing missed notes.',
-        whatChangedAndResult:
-          'Rather than endlessly re-bending linkage wires or machining custom metal linkages, I solved the hardware compliance in software: I programmed a calibration routine in Arduino C++ that stored individual start, pluck, and release angle offsets for each of the 20 servos. This software compensation eliminated missed notes completely and ensured crisp, uniform note volume across all tines.',
-        decisions: [
-          'Software Compensation: Stored individual angular calibration offsets per servo in Arduino memory.',
-          'Actuation Geometry: Staggered servo mounting levels to prevent adjacent servo horns from clashing.',
-          'Driver Architecture: Utilized PCA9685 I2C 16-channel PWM driver boards to offload pulse timing from the Arduino.',
-        ],
-        image: 'images/midi music box- modified to hold actuators.jpg',
-        imageCaption:
-          'Music box structure modified and fitted with mounting brackets to support the 20-servo actuator array.',
-        testConditions:
-          'Repeated actuation test: 50 consecutive plucks per tine to measure strike consistency and check for linkage fatigue.',
-      },
-      {
-        version: 'v2',
-        title: 'Full MIDI Parser Integration & Polyphonic Tuning',
-        whatWasBuilt:
-          'Built the final integrated unit with hardwood acoustic base, dedicated 5V 4A regulated power bus, clean ribbon wiring, and direct USB-MIDI serial communication.',
-        whatFailedOrUnderperformed:
-          'Initial MIDI parsing using standard blocking serial routines caused audible latency jitter during multi-note chords when several servos actuated at once.',
-        whatChangedAndResult:
-          'I refactored the Arduino C++ firmware to process incoming MIDI note-on and note-off events asynchronously without blocking delays, dropping total actuation latency below 18 ms and preserving tight musical timing.',
-        decisions: [
-          'Firmware: Non-blocking circular buffer MIDI parser in C++.',
-          'Power: Dedicated 5V 4A power supply to handle peak simultaneous servo currents during polyphonic chords.',
-          'Acoustics: Rigid hardwood base coupling to amplify music box comb acoustic resonance.',
-        ],
-        image: 'images/midi music box thumbnail.jpg',
-        imageCaption:
-          'Finished 20-servo MIDI music box operating under polyphonic DAW playback.',
-        testConditions:
-          'Polyphonic latency test: High-speed audio recording measuring interval between MIDI note-on transmission and physical acoustic comb attack.',
-      },
-    ],
+    prototypeIterations: [],
     productOutcome: {
       finalDesignAndResults:
-        'The completed MIDI music box achieved 100% reliable note actuation across all 20 acoustic tines with zero skipped notes during rapid polyphonic playback. Solving physical mechanical compliance through firmware offset calibration proved to be a fast, pragmatic engineering decision that kept the project on schedule.',
+        'The finished music box plays MIDI input from a keyboard in real time. Plucks are loud, clear, and timed to the incoming notes.',
       mediaUrl: 'images/midi music box thumbnail.jpg',
-      mediaCaption:
-        'Assembled MIDI music box performing acoustic melodies from digital MIDI composition software.',
-      downloadLinks: [
-        { label: 'MIDI Music Box Project Post (PDF)', url: '#', type: 'PDF' },
-      ],
+      mediaCaption: 'Finished unit playing MIDI input from a keyboard in real time.',
     },
-    whatILearned:
-      'I learned that small mechanical compliance issues can often be solved faster and more reliably through software calibration than through endless mechanical re-fabrication.',
-    photos: [
-      {
-        src: 'images/midi music box thumbnail.jpg',
-        alt: 'MIDI Music Box Thumbnail & Final Build',
-        caption: 'Modified acoustic music box with 20 micro-servo tine actuation array, driver boards, and hardwood acoustic base',
-        filename: 'midi music box thumbnail.jpg',
-      },
-      {
-        src: 'images/midi music box-original music box.jpg',
-        alt: 'Original Unmodified Music Box',
-        caption: 'Original mechanical 20-note music box comb and cylinder mechanism prior to mechatronic retrofitting',
-        filename: 'midi music box-original music box.jpg',
-      },
-      {
-        src: 'images/midi music box- modified to hold actuators.jpg',
-        alt: 'Music Box Modified to Hold Actuators',
-        caption: 'Music box structure modified to support custom mounting brackets and 20-servo actuator linkages',
-        filename: 'midi music box- modified to hold actuators.jpg',
-      },
-      {
-        src: 'images/midi music box actuator assembly.jpg',
-        alt: 'MIDI Music Box Actuator Assembly',
-        caption: 'Close-up CAD model and physical assembly of the 20 micro-servo tine strike mechanism and rocker linkages',
-        filename: 'midi music box actuator assembly.jpg',
-      },
-    ],
-    tagline: '20-servo mechatronic mechanism with Arduino C++ MIDI parsing and software deflection compensation',
+    whatILearned: '',
+    photos: [],
+    tagline: '20-servo electro-mechanical music box with Arduino MIDI control',
     shortDescription:
-      'Built an automated 20-servo music box with custom 3D-printed actuators and Arduino C++ firmware that compensates for mechanical compliance.',
+      'A punch-card music box converted to play MIDI input, using 20 servos with 3D-printed actuators to pluck individual tines.',
   },
   {
     id: 'cuenca-wildfire-perceptions',

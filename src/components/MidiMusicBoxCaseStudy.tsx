@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProjectImage } from './ProjectImage';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Maximize2 } from 'lucide-react';
 
 interface MidiMusicBoxCaseStudyProps {
   onInspectImage: (src: string) => void;
@@ -24,35 +24,49 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
 
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 space-y-6 shadow-xs">
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-            A punch-card music box plays notes by plucking tines, the tuned metal teeth that make each note, based on a punched paper strip. I helped replace that paper-strip reader with 20 servos so the notes come from MIDI input instead. Built for WPI&apos;s Making Music with Machines course.
+            A punch-card music box plays notes by plucking tines, the tuned metal teeth that make each note, based on a punched paper strip. I helped replace that paper-strip reader with 20 servos so the notes come from MIDI input instead. Built for WPI&apos;s Making Music with Machines course. We chose MIDI because it is designed to let musicians easily interact with an instrument, which was central to the design philosophy of the project and the course.
           </p>
 
-          {/* Two images side by side (stacked on mobile) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-            <div className="space-y-2">
+          {/* Two images side by side on desktop (same fixed height, auto width) and stacked on mobile */}
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <div className="w-full md:w-auto space-y-2">
               <div
-                className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
+                className="relative group w-full md:w-fit border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs cursor-pointer"
                 onClick={() => onInspectImage('images/midi music box-original music box.jpg')}
               >
-                <ProjectImage
+                <img
                   src="images/midi music box-original music box.jpg"
                   alt="Original punch-card music box before modification."
+                  loading="lazy"
+                  className="w-full h-auto md:h-[210px] lg:h-[270px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
                 />
+                <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
+                  <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
+                    <Maximize2 className="w-3 h-3" /> Full Resolution
+                  </span>
+                </div>
               </div>
               <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                 Original punch-card music box before modification.
               </p>
             </div>
 
-            <div className="space-y-2">
+            <div className="w-full md:w-auto space-y-2">
               <div
-                className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer flex items-center justify-center"
+                className="relative group w-full md:w-fit border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs cursor-pointer"
                 onClick={() => onInspectImage('images/midi music box- modified to hold actuators.jpg')}
               >
-                <ProjectImage
+                <img
                   src="images/midi music box- modified to hold actuators.jpg"
                   alt="Modified music box with 3D-printed parts fitted."
+                  loading="lazy"
+                  className="w-full h-auto md:h-[210px] lg:h-[270px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
                 />
+                <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
+                  <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
+                    <Maximize2 className="w-3 h-3" /> Full Resolution
+                  </span>
+                </div>
               </div>
               <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                 Modified music box with 3D-printed parts fitted.
@@ -152,7 +166,7 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
               DECISION
             </div>
             <p className="text-sm sm:text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-              I added an individual position offset for each servo in the Arduino code. This allowed the wires to be bent and assembled with less precision.
+              There was not enough time to source a different rod that would not bend unpredictably. As a quick solution, I added an individual position offset for each servo in the Arduino code to compensate for each wire.
             </p>
           </div>
 
@@ -181,7 +195,7 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
 
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 space-y-6 shadow-xs">
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-            The finished music box plays MIDI input from a keyboard in real time. Plucks are loud, clear, and timed to the incoming notes.
+            The finished music box plays MIDI input generated from software by plucking 20 individual tines.
           </p>
 
           <div className="space-y-2 max-w-2xl mx-auto">
@@ -191,11 +205,11 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
             >
               <ProjectImage
                 src="images/midi music box thumbnail.jpg"
-                alt="Finished unit playing MIDI input from a keyboard in real time."
+                alt="Finished MIDI music box."
               />
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-center">
-              Finished unit playing MIDI input from a keyboard in real time.
+              Finished MIDI music box.
             </p>
           </div>
 
@@ -235,7 +249,12 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
           Ideas for a future version of the project. No further work is in progress.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-xs">
+            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              A stiffer linkage material in place of the copper wire, so the linkages deform less under load.
+            </p>
+          </div>
           <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-xs">
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
               Solid wood in place of plywood for the base. Music boxes rely heavily on their resonator, so this would give a louder sound.

@@ -411,9 +411,9 @@ export const initialProjects: Project[] = [
     prototypeIterations: [],
     productOutcome: {
       finalDesignAndResults:
-        'The finished music box plays MIDI input from a keyboard in real time. Plucks are loud, clear, and timed to the incoming notes.',
+        'The finished music box plays MIDI input generated from software by plucking 20 individual tines.',
       mediaUrl: 'images/midi music box thumbnail.jpg',
-      mediaCaption: 'Finished unit playing MIDI input from a keyboard in real time.',
+      mediaCaption: 'Finished MIDI music box.',
     },
     whatILearned: '',
     photos: [],

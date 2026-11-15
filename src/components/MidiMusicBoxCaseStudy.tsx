@@ -24,7 +24,7 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
 
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 space-y-6 shadow-xs">
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-            A punch-card music box plays notes by plucking tines, the tuned metal teeth that make each note, based on a punched paper strip. I helped replace that paper-strip reader with 20 servos so the notes come from MIDI input instead. Built for WPI&apos;s Making Music with Machines course. We chose MIDI because it is designed to let musicians easily interact with an instrument, which was central to the design philosophy of the project and the course.
+            A punch-card music box plays notes by plucking tines, the tuned metal teeth that make each note, based on a punched paper strip. I helped replace that paper-strip reader with 20 servos so the notes come from MIDI input instead. Built for WPI&apos;s Making Music with Machines course. We chose MIDI because it is designed to let musicians easily interact with an instrument, which was central to the project&apos;s design.
           </p>
 
           {/* Two images side by side on desktop (same fixed height, auto width) and stacked on mobile */}
@@ -80,7 +80,7 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
               {[
                 'MIDI input',
                 'Arduino',
-                'PCA9685 driver boards',
+                'servo driver boards',
                 '20 servos',
                 '3D-printed actuators',
                 'tines',
@@ -119,7 +119,7 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
           <ul className="space-y-3">
             {[
               'Wrote all of the Arduino code: MIDI parsing and note-to-servo mapping',
-              'Wired and integrated the 20 servos with the PCA9685 servo driver boards',
+              'Wired and integrated the 20 servos with the servo driver boards and the Arduino',
               'Made sure the electronics and software worked together',
               'Helped with physical assembly and basic design',
             ].map((item, idx) => (

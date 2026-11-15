@@ -394,12 +394,12 @@ export const initialProjects: Project[] = [
     category: 'Mechatronics & Embedded',
     coverImage: 'images/midi music box thumbnail.jpg',
     year: 'August 2025 - October 2025',
-    tools: ['Arduino', 'PCA9685 Servo Drivers', 'MIDI', '3D Printing'],
+    tools: ['Arduino', 'Servo Driver Boards', 'MIDI', '3D Printing'],
     summaryStrip: {
       role: 'All programming, electronics wiring and integration, assembly and design support',
       teamSize: '3 people',
       timeline: 'August 2025 – October 2025',
-      tools: 'Arduino, PCA9685 servo drivers, MIDI, 3D printing',
+      tools: 'Arduino, servo driver boards, MIDI, 3D printing',
       myContribution:
         'All programming, electronics wiring and integration, assembly and design support',
     },

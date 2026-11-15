@@ -269,88 +269,41 @@ export const initialProjects: Project[] = [
   {
     id: 'robotic-pan-flute',
     title: 'Robotic Pan Flute Musical Machine',
+    statusBadge: 'Completed',
     oneLineOutcome:
-      'Built a mechatronic pan flute musical robot featuring a stepper-driven radial tube drum, a 2-DOF servo airflow nozzle, and MIDI control over an Arduino 3-rail power architecture.',
+      'A robot that plays a 3D-printed pan flute, using a rotating drum of tubes and one adjustable air source, controlled from music software.',
     cardShortDescription:
       'Built a robotic pan flute featuring a stepper-driven radial tube drum and a 2-DOF servo airflow nozzle controlled via MIDI.',
     hoverDescription:
       'Collaborated with a 4-person team to construct an automated pan flute. Designed a 2-DOF servo airflow mechanism that dynamically targets closed-ended acoustic tubes arranged radially on a rotating drum. Helped manage a 3-rail power architecture (5V, 12V, 24V) through a single Arduino with software calibration for each musical tone.',
     category: 'Mechatronics & Embedded',
     coverImage: 'images/robotic pan flute thumbnail.jpg',
-    year: 'August 2025 - October 2025',
+    year: 'October 2025 – December 2025',
     tools: ['SolidWorks', '3D Printing (PETG)', 'Arduino (C++)', 'NEMA Stepper Drive', 'Micro-Servos', '3-Rail Power System'],
     summaryStrip: {
-      role: 'Mechanical Design & Electronics Co-Lead',
-      teamSize: '4 Person Engineering Team',
-      timeline: 'August 2025 – October 2025',
-      tools: 'SolidWorks, 3D Printing (PETG), Arduino C++, 2GT Timing Belt, Micro-Servos, 3-Rail Power Supply',
+      role: 'Airflow adjustment mechanism design, electronics rewiring, system integration',
+      teamSize: '4 people',
+      timeline: 'October 2025 – December 2025',
+      tools: 'SolidWorks, 3D printing, Arduino, servo and stepper motors, MIDI',
       myContribution:
-        'Designed the 2-DOF dual-servo airflow nozzle assembly, helped wire and manage the 3-rail power system (5V/12V/24V), and calibrated note air angles in software.',
+        'Airflow adjustment mechanism design, electronics rewiring, system integration',
     },
     objective:
-      'Our team was challenged to build a mechatronic musical machine capable of performing acoustic pan flute music in real time from standard MIDI composition software. The system had to actuate multiple closed-ended resonant acoustic pipes using a single compact air source, moving between notes quickly and accurately within budget constraints and a strict academic deadline. Crucially, each flute tube had slight geometric variations requiring custom nozzle standoff distance and air angle to achieve clean acoustic tone.',
+      'A robot that plays a 3D-printed pan flute, using a rotating drum of tubes and one adjustable air source, controlled from music software.',
     brainstorm: {
-      paragraph:
-        'We brainstormed two primary mechanical layouts: a stationary row of pan flute tubes with individual high-speed solenoid valves for each tube, versus a rotating radial drum of pipes with a single articulate airflow nozzle. We rejected the multi-solenoid concept because buying 20+ precision valves exceeded our budget, added excessive pneumatic piping weight, and caused loud clicking that overwhelmed the delicate acoustic flute sound. We selected the rotating radial drum with a stepper motor and a 2-DOF dual-servo nozzle because it concentrated mechanical complexity into one tunable air head, drastically cut component count, and allowed software micro-adjustments for each note’s embouchure.',
-      image: 'images/pan flute robot top down view.jpg',
-      imageCaption:
-        'Top-down overview of the mechatronic assembly showing the radial tube drum, servo gimbal nozzle, and Arduino electronics.',
+      paragraph: '',
     },
-    prototypeIterations: [
-      {
-        version: 'v1',
-        title: 'Single-Servo Air Nozzle & Continuous DC Air Pump',
-        whatWasBuilt:
-          'In v1, I designed and 3D printed a single-axis pivot bracket in PLA holding a tapered brass air nozzle, actuated by a single micro-servo for horizontal angle, with an inexpensive DC diaphragm air pump.',
-        whatFailedOrUnderperformed:
-          'The single degree of freedom proved insufficient to produce clear acoustic sound. Because different flute tube lengths have unique embouchure bevels, fixed vertical height produced weak breathy hiss instead of acoustic resonance, and the air pump stalled when choked.',
-        whatChangedAndResult:
-          'I redesigned the nozzle assembly from scratch into a 2-DOF gimbal bracket driven by two Hitec micro-servos—one controlling vertical pitch angle and the other controlling horizontal attack offset. I switched from PLA to rigid PETG to prevent flex, and wrote an interactive calibration tool in Arduino code that let us sweep and store the optimal (X, Y) servo coordinates for each individual note.',
-        decisions: [
-          'Material: 3D printed PETG for the nozzle gimbal to resist heat and prevent mechanical deflection.',
-          'Degrees of Freedom: Added a second servo so the air stream could be aimed in both elevation and azimuth.',
-          'Firmware Calibration: Implemented per-note calibration arrays in Arduino EEPROM to store exact resonance angles.',
-        ],
-        image: 'images/pan flute robot software interface.png',
-        imageCaption:
-          'Interactive software calibration interface in Arduino C++ allowing sweep, measurement, and storage of optimal (X, Y) servo resonance coordinates for each musical note.',
-        testConditions:
-          'Acoustic resonance bench test: Microphone frequency sweep measuring fundamental tone decibels across pitch angles from 15° to 45° off tube rim plane.',
-      },
-      {
-        version: 'v2',
-        title: 'Three-Rail Power Integration & MIDI Firmware Architecture',
-        whatWasBuilt:
-          'Integrated the 24-tube radial drum, NEMA 17 stepper drive with 2GT belt reduction, and a three-rail electrical architecture (5V logic, 12V servo bus, 24V stepper motor) controlled by an Arduino Mega with a custom shield.',
-        whatFailedOrUnderperformed:
-          'During rapid musical sequences, high inductive current surges from the 24V stepper motor caused electrical noise that fed back into the 5V logic rail, triggering spontaneous Arduino resets and servo twitching.',
-        whatChangedAndResult:
-          'I helped rewire the power distribution into a dedicated star-ground configuration, placed 1000µF electrolytic decoupling capacitors across each power rail, and isolated the MIDI optocoupler signals. The machine ran smoothly without resets, tracking fast musical tempos reliably.',
-        decisions: [
-          'Power: Isolated 3-rail power architecture (5V Arduino, 12V servos, 24V stepper) with star grounding.',
-          'Motion Control: Trapezoidal acceleration profiles in stepper firmware to prevent tube drum vibration.',
-          'Interface: Opto-isolated MIDI input socket allowing plug-and-play control from DAW software.',
-        ],
-        image: 'images/pan flute robot electric wiring diagram.png',
-        imageCaption:
-          'Three-rail electrical wiring schematic isolating 5V Arduino logic, 12V servo power, and 24V stepper motor rails with common star grounding.',
-        testConditions:
-          'Polyphonic MIDI stress test: 120 BPM rapid arpeggios executed continuously over 30 minutes with zero microcontroller resets.',
-      },
-    ],
+    prototypeIterations: [],
     productOutcome: {
       finalDesignAndResults:
-        'The robotic pan flute successfully performed musical compositions directly from standard digital audio workstation (DAW) software over MIDI. The stepper motor drum achieved precise angular positioning under [ADD: measured seek time] ms per note, and the 2-DOF airflow nozzle struck each tube at its calibrated acoustic resonance angle, producing rich, authentic musical tones across the entire octave scale.',
+        'The robot plays 13 notes (C5 to C6) sent from Ableton Live. It works as a proof of concept for the instrument.',
       mediaUrl: 'images/robotic pan flute thumbnail.jpg',
-      mediaCaption:
-        'Finished robotic pan flute system playing full musical arrangements via standard MIDI input.',
+      mediaCaption: 'Finished pan flute robot.',
       downloadLinks: [
-        { label: 'Pan Flute Musical Machine Report (PDF)', url: '#', type: 'PDF' },
-        { label: 'Pan Flute Robot Gallery Blog Post (PDF)', url: '#', type: 'PDF' },
+        { label: 'Project Report (PDF)', url: '#', type: 'PDF' },
       ],
     },
-    whatILearned:
-      'I learned that physical acoustic resonance depends heavily on sub-millimeter nozzle positioning, and that isolating power rails with proper star grounding is vital when mixing microcontrollers with inductive motors.',
+    whatILearned: '',
     photos: [
       {
         src: 'images/robotic pan flute thumbnail.jpg',

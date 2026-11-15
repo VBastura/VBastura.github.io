@@ -4,6 +4,7 @@ import { ProjectImage } from './ProjectImage';
 import { MqpCaseStudy } from './MqpCaseStudy';
 import { CombatRobotCaseStudy } from './CombatRobotCaseStudy';
 import { MidiMusicBoxCaseStudy } from './MidiMusicBoxCaseStudy';
+import { RoboticPanFluteCaseStudy } from './RoboticPanFluteCaseStudy';
 import {
   ArrowLeft,
   ArrowRight,
@@ -44,6 +45,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   const isMqp = project.id === 'autonomous-offroad-chassis';
   const isCombatRobot = project.id === 'plastic-combat-robot';
   const isMidiMusicBox = project.id === 'midi-music-box';
+  const isPanFlute = project.id === 'robotic-pan-flute';
 
   const projectPhotos = project.photos && project.photos.length > 0
     ? project.photos
@@ -144,6 +146,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             className={`relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer group ${
               isMidiMusicBox
                 ? 'bg-slate-50 dark:bg-slate-900/60 max-w-2xl mx-auto'
+                : isPanFlute
+                ? 'bg-slate-50 dark:bg-slate-900/60 max-w-3xl mx-auto'
                 : 'bg-slate-950'
             }`}
           >
@@ -153,14 +157,14 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               aspectRatioClass={
                 isCombatRobot
                   ? "aspect-[16/10] sm:aspect-[3/2] w-full max-h-[580px]"
-                  : isMidiMusicBox
+                  : isMidiMusicBox || isPanFlute
                   ? ""
                   : "aspect-[16/9] w-full max-h-[560px]"
               }
               objectFitClass={
                 isCombatRobot
                   ? "object-cover object-[center_62%]"
-                  : isMidiMusicBox
+                  : isMidiMusicBox || isPanFlute
                   ? "w-full h-auto block"
                   : "object-cover"
               }
@@ -219,7 +223,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             </div>
             <div
               className={`text-xs font-mono font-medium text-slate-800 dark:text-slate-200 leading-relaxed ${
-                isCombatRobot || isMidiMusicBox ? '' : 'line-clamp-3'
+                isCombatRobot || isMidiMusicBox || isPanFlute ? '' : 'line-clamp-3'
               }`}
             >
               {project.summaryStrip.tools}
@@ -282,6 +286,11 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <CombatRobotCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
           ) : isMidiMusicBox ? (
             <MidiMusicBoxCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
+          ) : isPanFlute ? (
+            <RoboticPanFluteCaseStudy
+              onInspectImage={(src) => setLightboxImage(src)}
+              reportUrl={project.productOutcome.downloadLinks?.[0]?.url}
+            />
           ) : (
             <>
               {/* 1. OBJECTIVE */}

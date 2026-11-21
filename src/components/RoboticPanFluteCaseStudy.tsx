@@ -4,18 +4,14 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
-  Download,
-  ExternalLink,
 } from 'lucide-react';
 
 interface RoboticPanFluteCaseStudyProps {
   onInspectImage: (src: string) => void;
-  reportUrl?: string;
 }
 
 export const RoboticPanFluteCaseStudy: React.FC<RoboticPanFluteCaseStudyProps> = ({
   onInspectImage,
-  reportUrl = '#',
 }) => {
   const [calibrationOpen, setCalibrationOpen] = useState(false);
   const [schematicOpen, setSchematicOpen] = useState(false);
@@ -52,31 +48,6 @@ export const RoboticPanFluteCaseStudy: React.FC<RoboticPanFluteCaseStudyProps> =
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium text-center">
               Top view of the rotating drum, air nozzle and electronics.
             </p>
-          </div>
-
-          {/* Simple text flow row */}
-          <div className="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60">
-            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs font-mono">
-              {[
-                'MIDI input (Ableton Live)',
-                'Arduino',
-                'stepper motor',
-                'rotating drum',
-                'servo-positioned air nozzle',
-                'tube',
-              ].map((step, idx, arr) => (
-                <React.Fragment key={idx}>
-                  <span className="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-semibold text-slate-800 dark:text-slate-200 shadow-2xs">
-                    {step}
-                  </span>
-                  {idx < arr.length - 1 && (
-                    <span className="text-slate-400 dark:text-slate-500 font-bold select-none">
-                      →
-                    </span>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -254,52 +225,15 @@ export const RoboticPanFluteCaseStudy: React.FC<RoboticPanFluteCaseStudyProps> =
             )}
           </div>
         </div>
-      </section>
-
-      {/* =========================================================================
-          04. CHALLENGE: ELECTRICAL INTERFERENCE
-          ========================================================================= */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-          <span>04. CHALLENGE: ELECTRICAL INTERFERENCE</span>
-        </div>
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Challenge: Electrical Interference
-        </h2>
-        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-          The system runs on three power lines (5V servos, 12V solenoid valve, 24V stepper motor) with a common ground, all connected to one Arduino.
-        </p>
-
+        {/* Card C: Electrical interference */}
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 space-y-4 shadow-xs">
-          {/* PROBLEM */}
-          <div className="p-4 sm:p-5 rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/60 dark:bg-amber-950/20 space-y-1.5">
-            <div className="text-xs font-mono uppercase tracking-wider text-amber-800 dark:text-amber-400 font-bold">
-              PROBLEM
-            </div>
-            <p className="text-sm sm:text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-              The servos and the drum&apos;s stepper motor twitched, suspected to be electrical interference from the solenoid valve. All components share a common ground.
-            </p>
-          </div>
+          <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+            Electrical interference
+          </h3>
 
-          {/* DECISION */}
-          <div className="p-4 sm:p-5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/20 space-y-1.5">
-            <div className="text-xs font-mono uppercase tracking-wider text-blue-700 dark:text-blue-400 font-bold">
-              DECISION
-            </div>
-            <p className="text-sm sm:text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-              I added a diode to suppress the voltage spike the solenoid produces when it switches off, and rewired and organized the electronics, which had become messy as each mechanism was added.
-            </p>
-          </div>
-
-          {/* OUTCOME */}
-          <div className="p-4 sm:p-5 rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/50 dark:bg-emerald-950/20 space-y-1.5">
-            <div className="text-xs font-mono uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-bold">
-              OUTCOME
-            </div>
-            <p className="text-sm sm:text-base text-slate-900 dark:text-white font-medium leading-relaxed">
-              The twitching stopped.
-            </p>
-          </div>
+          <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            Three power lines (5V servos, 12V solenoid valve, 24V stepper motor) share a common ground and one Arduino. The servos and the drum&apos;s stepper motor twitched, suspected to be interference from the solenoid valve. I added a diode to suppress the voltage spike the solenoid produces when it switches off, and rewired and organized the electronics. The twitching stopped.
+          </p>
 
           {/* Collapsed expander: Electrical schematic */}
           <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
@@ -342,11 +276,11 @@ export const RoboticPanFluteCaseStudy: React.FC<RoboticPanFluteCaseStudyProps> =
       </section>
 
       {/* =========================================================================
-          05. OUTCOME
+          04. OUTCOME
           ========================================================================= */}
       <section className="space-y-4">
         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-          <span>05. OUTCOME</span>
+          <span>04. OUTCOME</span>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Outcome
@@ -401,37 +335,15 @@ export const RoboticPanFluteCaseStudy: React.FC<RoboticPanFluteCaseStudyProps> =
               Integrating mechanical, electrical and software parts takes careful coordination, and specifications have to fit cost and time.
             </p>
           </div>
-
-          {/* Two small link buttons */}
-          <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-3">
-            <a
-              href={reportUrl}
-              download
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:border-blue-300 dark:hover:border-blue-700 text-xs font-mono text-slate-800 dark:text-slate-200 transition-colors"
-            >
-              <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>Project Report (PDF)</span>
-            </a>
-
-            <a
-              href="https://wp.wpi.edu/musicalmachines/2025/12/16/pan-flute-robot/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:border-blue-300 dark:hover:border-blue-700 text-xs font-mono text-slate-800 dark:text-slate-200 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>Project Blog Post</span>
-            </a>
-          </div>
         </div>
       </section>
 
       {/* =========================================================================
-          06. POTENTIAL IMPROVEMENTS
+          05. POTENTIAL IMPROVEMENTS
           ========================================================================= */}
       <section className="space-y-4">
         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-          <span>06. POTENTIAL IMPROVEMENTS</span>
+          <span>05. POTENTIAL IMPROVEMENTS</span>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Potential Improvements

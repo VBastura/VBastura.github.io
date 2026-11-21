@@ -287,10 +287,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           ) : isMidiMusicBox ? (
             <MidiMusicBoxCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
           ) : isPanFlute ? (
-            <RoboticPanFluteCaseStudy
-              onInspectImage={(src) => setLightboxImage(src)}
-              reportUrl={project.productOutcome.downloadLinks?.[0]?.url}
-            />
+            <RoboticPanFluteCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
           ) : (
             <>
               {/* 1. OBJECTIVE */}

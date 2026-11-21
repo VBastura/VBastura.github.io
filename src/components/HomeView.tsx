@@ -59,7 +59,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
     }
   };
 
-  const featuredProjects = projects.slice(0, 2);
+  const featuredProjects = ['autonomous-offroad-chassis', 'plastic-combat-robot']
+    .map((id) => projects.find((project) => project.id === id))
+    .filter((project): project is Project => Boolean(project));
 
   return (
     <div className="space-y-16 py-8 sm:py-12">

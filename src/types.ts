@@ -44,7 +44,7 @@ export interface Project {
   oneLineOutcome: string;
   cardShortDescription: string;
   hoverDescription: string;
-  category: 'CAD & Spaceframe' | 'Robotics & Mechanisms' | 'Mechatronics & Embedded' | 'Data & Field Research';
+  category: 'CAD & Spaceframe' | 'Robotics & Mechanisms' | 'Mechatronics & Embedded';
   coverImage: string;
   statusBadge?: string;
   videoEmbedUrl?: string;

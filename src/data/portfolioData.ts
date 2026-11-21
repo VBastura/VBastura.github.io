@@ -79,7 +79,7 @@ export const initialProjects: Project[] = [
     cardShortDescription:
       'WPI MQP 4-person chassis team, collaborating with the Suspension and Mechatronics teams. Tube-frame chassis integrating suspension and braking to achieve 15 mph safely.',
     hoverDescription:
-      'Major Qualifying Project (WPI & AVMI): Provided continuous tube and node design feedback on an off-road tube frame chassis, and performed all SolidWorks and Ansys FEA simulations to validate torsional stiffness and bump shock resistance.',
+      'Major Qualifying Project (WPI & AVMI): Provided continuous tube and node design feedback on an off-road spaceframe chassis, and performed all Ansys FEA simulations to validate torsional rigidity and bump load stress',
     category: 'CAD & Spaceframe',
     coverImage: 'images/autonomous off-road vehicle chassis thumbnail cropped.png',
     statusBadge: 'In progress',
@@ -383,7 +383,7 @@ export const initialProjects: Project[] = [
     cardShortDescription:
       '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
     hoverDescription:
-      '1 lb plastic combat robot for my combat robotics club; designed the weapon and fabricated the robot; version 2 lasted the full competition without breaking.',
+      'A 3D-printed 1 lb combat robot for my combat robotics club. I led weapon design and all fabrication, redesigning the failed v1 weapon and developing custom slicer settings for a v2 weapon that lasted every match.',
     category: 'Robotics & Mechanisms',
     coverImage: 'images/combat-robot-v2-final.jpg',
     year: 'October 2025 - Present',

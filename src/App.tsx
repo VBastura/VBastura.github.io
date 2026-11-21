@@ -106,10 +106,12 @@ export default function App() {
   };
 
   // Find active project if route is project detail
-  const activeProjectId = currentRoute.startsWith('project-')
+  const isProjectRoute = currentRoute.startsWith('project-');
+  const activeProjectId = isProjectRoute
     ? currentRoute.replace('project-', '')
     : null;
   const activeProject = projects.find((p) => p.id === activeProjectId);
+  const pageContainerClass = isProjectRoute ? 'site-container-project' : 'site-container-wide';
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
@@ -131,7 +133,7 @@ export default function App() {
         />
 
         {/* View Content */}
-        <main className="flex-1 site-container">
+        <main className={`flex-1 ${pageContainerClass}`}>
           {currentRoute === 'home' && (
             <HomeView
               profile={profile}
@@ -180,6 +182,7 @@ export default function App() {
           setCurrentRoute={setCurrentRoute}
           onOpenResume={() => setIsResumeOpen(true)}
           onOpenGitHubGuide={() => setIsGitHubGuideOpen(true)}
+          containerClass={pageContainerClass}
         />
       </div>
 

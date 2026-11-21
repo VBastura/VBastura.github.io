@@ -27,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md transition-colors duration-200">
-      <div className="site-container h-16 flex items-center justify-between gap-8">
+      <div className="site-container-wide h-16 flex items-center justify-between gap-8">
         
         {/* Zone 1: Single text element wordmark */}
         <button

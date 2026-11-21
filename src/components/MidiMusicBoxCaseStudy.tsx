@@ -38,7 +38,7 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
                   src="images/midi music box-original music box.jpg"
                   alt="Original punch-card music box before modification."
                   loading="lazy"
-                  className="w-full h-auto md:h-[210px] lg:h-[270px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
+                  className="w-full h-auto md:h-[185px] lg:h-[270px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
                 />
                 <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
                   <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
@@ -60,7 +60,7 @@ export const MidiMusicBoxCaseStudy: React.FC<MidiMusicBoxCaseStudyProps> = ({
                   src="images/midi music box- modified to hold actuators.jpg"
                   alt="Modified music box with 3D-printed parts fitted."
                   loading="lazy"
-                  className="w-full h-auto md:h-[210px] lg:h-[270px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
+                  className="w-full h-auto md:h-[185px] lg:h-[270px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
                 />
                 <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
                   <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">

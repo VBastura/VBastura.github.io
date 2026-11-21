@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
+  Maximize2,
 } from 'lucide-react';
 
 interface RoboticPanFluteCaseStudyProps {
@@ -34,16 +35,23 @@ export const RoboticPanFluteCaseStudy: React.FC<RoboticPanFluteCaseStudyProps> =
             A pan flute makes each note with a tube of a different length. This robot arranges 13 tubes in a circle on a drum. A stepper motor turns the drum to the right tube, and one adjustable air source blows across it. Notes come from music software over MIDI. The tubes and drum are 3D printed, which kept cost down and made the design easy to adjust. Built for WPI&apos;s Musical Robotics course.
           </p>
 
-          {/* Existing top-down drum photo */}
-          <div className="space-y-2 max-w-sm mx-auto">
+          {/* Existing top-down drum photo (rotated 90° counterclockwise to landscape) */}
+          <div className="space-y-2 max-w-2xl mx-auto">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900 shadow-xs cursor-pointer"
+              className="relative group w-full aspect-[1536/907] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs cursor-pointer"
               onClick={() => onInspectImage('images/pan flute robot top down view.jpg')}
             >
-              <ProjectImage
+              <img
                 src="images/pan flute robot top down view.jpg"
                 alt="Top view of the rotating drum, air nozzle and electronics."
+                loading="lazy"
+                className="absolute top-1/2 left-1/2 w-[59.05%] h-[169.35%] max-w-none -translate-x-1/2 -translate-y-1/2 -rotate-90 block transition-all duration-300 group-hover:brightness-105"
               />
+              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
+                <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
+                  <Maximize2 className="w-3 h-3" /> Full Resolution
+                </span>
+              </div>
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium text-center">
               Top view of the rotating drum, air nozzle and electronics.

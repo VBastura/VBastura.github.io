@@ -8,6 +8,7 @@ interface ProjectImageProps {
   aspectRatioClass?: string;
   objectFitClass?: string;
   objectPosition?: string;
+  blurredBackdrop?: boolean;
   children?: React.ReactNode;
   onClick?: () => void;
   hideCaptionInPlaceholder?: boolean;
@@ -20,6 +21,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
   aspectRatioClass = '',
   objectFitClass = 'object-contain',
   objectPosition,
+  blurredBackdrop = false,
   children,
   onClick,
   hideCaptionInPlaceholder = false,
@@ -58,6 +60,15 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
     >
       {currentSrc && !hasError ? (
         <>
+          {blurredBackdrop && hasFixedAspect && (
+            <img
+              src={currentSrc}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-75 pointer-events-none select-none"
+            />
+          )}
           <img
             src={currentSrc}
             alt={alt}
@@ -65,13 +76,13 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
             style={objectPosition ? { objectPosition } : undefined}
             className={
               hasFixedAspect
-                ? `w-full h-full ${objectFitClass} transition-transform duration-500 group-hover:scale-105`
+                ? `relative z-10 w-full h-full ${objectFitClass} transition-transform duration-500 group-hover:scale-105`
                 : 'w-full h-auto block rounded-lg transition-transform duration-300 group-hover:brightness-105'
             }
             onError={handleError}
           />
           {onClick && (
-            <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none rounded-lg">
+            <div className="absolute inset-0 z-20 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none rounded-lg">
               <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
                 <Maximize2 className="w-3 h-3" /> Full Resolution
               </span>

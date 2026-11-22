@@ -3,17 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HomeView } from './components/HomeView';
 import { GalleryView } from './components/GalleryView';
 import { ProjectDetailView } from './components/ProjectDetailView';
 import { ResumeModal } from './components/ResumeModal';
-import { GitHubPagesModal } from './components/GitHubPagesModal';
-import { ProfileEditDrawer } from './components/ProfileEditDrawer';
 import { Footer } from './components/Footer';
 import { initialProfile, initialProjects } from './data/portfolioData';
-import { Profile, Project, ViewRoute } from './types';
+import { ViewRoute } from './types';
 import { downloadResumePdf } from './utils/generateResumePdf';
 
 export default function App() {
@@ -24,20 +22,8 @@ export default function App() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
-  // Profile data state - resets to latest initialProfile if schema changes
-  const [profile, setProfile] = useState<Profile>(() => {
-    const saved = localStorage.getItem('portfolio-profile-v3');
-    if (saved) {
-      try {
-        return { ...initialProfile, ...JSON.parse(saved) };
-      } catch {
-        return initialProfile;
-      }
-    }
-    return initialProfile;
-  });
-
-  const [projects] = useState<Project[]>(initialProjects);
+  const profile = initialProfile;
+  const projects = initialProjects;
 
   // Hash-based routing to ensure 100% zero-config GitHub Pages compatibility
   const getRouteFromHash = (): ViewRoute => {
@@ -52,10 +38,8 @@ export default function App() {
 
   const [currentRoute, setCurrentRouteState] = useState<ViewRoute>(getRouteFromHash);
 
-  // Modal dialog states
+  // Modal dialog state
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [isGitHubGuideOpen, setIsGitHubGuideOpen] = useState(false);
-  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
 
   // Update hash when route changes
   const setCurrentRoute = (route: ViewRoute) => {
@@ -93,18 +77,6 @@ export default function App() {
     }
   }, [darkMode]);
 
-  // Handle saving profile changes
-  const handleSaveProfile = (updated: Profile) => {
-    setProfile(updated);
-    localStorage.setItem('portfolio-profile-v3', JSON.stringify(updated));
-  };
-
-  // Reset profile to defaults
-  const handleResetProfile = () => {
-    setProfile(initialProfile);
-    localStorage.removeItem('portfolio-profile-v3');
-  };
-
   // Find active project if route is project detail
   const isProjectRoute = currentRoute.startsWith('project-');
   const activeProjectId = isProjectRoute
@@ -129,7 +101,6 @@ export default function App() {
           darkMode={darkMode}
           setDarkMode={setDarkMode}
           onOpenResume={() => setIsResumeOpen(true)}
-          onOpenGitHubGuide={() => setIsGitHubGuideOpen(true)}
         />
 
         {/* View Content */}
@@ -141,7 +112,6 @@ export default function App() {
               setCurrentRoute={setCurrentRoute}
               onOpenResume={() => setIsResumeOpen(true)}
               onDownloadResumePdf={() => downloadResumePdf(profile)}
-              onOpenEditProfile={() => setIsEditProfileOpen(true)}
             />
           )}
 
@@ -181,7 +151,6 @@ export default function App() {
           profile={profile}
           setCurrentRoute={setCurrentRoute}
           onOpenResume={() => setIsResumeOpen(true)}
-          onOpenGitHubGuide={() => setIsGitHubGuideOpen(true)}
           containerClass={pageContainerClass}
         />
       </div>
@@ -190,22 +159,6 @@ export default function App() {
       <ResumeModal
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
-        profile={profile}
-      />
-
-      <GitHubPagesModal
-        isOpen={isGitHubGuideOpen}
-        onClose={() => setIsGitHubGuideOpen(false)}
-        profile={profile}
-        projects={projects}
-      />
-
-      <ProfileEditDrawer
-        isOpen={isEditProfileOpen}
-        onClose={() => setIsEditProfileOpen(false)}
-        profile={profile}
-        onSaveProfile={handleSaveProfile}
-        onResetDefault={handleResetProfile}
       />
 
     </div>

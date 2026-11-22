@@ -1,12 +1,11 @@
 import React from 'react';
 import { Profile, ViewRoute } from '../types';
-import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 interface FooterProps {
   profile: Profile;
   setCurrentRoute: (route: ViewRoute) => void;
   onOpenResume: () => void;
-  onOpenGitHubGuide?: () => void;
   containerClass?: string;
 }
 

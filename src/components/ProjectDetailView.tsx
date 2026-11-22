@@ -13,17 +13,8 @@ import {
   Share2,
   Users,
   UserCheck,
-  Download,
-  AlertTriangle,
-  CheckCircle2,
   Camera,
   FileText,
-  ChevronDown,
-  ChevronUp,
-  ShieldAlert,
-  Activity,
-  Layers,
-  Sparkles,
 } from 'lucide-react';
 
 interface ProjectDetailViewProps {
@@ -40,12 +31,12 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   const [activeTab, setActiveTab] = useState<'case-study' | 'photos'>('case-study');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
-  const [versionLogOpen, setVersionLogOpen] = useState(false);
 
   const isMqp = project.id === 'autonomous-offroad-chassis';
   const isCombatRobot = project.id === 'plastic-combat-robot';
   const isMidiMusicBox = project.id === 'midi-music-box';
   const isPanFlute = project.id === 'robotic-pan-flute';
+  const isInProgress = project.statusBadge?.trim().toLowerCase() === 'in progress';
 
   const projectPhotos = project.photos && project.photos.length > 0
     ? project.photos
@@ -53,8 +44,6 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
         {
           src: project.coverImage,
           alt: project.title,
-          caption: project.oneLineOutcome,
-          filename: project.coverImage.replace('images/', ''),
         },
       ];
 
@@ -99,21 +88,16 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
       {/* =========================================================================
           1. HERO
           - Project title + one-line outcome (what it did / achieved).
-          - Strongest media at top: video embed (YouTube iframe) or hero image.
+          - Hero image at natural aspect ratio.
           ========================================================================= */}
       <section className="space-y-6">
         <div className="space-y-3">
-          {project.statusBadge ? (
+          {project.statusBadge && (
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800/80">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className={`w-2 h-2 rounded-full bg-emerald-500 ${isInProgress ? 'animate-pulse' : ''}`} />
               <span>{project.statusBadge}</span>
             </div>
-          ) : isMqp ? (
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/50 dark:text-amber-300 dark:border-amber-800/80">
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-              <span>Active Project · Fabrication Pending (B-Term)</span>
-            </div>
-          ) : null}
+          )}
 
           <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-blue-600 dark:text-blue-400">
             <span className="font-semibold uppercase tracking-wider">{project.category}</span>
@@ -130,52 +114,22 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
           </p>
         </div>
 
-        {/* Strongest media at top: video embed or hero image */}
-        {project.videoEmbedUrl ? (
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-black">
-            <iframe
-              src={project.videoEmbedUrl}
-              title={project.title}
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+        {/* Hero image at natural aspect ratio */}
+        <div
+          className={`relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer group bg-slate-50 dark:bg-slate-900/60 mx-auto ${
+            isMidiMusicBox ? 'max-w-2xl' : 'max-w-3xl'
+          }`}
+        >
+          <ProjectImage
+            src={project.coverImage}
+            alt={project.title}
+            onClick={() => setLightboxImage(project.coverImage)}
+          />
+          <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-slate-950/80 hover:bg-slate-950 text-white rounded-lg text-xs font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors shadow-lg pointer-events-none opacity-0 group-hover:opacity-100">
+            <Maximize2 className="w-3.5 h-3.5" />
+            <span>Fullscreen Visual</span>
           </div>
-        ) : (
-          <div
-            className={`relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer group ${
-              isMidiMusicBox
-                ? 'bg-slate-50 dark:bg-slate-900/60 max-w-2xl mx-auto'
-                : isPanFlute
-                ? 'bg-slate-50 dark:bg-slate-900/60 max-w-3xl mx-auto'
-                : 'bg-slate-950'
-            }`}
-          >
-            <ProjectImage
-              src={project.coverImage}
-              alt={project.title}
-              aspectRatioClass={
-                isCombatRobot
-                  ? "aspect-[16/10] sm:aspect-[3/2] w-full max-h-[580px]"
-                  : isMidiMusicBox || isPanFlute
-                  ? ""
-                  : "aspect-[16/9] w-full max-h-[560px]"
-              }
-              objectFitClass={
-                isCombatRobot
-                  ? "object-cover object-[center_62%]"
-                  : isMidiMusicBox || isPanFlute
-                  ? "w-full h-auto block"
-                  : "object-cover"
-              }
-              onClick={() => setLightboxImage(project.coverImage)}
-            />
-            <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-slate-950/80 hover:bg-slate-950 text-white rounded-lg text-xs font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors shadow-lg pointer-events-none opacity-0 group-hover:opacity-100">
-              <Maximize2 className="w-3.5 h-3.5" />
-              <span>Fullscreen Visual</span>
-            </div>
-          </div>
-        )}
+        </div>
       </section>
 
       {/* =========================================================================
@@ -276,254 +230,19 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
       )}
 
       {/* =========================================================================
-          TAB 1: CASE STUDY BREAKDOWN (Narrative Structure: 1, 2, 3, 4, 5)
+          TAB 1: CASE STUDY BREAKDOWN
           ========================================================================= */}
       {activeTab === 'case-study' && (
         <div className="space-y-14 animate-in fade-in duration-200">
-          {isMqp ? (
-            <MqpCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
-          ) : isCombatRobot ? (
-            <CombatRobotCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
-          ) : isMidiMusicBox ? (
-            <MidiMusicBoxCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
-          ) : isPanFlute ? (
-            <RoboticPanFluteCaseStudy onInspectImage={(src) => setLightboxImage(src)} />
-          ) : (
-            <>
-              {/* 1. OBJECTIVE */}
-              <section className="space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                  <span>01. OBJECTIVE & CONSTRAINTS</span>
-                </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                  Problem Statement & Design Constraints
-                </h2>
-                <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-xs">
-                  <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {project.objective}
-                  </p>
-                </div>
-              </section>
-
-              {/* 2. BRAINSTORM (Optional) */}
-              {project.brainstorm?.paragraph && (
-                <section className="space-y-5">
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                    <span>02. BRAINSTORM</span>
-                  </div>
-                  <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                    Architectural Concepts & Tradeoffs
-                  </h2>
-
-                  <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 space-y-5 shadow-xs">
-                    <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-                      {project.brainstorm.paragraph}
-                    </p>
-
-                    {project.brainstorm.image && (
-                      <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 cursor-pointer group relative">
-                        <ProjectImage
-                          src={project.brainstorm.image}
-                          alt="Brainstorming concept visual"
-                          onClick={() => {
-                            if (project.brainstorm.image) setLightboxImage(project.brainstorm.image);
-                          }}
-                        />
-                        {project.brainstorm.imageCaption && (
-                          <div className="p-3 bg-slate-100 dark:bg-slate-900/90 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 italic">
-                            {project.brainstorm.imageCaption}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </section>
-              )}
-
-              {/* PROTOTYPE */}
-              <section className="space-y-6">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                  <span>{project.brainstorm?.paragraph ? '03. PROTOTYPE' : '02. PROTOTYPE'}</span>
-                </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                  Iterative Engineering Sequence
-                </h2>
-
-                <div className="space-y-8">
-                  {project.prototypeIterations.map((iter, idx) => (
-                    <div
-                      key={idx}
-                      className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs space-y-6 p-6 sm:p-8"
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
-                        <div className="flex items-center gap-3">
-                          <span className="px-2.5 py-1 rounded-md bg-blue-600 text-white font-mono text-xs font-bold uppercase tracking-wider">
-                            Iteration {iter.version.toUpperCase()}
-                          </span>
-                          <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                            {iter.title}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                          What Was Built & Fabrication Method:
-                        </div>
-                        <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-                          {iter.whatWasBuilt}
-                        </p>
-                      </div>
-
-                      <div className="p-4 rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-950/20 space-y-1.5">
-                        <div className="text-xs font-mono uppercase tracking-wider text-amber-800 dark:text-amber-400 font-bold flex items-center gap-1.5">
-                          <AlertTriangle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                          <span>Observed Failure / Underperformance:</span>
-                        </div>
-                        <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-                          {iter.whatFailedOrUnderperformed}
-                        </p>
-                      </div>
-
-                      <div className="p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/60 dark:bg-emerald-950/20 space-y-1.5">
-                        <div className="text-xs font-mono uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-bold flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                          <span>Engineering Redesign & Physical Result:</span>
-                        </div>
-                        <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
-                          {iter.whatChangedAndResult}
-                        </p>
-                      </div>
-
-                      {iter.decisions && iter.decisions.length > 0 && (
-                        <div className="space-y-2.5 pt-2">
-                          <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                            Key Engineering Decisions (Material, Geometry, Slicer / Code):
-                          </div>
-                          <ul className="grid grid-cols-1 gap-2">
-                            {iter.decisions.map((dec, dIdx) => (
-                              <li
-                                key={dIdx}
-                                className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
-                                <span>{dec}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {iter.image && (
-                        <div className="space-y-2 pt-2">
-                          <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 cursor-pointer group relative">
-                            <ProjectImage
-                              src={iter.image}
-                              alt={`${iter.title} iteration visual`}
-                              onClick={() => {
-                                if (iter.image) setLightboxImage(iter.image);
-                              }}
-                            />
-                          </div>
-
-                          {iter.imageCaption && (
-                            <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-                              {iter.imageCaption}
-                            </p>
-                          )}
-
-                          {iter.testConditions && (
-                            <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 text-xs font-mono text-slate-700 dark:text-slate-300">
-                              <span className="font-semibold text-blue-600 dark:text-blue-400">
-                                Boundary / Test Conditions:{' '}
-                              </span>
-                              {iter.testConditions}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* PRODUCT / OUTCOME */}
-              <section className="space-y-5">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                  <span>{project.brainstorm?.paragraph ? '04. PRODUCT / OUTCOME' : '03. PRODUCT / OUTCOME'}</span>
-                </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                  Final Design & Measured Results
-                </h2>
-
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 space-y-6 shadow-xs">
-                  <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
-                    {project.productOutcome.finalDesignAndResults}
-                  </p>
-
-                  {project.productOutcome.mediaUrl && (
-                    <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 cursor-pointer group relative">
-                      <ProjectImage
-                        src={project.productOutcome.mediaUrl}
-                        alt="Final product outcome"
-                        onClick={() => {
-                          if (project.productOutcome.mediaUrl)
-                            setLightboxImage(project.productOutcome.mediaUrl);
-                        }}
-                      />
-                      {project.productOutcome.mediaCaption && (
-                        <div className="p-3 bg-slate-100 dark:bg-slate-900/90 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 italic">
-                          {project.productOutcome.mediaCaption}
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {project.productOutcome.downloadLinks &&
-                    project.productOutcome.downloadLinks.length > 0 && (
-                      <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
-                        <div className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                          Project Documentation & Deliverables:
-                        </div>
-                        <div className="flex flex-wrap gap-3">
-                          {project.productOutcome.downloadLinks.map((link, lIdx) => (
-                            <a
-                              key={lIdx}
-                              href={link.url}
-                              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/80 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:border-blue-300 dark:hover:border-blue-700 text-xs font-mono text-slate-800 dark:text-slate-200 transition-colors"
-                              download
-                            >
-                              <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                              <span>{link.label}</span>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                </div>
-              </section>
-
-              {/* WHAT I LEARNED */}
-              <section className="space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                  <span>{project.brainstorm?.paragraph ? '05. WHAT I LEARNED' : '04. WHAT I LEARNED'}</span>
-                </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                  Engineering Takeaways
-                </h2>
-                <div className="p-6 rounded-2xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/20 shadow-xs">
-                  <p className="text-base text-slate-800 dark:text-slate-200 font-medium leading-relaxed">
-                    "{project.whatILearned}"
-                  </p>
-                </div>
-              </section>
-            </>
-          )}
+          {isMqp && <MqpCaseStudy onInspectImage={(src) => setLightboxImage(src)} />}
+          {isCombatRobot && <CombatRobotCaseStudy onInspectImage={(src) => setLightboxImage(src)} />}
+          {isMidiMusicBox && <MidiMusicBoxCaseStudy onInspectImage={(src) => setLightboxImage(src)} />}
+          {isPanFlute && <RoboticPanFluteCaseStudy onInspectImage={(src) => setLightboxImage(src)} />}
         </div>
       )}
 
       {/* =========================================================================
-          TAB 2: PROJECT PHOTOS (Clean HTML image placeholders pointing to images/)
+          TAB 2: PROJECT PHOTOS
           ========================================================================= */}
       {activeTab === 'photos' && (
         <section className="space-y-6 animate-in fade-in duration-200">
@@ -535,40 +254,27 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               Visual Documentation & Engineering Artifacts
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
-              High-resolution CAD models, FEA simulation plots, and engineering visuals. Click any photo to view full resolution.
-            </p>
           </div>
 
-          {/* Clean CSS Grid ready to style exact filenames */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
             {projectPhotos.map((photo, idx) => (
               <figure
                 key={idx}
                 className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-xs hover:border-slate-400 dark:hover:border-slate-600 transition-all flex flex-col justify-between"
               >
-                {/* Clean HTML Image Placeholder with Upload Fallback */}
                 <ProjectImage
                   src={photo.src}
                   alt={photo.alt}
                   onClick={() => setLightboxImage(photo.src)}
                 />
 
-                <figcaption className="p-4 sm:p-5 space-y-2 border-t border-slate-200 dark:border-slate-800 flex-1 flex flex-col justify-between">
-                  <div className="space-y-1">
-                    <div className="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold break-all">
-                      {photo.filename}
-                    </div>
-                    <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                      {photo.alt}
-                    </h4>
-                  </div>
-                  {photo.caption && (
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                {photo.caption && (
+                  <figcaption className="p-4 border-t border-slate-200 dark:border-slate-800">
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       {photo.caption}
                     </p>
-                  )}
-                </figcaption>
+                  </figcaption>
+                )}
               </figure>
             ))}
           </div>

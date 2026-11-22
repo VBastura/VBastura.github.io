@@ -9,7 +9,6 @@ interface NavbarProps {
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   onOpenResume: () => void;
-  onOpenGitHubGuide?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -19,7 +18,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   darkMode,
   setDarkMode,
   onOpenResume,
-  onOpenGitHubGuide,
 }) => {
   const isHome = currentRoute === 'home';
   const isGallery = currentRoute === 'gallery';

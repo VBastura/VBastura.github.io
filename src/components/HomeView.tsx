@@ -17,7 +17,6 @@ import {
   ShieldCheck,
   MapPin,
   GraduationCap,
-  Camera,
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -26,7 +25,6 @@ interface HomeViewProps {
   setCurrentRoute: (route: ViewRoute) => void;
   onOpenResume: () => void;
   onDownloadResumePdf: () => Promise<any> | void;
-  onOpenEditProfile?: () => void;
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({
@@ -35,7 +33,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
   setCurrentRoute,
   onOpenResume,
   onDownloadResumePdf,
-  onOpenEditProfile,
 }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [downloading, setDownloading] = useState(false);
@@ -179,7 +176,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 download="Vicente_Bastura_Resume.pdf"
                 onClick={handleDownloadResume}
                 className="px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-200 font-medium text-sm flex items-center gap-2 transition-colors cursor-pointer"
-                title="Download official PDF resume (Vicente_Bastura_Resume.pdf)"
+                title="Download Resume PDF"
+                aria-label="Download Resume PDF"
               >
                 {downloadSuccess ? (
                   <>
@@ -189,7 +187,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 ) : (
                   <>
                     <FileDown className="w-4 h-4 text-slate-400" />
-                    <span>{downloading ? 'Downloading...' : 'Download Resume (PDF)'}</span>
+                    <span>{downloading ? 'Downloading...' : 'Download Resume PDF'}</span>
                   </>
                 )}
               </a>
@@ -274,7 +272,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         {/* 2-Column Showcase */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredProjects.map((project) => (
+          {featuredProjects.map((project) => {
+            const isInProgress = project.statusBadge?.trim().toLowerCase() === 'in progress';
+            return (
             <div
               key={project.id}
               onClick={() => setCurrentRoute(`project-${project.id}`)}
@@ -283,9 +283,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {/* Image Container with Hover Scrim */}
               <div className="relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                 {project.statusBadge && (
-                  <div className="absolute top-3 left-3 z-20 pointer-events-none">
+                  <div className="absolute top-3 left-3 z-30 pointer-events-none">
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold tracking-wide bg-blue-600 text-white shadow-sm border border-blue-400/30">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-200 animate-pulse" />
+                      <span className={`w-1.5 h-1.5 rounded-full bg-blue-200 ${isInProgress ? 'animate-pulse' : ''}`} />
                       {project.statusBadge}
                     </span>
                   </div>
@@ -294,9 +294,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   src={project.coverImage}
                   alt={project.title}
                   aspectRatioClass="aspect-[16/10]"
+                  blurredBackdrop={true}
                 >
                   {/* Hover Scrim Overlay: shows description only (no restated title, no ellipses) */}
-                  <div className="absolute inset-0 bg-slate-950/90 text-white p-5 sm:p-7 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between backdrop-blur-xs pointer-events-none">
+                  <div className="absolute inset-0 z-20 bg-slate-950/90 text-white p-5 sm:p-7 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between backdrop-blur-xs pointer-events-none">
                     <div className="flex-1 flex items-center">
                       <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                         {project.hoverDescription}
@@ -305,7 +306,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                     <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
                       <span className="font-semibold text-blue-400 flex items-center gap-1">
-                        View Project Case Study <ArrowRight className="w-3.5 h-3.5" />
+                        View Full Project <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
                   </div>
@@ -319,7 +320,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </h3>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

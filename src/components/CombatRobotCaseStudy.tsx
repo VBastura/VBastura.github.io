@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
+  Maximize2,
 } from 'lucide-react';
 
 interface CombatRobotCaseStudyProps {
@@ -25,59 +26,70 @@ export const CombatRobotCaseStudy: React.FC<CombatRobotCaseStudyProps> = ({ onIn
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Hardware Evolution Across Competitions
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <div className="flex flex-col md:flex-row gap-6 items-start">
           {/* V1 Final */}
-          <div className="space-y-2">
+          <div className="w-full md:w-auto space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer aspect-square w-full"
+              className="relative group w-full md:w-fit border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer"
               onClick={() => onInspectImage('images/combat-robot-v1-final.jpg')}
             >
-              <ProjectImage
+              <img
                 src="images/combat-robot-v1-final.jpg"
                 alt="Version 1 final: symmetric two-tooth PETG disk."
-                aspectRatioClass="aspect-square w-full"
-                objectFitClass="object-cover"
-                objectPosition="center 50%"
+                loading="lazy"
+                className="w-full h-auto md:h-[190px] lg:h-[260px] xl:h-[310px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
               />
+              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
+                <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
+                  <Maximize2 className="w-3 h-3" /> Full Resolution
+                </span>
+              </div>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium md:max-w-[145px] lg:max-w-[195px] xl:max-w-[235px]">
               Version 1 final: symmetric two-tooth PETG disk.
             </p>
           </div>
 
           {/* V2 Prototype */}
-          <div className="space-y-2">
+          <div className="w-full md:w-auto space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer aspect-square w-full"
+              className="relative group w-full md:w-fit border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer"
               onClick={() => onInspectImage('images/combat-robot-v2-prototype.jpg')}
             >
-              <ProjectImage
+              <img
                 src="images/combat-robot-v2-prototype.jpg"
                 alt="Version 2 prototype: asymmetric single-tooth weapon."
-                aspectRatioClass="aspect-square w-full"
-                objectFitClass="object-cover"
-                objectPosition="center 60%"
+                loading="lazy"
+                className="w-full h-auto md:h-[190px] lg:h-[260px] xl:h-[310px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
               />
+              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
+                <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
+                  <Maximize2 className="w-3 h-3" /> Full Resolution
+                </span>
+              </div>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium md:max-w-[145px] lg:max-w-[195px] xl:max-w-[235px]">
               Version 2 prototype: asymmetric single-tooth weapon.
             </p>
           </div>
 
           {/* V2 Final */}
-          <div className="space-y-2">
+          <div className="w-full md:w-auto space-y-2">
             <div
-              className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer aspect-square w-full"
+              className="relative group w-full md:w-fit border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors shadow-xs cursor-pointer"
               onClick={() => onInspectImage('images/combat-robot-v2-final.jpg')}
             >
-              <ProjectImage
+              <img
                 src="images/combat-robot-v2-final.jpg"
                 alt="Version 2 final."
-                aspectRatioClass="aspect-square w-full"
-                objectFitClass="object-cover"
-                objectPosition="70% center"
-                hideCaptionInPlaceholder={true}
+                loading="lazy"
+                className="w-full h-auto md:h-[190px] lg:h-[260px] xl:h-[310px] md:w-auto block transition-transform duration-300 group-hover:brightness-105"
               />
+              <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center pointer-events-none">
+                <span className="px-2.5 py-1 rounded-md bg-black/85 text-white text-[11px] font-mono flex items-center gap-1 backdrop-blur-xs shadow-md">
+                  <Maximize2 className="w-3 h-3" /> Full Resolution
+                </span>
+              </div>
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
               Version 2 final.
